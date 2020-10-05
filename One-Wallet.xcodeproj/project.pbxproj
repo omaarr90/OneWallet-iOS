@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF66251412A00007A4CA /* FormViewController.swift */; };
 		4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF68251412A00007A4CA /* TextFieldCell.swift */; };
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
+		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3642514102D00BA078F /* AppDelegate.swift */; };
 		4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3662514102D00BA078F /* SceneDelegate.swift */; };
 		4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7E36D2514102D00BA078F /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +214,9 @@
 			dependencies = (
 			);
 			name = "One-Wallet";
+			packageProductDependencies = (
+				4C46869E252B89E2004A5AB6 /* SwiftyBeaver */,
+			);
 			productName = "One-Wallet";
 			productReference = 4CF7E3612514102D00BA078F /* One-Wallet.app */;
 			productType = "com.apple.product-type.application";
@@ -283,6 +288,9 @@
 				Base,
 			);
 			mainGroup = 4CF7E3582514102D00BA078F;
+			packageReferences = (
+				4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+			);
 			productRefGroup = 4CF7E3622514102D00BA078F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -657,6 +665,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4C46869E252B89E2004A5AB6 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CF7E3592514102D00BA078F /* Project object */;
 }
