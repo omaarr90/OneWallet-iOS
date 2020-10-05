@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF63251412A00007A4CA /* SignUpViewController.swift */; };
+		4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF64251412A00007A4CA /* SignUpViewModel.swift */; };
+		4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF66251412A00007A4CA /* FormViewController.swift */; };
+		4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF68251412A00007A4CA /* TextFieldCell.swift */; };
+		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
 		4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3642514102D00BA078F /* AppDelegate.swift */; };
 		4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3662514102D00BA078F /* SceneDelegate.swift */; };
-		4CF7E3692514102D00BA078F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3682514102D00BA078F /* ViewController.swift */; };
 		4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7E36D2514102D00BA078F /* Assets.xcassets */; };
 		4CF7E3712514102D00BA078F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7E36F2514102D00BA078F /* LaunchScreen.storyboard */; };
 		4CF7E37C2514102D00BA078F /* One_WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E37B2514102D00BA078F /* One_WalletTests.swift */; };
@@ -35,10 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C06BF63251412A00007A4CA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4C06BF64251412A00007A4CA /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		4C06BF66251412A00007A4CA /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		4CF7E3612514102D00BA078F /* One-Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF7E3642514102D00BA078F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF7E3662514102D00BA078F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4CF7E3682514102D00BA078F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CF7E36D2514102D00BA078F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CF7E3702514102D00BA078F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CF7E3722514102D00BA078F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +84,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C06BF61251412A00007A4CA /* Auth User Story */ = {
+			isa = PBXGroup;
+			children = (
+				4C06BF62251412A00007A4CA /* Signup */,
+			);
+			path = "Auth User Story";
+			sourceTree = "<group>";
+		};
+		4C06BF62251412A00007A4CA /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				4C06BF63251412A00007A4CA /* SignUpViewController.swift */,
+				4C06BF64251412A00007A4CA /* SignUpViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		4C06BF65251412A00007A4CA /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				4C06BF66251412A00007A4CA /* FormViewController.swift */,
+				4C06BF67251412A00007A4CA /* Form Cells */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		4C06BF67251412A00007A4CA /* Form Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4C06BF68251412A00007A4CA /* TextFieldCell.swift */,
+				4C06BF69251412A00007A4CA /* ButtonCell.swift */,
+			);
+			path = "Form Cells";
+			sourceTree = "<group>";
+		};
 		4CF7E3582514102D00BA078F = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +181,8 @@
 		4CF7E39E2514109F00BA078F /* User Story */ = {
 			isa = PBXGroup;
 			children = (
-				4CF7E3682514102D00BA078F /* ViewController.swift */,
+				4C06BF61251412A00007A4CA /* Auth User Story */,
+				4C06BF65251412A00007A4CA /* Forms */,
 			);
 			path = "User Story";
 			sourceTree = "<group>";
@@ -282,9 +326,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,
-				4CF7E3692514102D00BA078F /* ViewController.swift in Sources */,
+				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
+				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,
+				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
+				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
+				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

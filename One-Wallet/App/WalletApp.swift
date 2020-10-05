@@ -15,7 +15,7 @@ final class WalletApp {
   
   func configure(with window: UIWindow?) {
     self.window = window
-    let rootView = ViewController.init()
+    let rootView = SignUpViewController.init()
     window?.rootViewController = rootView
     window?.makeKeyAndVisible()
   }
