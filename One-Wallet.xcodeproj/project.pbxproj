@@ -13,6 +13,7 @@
 		4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF68251412A00007A4CA /* TextFieldCell.swift */; };
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
+		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
 		4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3642514102D00BA078F /* AppDelegate.swift */; };
 		4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3662514102D00BA078F /* SceneDelegate.swift */; };
 		4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7E36D2514102D00BA078F /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		4C06BF66251412A00007A4CA /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		4CF7E3612514102D00BA078F /* One-Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF7E3642514102D00BA078F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF7E3662514102D00BA078F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,22 @@
 			path = "Form Cells";
 			sourceTree = "<group>";
 		};
+		4C4686A8252B8A7E004A5AB6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4C4686A9252B8A85004A5AB6 /* Loggins */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4C4686A9252B8A85004A5AB6 /* Loggins */ = {
+			isa = PBXGroup;
+			children = (
+				4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */,
+			);
+			path = Loggins;
+			sourceTree = "<group>";
+		};
 		4CF7E3582514102D00BA078F = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 		4CF7E3632514102D00BA078F /* One-Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				4C4686A8252B8A7E004A5AB6 /* Utils */,
 				4CF7E39D2514109000BA078F /* App */,
 				4CF7E3722514102D00BA078F /* Info.plist */,
 				4CF7E39F251410AC00BA078F /* Resources */,
@@ -339,6 +358,7 @@
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,
 				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
+				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 			);
