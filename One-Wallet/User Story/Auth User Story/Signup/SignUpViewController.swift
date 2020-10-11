@@ -11,12 +11,14 @@ import UIKit
 class SignUpViewController: FormViewController {
   
   enum FormSection: Int {
+    case header
     case userDetails
     case password
     case button
   }
   
   enum FormRow {
+    case title
     case phonNumber
     case firstName
     case lastName
@@ -55,6 +57,8 @@ extension SignUpViewController {
         return collectionView.dequeueConfiguredReusableCell(using: self.textFieldCellRegistration, for: indexPath, item: item)
       case .button:
         return collectionView.dequeueConfiguredReusableCell(using: self.buttonCellRegistration, for: indexPath, item: item)
+      case .header:
+        return collectionView.dequeueConfiguredReusableCell(using: self.titleCellRegistration, for: indexPath, item: item)
       }
     }
     // load our initial data
@@ -64,7 +68,8 @@ extension SignUpViewController {
   
   func initialSnapshot() -> NSDiffableDataSourceSnapshot<FormSection, FormRow> {
     var snapshot = NSDiffableDataSourceSnapshot<FormSection, FormRow>()
-    snapshot.appendSections([.userDetails, .password, .button])
+    snapshot.appendSections([.header, .userDetails, .password, .button])
+    snapshot.appendItems([.title], toSection: .header)
     snapshot.appendItems([.phonNumber, .firstName, .lastName], toSection: .userDetails)
     snapshot.appendItems([.password, .confirmPassword], toSection: .password)
     snapshot.appendItems([.button], toSection: .button)
@@ -82,12 +87,11 @@ extension SignUpViewController {
       switch formRow {
       case .phonNumber:
         contentConfiguration.placeHolder = NSLocalizedString("Phone number", comment: "")
-        contentConfiguration.image = UIImage(systemName: "square.and.arrow.up")
       case .firstName:
-        contentConfiguration.placeHolder = NSLocalizedString("Username", comment: "")
+        contentConfiguration.placeHolder = NSLocalizedString("First name", comment: "")
         self.firstNameTextField = cell.textField
       case .lastName:
-        contentConfiguration.placeHolder = NSLocalizedString("Email", comment: "")
+        contentConfiguration.placeHolder = NSLocalizedString("Last name", comment: "")
         self.lastNameTextField = cell.textField
       case .password:
         contentConfiguration.placeHolder = NSLocalizedString("Password", comment: "")
@@ -98,6 +102,8 @@ extension SignUpViewController {
         contentConfiguration.isSecureTextEntry = true
         self.confirmPasswordTextField = cell.textField
       case .button:
+        break
+      case .title:
         break
       }
       
@@ -116,6 +122,17 @@ extension SignUpViewController {
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
   }
+  
+  private var titleCellRegistration: UICollectionView.CellRegistration<TitleCell, FormRow> {
+    return UICollectionView.CellRegistration<TitleCell, FormRow> { cell, indexPath, formRow in
+      // Populate the cell with our item description.
+      var contentConfiguration = TitleContentConfiguration()
+      contentConfiguration.title = NSLocalizedString("One Wallet", comment: "")
+      cell.titleContentConfiguration = contentConfiguration
+      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+    }
+  }
+
 }
 
 // MARK:- CollectionView Delegate
@@ -141,6 +158,8 @@ extension SignUpViewController {
       self.confirmPasswordTextField = textFieldCell?.textField
     case .button:
       buttonCell?.button?.addTarget(self, action: #selector(signupButtonTapped(_:)), for: .touchUpInside)
+    case .title:
+      break
     }
   }
 }

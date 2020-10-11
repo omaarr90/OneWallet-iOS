@@ -14,6 +14,7 @@
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
+		4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE7B252BD05F001771CF /* TitleCell.swift */; };
 		4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3642514102D00BA078F /* AppDelegate.swift */; };
 		4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3662514102D00BA078F /* SceneDelegate.swift */; };
 		4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7E36D2514102D00BA078F /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		4CD2FE7B252BD05F001771CF /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		4CF7E3612514102D00BA078F /* One-Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF7E3642514102D00BA078F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF7E3662514102D00BA078F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				4C06BF68251412A00007A4CA /* TextFieldCell.swift */,
 				4C06BF69251412A00007A4CA /* ButtonCell.swift */,
+				4CD2FE7B252BD05F001771CF /* TitleCell.swift */,
 			);
 			path = "Form Cells";
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			files = (
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,
 				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
+				4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */,
 				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,

@@ -35,7 +35,6 @@ struct TextFieldContentConfiguration: UIContentConfiguration, Hashable {
   var borderStyle: UITextField.BorderStyle = .none
   var delegate: UITextFieldDelegate? = nil
   var isSecureTextEntry: Bool = false
-  var image: UIImage? = nil
   
   func makeContentView() -> UIView & UIContentView {
     return TextFieldContentView(configuration: self)
@@ -53,15 +52,13 @@ struct TextFieldContentConfiguration: UIContentConfiguration, Hashable {
   static func == (lhs: TextFieldContentConfiguration, rhs: TextFieldContentConfiguration) -> Bool {
     return lhs.placeHolder == rhs.placeHolder &&
       lhs.borderStyle == rhs.borderStyle &&
-      lhs.isSecureTextEntry == rhs.isSecureTextEntry &&
-      lhs.image == rhs.image
+      lhs.isSecureTextEntry == rhs.isSecureTextEntry
   }
   
   func hash(into hasher: inout Hasher) {
     hasher.combine(placeHolder)
     hasher.combine(borderStyle)
     hasher.combine(isSecureTextEntry)
-    hasher.combine(image)
   }
 }
 
@@ -85,18 +82,16 @@ class TextFieldContentView: UIView, UIContentView {
   }
   
   fileprivate let textField = UITextField()
-  fileprivate let imageView = UIImageView()
   
   private func setupInternalViews() {
-    let stackView = UIStackView(arrangedSubviews: [imageView, textField])
-    addSubview(stackView)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(textField)
+    textField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-      stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-      stackView.heightAnchor.constraint(equalToConstant: 44.0)
+      textField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+      textField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+      textField.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+      textField.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+      textField.heightAnchor.constraint(equalToConstant: 44.0)
     ])
   }
   
@@ -110,8 +105,5 @@ class TextFieldContentView: UIView, UIContentView {
     textField.borderStyle = configuration.borderStyle
     textField.delegate = configuration.delegate
     textField.isSecureTextEntry = configuration.isSecureTextEntry
-    
-    imageView.image = configuration.image
-    imageView.isHidden = configuration.image == nil
   }
 }
