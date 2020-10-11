@@ -10,11 +10,54 @@ import UIKit
 import Combine
 
 class SignUpViewModel {
-    
+  
+  //MARK:- Dependencies
+  private let authRepo: AuthRepo
+  
+  init(authRepo: AuthRepo) {
+    self.authRepo = authRepo
+  }
+  
+  //MARK:- Private Published Objects
+  @Published private var _response: SignupResponse? = nil
+  @Published private var _isLoading: Bool = false
+  @Published private var _error: Error? = nil
+  
+  //MARK:- Published Objects as Publishers
+  var response: AnyPublisher<SignupResponse?, Never> {
+    return $_response.eraseToAnyPublisher()
+  }
+  var isLoading: AnyPublisher<Bool, Never> {
+    return $_isLoading.eraseToAnyPublisher()
+  }
+  var error: AnyPublisher<Error?, Never> {
+    return $_error.eraseToAnyPublisher()
+  }
+
+  //MARK:- Private iVars
+  private var tokens: Set<AnyCancellable> = Set<AnyCancellable>()
+
   func signUp(phoneNumber: String,
               firstName: String,
               lastName: String,
               password: String,
               confirmPassword: String) {
+    
+    let request = SignupRequest(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
+    self._isLoading = true
+    authRepo.signup(with: request)
+      .sink { completion in
+        self._isLoading = false
+        switch completion {
+        case .finished:
+          break
+        case .failure(let error):
+          self._error = error
+        }
+      } receiveValue: { response in
+        self._response = response
+      }
+      .store(in: &tokens)
+
   }
 }

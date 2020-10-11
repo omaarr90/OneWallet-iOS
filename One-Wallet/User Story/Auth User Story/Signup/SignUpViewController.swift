@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Combine
 
 class SignUpViewController: FormViewController {
   
+  // MARK:- CollectionView iVars
   enum FormSection: Int {
     case header
     case userDetails
@@ -29,22 +31,43 @@ class SignUpViewController: FormViewController {
   
   var dataSource: UICollectionViewDiffableDataSource<FormSection, FormRow>! = nil
   
+  // MARK:- Views
   private var phoneNumberTextField: UITextField?
   private var firstNameTextField: UITextField?
   private var lastNameTextField: UITextField?
   private var passwordTextField: UITextField?
   private var confirmPasswordTextField: UITextField?
   
-  var viewModel = SignUpViewModel()
+  // MARK:- private iVars
+  private var viewModel = SignUpViewModel(authRepo: MockAuthRepo())
+  private var tokens = Set<AnyCancellable>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configureDataSource()
+    configureObservers()
   }
 }
 
 // MARK:- DataSource
-extension SignUpViewController {
+private extension SignUpViewController {
+  func configureObservers() {
+    viewModel.isLoading.sink { isLoading in
+      Logger.debug("isLoading \(isLoading)")
+    }.store(in: &tokens)
+    
+    viewModel.error.sink { error in
+      Logger.error("error: \(String(describing: error))")
+    }.store(in: &tokens)
+    
+    viewModel.response.sink { response in
+      Logger.debug("response: \(String(describing: response))")
+    }.store(in: &tokens)
+  }
+}
+
+// MARK:- DataSource
+private extension SignUpViewController {
   func configureDataSource() {
     dataSource = UICollectionViewDiffableDataSource<FormSection, FormRow>(collectionView: formCollectionView) {
       (collectionView: UICollectionView, indexPath: IndexPath, item: FormRow) -> UICollectionViewCell? in
@@ -78,7 +101,7 @@ extension SignUpViewController {
 }
 
 // MARK:- Cell Registration
-extension SignUpViewController {
+private extension SignUpViewController {
   private var textFieldCellRegistration: UICollectionView.CellRegistration<TextFieldCell, FormRow> {
     return UICollectionView.CellRegistration<TextFieldCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
@@ -136,7 +159,7 @@ extension SignUpViewController {
 }
 
 // MARK:- CollectionView Delegate
-extension SignUpViewController {
+private extension SignUpViewController {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     guard let item = dataSource.itemIdentifier(for: indexPath) else {
       return
@@ -167,6 +190,16 @@ extension SignUpViewController {
 extension SignUpViewController {
   @objc
   private func signupButtonTapped(_ sender: UIButton) {
-    print("Signup button was tapped!")
+    Logger.info("")
+    guard let phoneNumber = phoneNumberTextField?.text,
+          let firstName = firstNameTextField?.text,
+          let lastName = lastNameTextField?.text,
+          let password = passwordTextField?.text,
+          let confirmPassword = confirmPasswordTextField?.text else {
+      Logger.error("Missing Required Field")
+      return
+    }
+    
+    viewModel.signUp(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
   }
 }
