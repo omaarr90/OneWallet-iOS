@@ -15,8 +15,8 @@ final class WalletApp {
   
   func configure(with window: UIWindow?) {
     self.window = window
-    let rootView = SignUpViewController.init()
-    window?.rootViewController = rootView
+    let navigationController = AuthNavigationController(rootViewController: SplashViewController())
+    window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
   }
 }

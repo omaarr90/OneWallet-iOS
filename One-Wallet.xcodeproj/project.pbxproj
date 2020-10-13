@@ -14,8 +14,16 @@
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
+		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
+		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
+		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
+		4C9BE954253668E800394248 /* splash-wallet-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C9BE953253668E800394248 /* splash-wallet-animation.json */; };
 		4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE7B252BD05F001771CF /* TitleCell.swift */; };
 		4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE822533BA40001771CF /* AuthRepo.swift */; };
+		4CD2FE8925365863001771CF /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 4CD2FE8825365863001771CF /* GRDB */; };
+		4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */; };
+		4CD2FE9525365B62001771CF /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE9425365B62001771CF /* AuthNavigationController.swift */; };
+		4CE7FA9925366194006A0E86 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE7FA9825366194006A0E86 /* Lottie */; };
 		4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3642514102D00BA078F /* AppDelegate.swift */; };
 		4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3662514102D00BA078F /* SceneDelegate.swift */; };
 		4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7E36D2514102D00BA078F /* Assets.xcassets */; };
@@ -49,8 +57,14 @@
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
+		4C9BE94C2536674700394248 /* Lottie+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lottie+Hashable.swift"; sourceTree = "<group>"; };
+		4C9BE953253668E800394248 /* splash-wallet-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "splash-wallet-animation.json"; sourceTree = "<group>"; };
 		4CD2FE7B252BD05F001771CF /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		4CD2FE822533BA40001771CF /* AuthRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
+		4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationController.swift; sourceTree = "<group>"; };
+		4CD2FE9425365B62001771CF /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
 		4CF7E3612514102D00BA078F /* One-Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF7E3642514102D00BA078F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF7E3662514102D00BA078F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +86,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */,
+				4CD2FE8925365863001771CF /* GRDB in Frameworks */,
+				4CE7FA9925366194006A0E86 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4C06BF62251412A00007A4CA /* Signup */,
+				4C9BE9412536636F00394248 /* SplashViewController.swift */,
 			);
 			path = "Auth User Story";
 			sourceTree = "<group>";
@@ -124,6 +141,7 @@
 				4C06BF68251412A00007A4CA /* TextFieldCell.swift */,
 				4C06BF69251412A00007A4CA /* ButtonCell.swift */,
 				4CD2FE7B252BD05F001771CF /* TitleCell.swift */,
+				4C9BE9462536653A00394248 /* AnimatedImageCell.swift */,
 			);
 			path = "Form Cells";
 			sourceTree = "<group>";
@@ -131,6 +149,7 @@
 		4C4686A8252B8A7E004A5AB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4C9BE94B2536673000394248 /* Lottie */,
 				4C4686A9252B8A85004A5AB6 /* Loggins */,
 			);
 			path = Utils;
@@ -142,6 +161,22 @@
 				4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */,
 			);
 			path = Loggins;
+			sourceTree = "<group>";
+		};
+		4C9BE94B2536673000394248 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				4C9BE94C2536674700394248 /* Lottie+Hashable.swift */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		4C9BE952253668C300394248 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				4C9BE953253668E800394248 /* splash-wallet-animation.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		4CD2FE802533B5BF001771CF /* Repoistories */ = {
@@ -158,6 +193,24 @@
 				4CD2FE822533BA40001771CF /* AuthRepo.swift */,
 			);
 			path = "Auth Repo";
+			sourceTree = "<group>";
+		};
+		4CD2FE8D25365A60001771CF /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2FE8E25365A78001771CF /* View Controllers */,
+				4CF7E39E2514109F00BA078F /* User Story */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		4CD2FE8E25365A78001771CF /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */,
+				4CD2FE9425365B62001771CF /* AuthNavigationController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		4CF7E3582514102D00BA078F = {
@@ -183,12 +236,12 @@
 		4CF7E3632514102D00BA078F /* One-Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				4CD2FE802533B5BF001771CF /* Repoistories */,
-				4C4686A8252B8A7E004A5AB6 /* Utils */,
 				4CF7E39D2514109000BA078F /* App */,
 				4CF7E3722514102D00BA078F /* Info.plist */,
+				4CD2FE802533B5BF001771CF /* Repoistories */,
 				4CF7E39F251410AC00BA078F /* Resources */,
-				4CF7E39E2514109F00BA078F /* User Story */,
+				4CD2FE8D25365A60001771CF /* User Interface */,
+				4C4686A8252B8A7E004A5AB6 /* Utils */,
 			);
 			path = "One-Wallet";
 			sourceTree = "<group>";
@@ -233,6 +286,7 @@
 		4CF7E39F251410AC00BA078F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4C9BE952253668C300394248 /* Lottie */,
 				4CF7E36D2514102D00BA078F /* Assets.xcassets */,
 				4CF7E36F2514102D00BA078F /* LaunchScreen.storyboard */,
 			);
@@ -257,6 +311,8 @@
 			name = "One-Wallet";
 			packageProductDependencies = (
 				4C46869E252B89E2004A5AB6 /* SwiftyBeaver */,
+				4CD2FE8825365863001771CF /* GRDB */,
+				4CE7FA9825366194006A0E86 /* Lottie */,
 			);
 			productName = "One-Wallet";
 			productReference = 4CF7E3612514102D00BA078F /* One-Wallet.app */;
@@ -331,6 +387,8 @@
 			mainGroup = 4CF7E3582514102D00BA078F;
 			packageReferences = (
 				4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				4CD2FE8725365863001771CF /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				4CE7FA9725366194006A0E86 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 4CF7E3622514102D00BA078F /* Products */;
 			projectDirPath = "";
@@ -349,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CF7E3712514102D00BA078F /* LaunchScreen.storyboard in Resources */,
+				4C9BE954253668E800394248 /* splash-wallet-animation.json in Resources */,
 				4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,13 +434,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */,
+				4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */,
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,
 				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
+				4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */,
+				4CD2FE9525365B62001771CF /* AuthNavigationController.swift in Sources */,
 				4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */,
+				4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */,
 				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,
 				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
+				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
 				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
@@ -719,6 +783,22 @@
 				minimumVersion = 1.9.2;
 			};
 		};
+		4CD2FE8725365863001771CF /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		4CE7FA9725366194006A0E86 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -726,6 +806,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
 			productName = SwiftyBeaver;
+		};
+		4CD2FE8825365863001771CF /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CD2FE8725365863001771CF /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		4CE7FA9825366194006A0E86 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CE7FA9725366194006A0E86 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

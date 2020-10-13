@@ -201,5 +201,8 @@ extension SignUpViewController {
     }
     
     viewModel.signUp(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
+    
+    let vc = SignUpViewController()
+    self.navigationController?.pushViewController(vc, animated: true)
   }
 }
