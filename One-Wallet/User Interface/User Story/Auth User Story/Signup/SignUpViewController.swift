@@ -15,17 +15,12 @@ class SignUpViewController: FormViewController {
   enum FormSection: Int {
     case header
     case userDetails
-    case password
     case button
   }
   
   enum FormRow {
     case title
     case phonNumber
-    case firstName
-    case lastName
-    case password
-    case confirmPassword
     case button
   }
   
@@ -33,10 +28,6 @@ class SignUpViewController: FormViewController {
   
   // MARK:- Views
   private var phoneNumberTextField: UITextField?
-  private var firstNameTextField: UITextField?
-  private var lastNameTextField: UITextField?
-  private var passwordTextField: UITextField?
-  private var confirmPasswordTextField: UITextField?
   
   // MARK:- private iVars
   private var viewModel = SignUpViewModel(authRepo: MockAuthRepo())
@@ -76,7 +67,7 @@ private extension SignUpViewController {
         return nil
       }
       switch section {
-      case .userDetails, .password:
+      case .userDetails:
         return collectionView.dequeueConfiguredReusableCell(using: self.textFieldCellRegistration, for: indexPath, item: item)
       case .button:
         return collectionView.dequeueConfiguredReusableCell(using: self.buttonCellRegistration, for: indexPath, item: item)
@@ -91,10 +82,9 @@ private extension SignUpViewController {
   
   func initialSnapshot() -> NSDiffableDataSourceSnapshot<FormSection, FormRow> {
     var snapshot = NSDiffableDataSourceSnapshot<FormSection, FormRow>()
-    snapshot.appendSections([.header, .userDetails, .password, .button])
+    snapshot.appendSections([.header, .userDetails, .button])
     snapshot.appendItems([.title], toSection: .header)
-    snapshot.appendItems([.phonNumber, .firstName, .lastName], toSection: .userDetails)
-    snapshot.appendItems([.password, .confirmPassword], toSection: .password)
+    snapshot.appendItems([.phonNumber], toSection: .userDetails)
     snapshot.appendItems([.button], toSection: .button)
     return snapshot
   }
@@ -109,21 +99,7 @@ private extension SignUpViewController {
       contentConfiguration.borderStyle = .roundedRect
       switch formRow {
       case .phonNumber:
-        contentConfiguration.placeHolder = NSLocalizedString("Phone number", comment: "")
-      case .firstName:
-        contentConfiguration.placeHolder = NSLocalizedString("First name", comment: "")
-        self.firstNameTextField = cell.textField
-      case .lastName:
-        contentConfiguration.placeHolder = NSLocalizedString("Last name", comment: "")
-        self.lastNameTextField = cell.textField
-      case .password:
-        contentConfiguration.placeHolder = NSLocalizedString("Password", comment: "")
-        contentConfiguration.isSecureTextEntry = true
-        self.passwordTextField = cell.textField
-      case .confirmPassword:
-        contentConfiguration.placeHolder = NSLocalizedString("Confirm password", comment: "")
-        contentConfiguration.isSecureTextEntry = true
-        self.confirmPasswordTextField = cell.textField
+        contentConfiguration.placeHolder = NSLocalizedString("SignUpViewController.PhoneNumberField.PlaceHolder", comment: "Place holder for phone number")
       case .button:
         break
       case .title:
@@ -139,7 +115,7 @@ private extension SignUpViewController {
     return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = ButtonContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("Signup", comment: "")
+      contentConfiguration.title = NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
       contentConfiguration.backkgroundColor = .systemBlue
       cell.buttonContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
@@ -150,7 +126,8 @@ private extension SignUpViewController {
     return UICollectionView.CellRegistration<TitleCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = TitleContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("One Wallet", comment: "")
+      contentConfiguration.title = NSLocalizedString("SignUpViewController.TitleText.text", comment: "Text for title")
+      contentConfiguration.fontStyle = .title1
       cell.titleContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
@@ -171,14 +148,6 @@ private extension SignUpViewController {
     switch item {
     case .phonNumber:
       self.phoneNumberTextField = textFieldCell?.textField
-    case .firstName:
-      self.firstNameTextField = textFieldCell?.textField
-    case .lastName:
-      self.lastNameTextField = textFieldCell?.textField
-    case .password:
-      self.passwordTextField = textFieldCell?.textField
-    case .confirmPassword:
-      self.confirmPasswordTextField = textFieldCell?.textField
     case .button:
       buttonCell?.button?.addTarget(self, action: #selector(signupButtonTapped(_:)), for: .touchUpInside)
     case .title:
@@ -191,18 +160,11 @@ extension SignUpViewController {
   @objc
   private func signupButtonTapped(_ sender: UIButton) {
     Logger.info("")
-    guard let phoneNumber = phoneNumberTextField?.text,
-          let firstName = firstNameTextField?.text,
-          let lastName = lastNameTextField?.text,
-          let password = passwordTextField?.text,
-          let confirmPassword = confirmPasswordTextField?.text else {
+    guard let phoneNumber = phoneNumberTextField?.text else {
       Logger.error("Missing Required Field")
       return
     }
     
-    viewModel.signUp(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
-    
-    let vc = SignUpViewController()
-    self.navigationController?.pushViewController(vc, animated: true)
+    viewModel.signUp(phoneNumber: phoneNumber)
   }
 }

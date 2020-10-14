@@ -27,6 +27,7 @@ struct TitleContentConfiguration: UIContentConfiguration, Hashable {
   
   var title: String? = nil
   var backkgroundColor: UIColor?
+  var fontStyle: UIFont.TextStyle = .body
   
   func makeContentView() -> UIView & UIContentView {
     return TitleContentView(configuration: self)
@@ -64,6 +65,7 @@ class TitleContentView: UIView, UIContentView {
   fileprivate let title = UILabel()
   
   private func setupInternalViews() {
+    title.numberOfLines = 0
     addSubview(title)
     title.translatesAutoresizingMaskIntoConstraints = false
     title.clipsToBounds = true
@@ -73,7 +75,6 @@ class TitleContentView: UIView, UIContentView {
       title.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       title.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       title.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-      title.heightAnchor.constraint(equalToConstant: 44.0)
       
     ])
   }
@@ -84,7 +85,7 @@ class TitleContentView: UIView, UIContentView {
     guard appliedConfiguration != configuration else { return }
     appliedConfiguration = configuration
     
-    title.font = UIFont.preferredFont(forTextStyle: .title1)
+    title.font = UIFont.preferredFont(forTextStyle: configuration.fontStyle)
     title.textAlignment = .center
     title.text = configuration.title
   }

@@ -37,13 +37,9 @@ class SignUpViewModel {
   //MARK:- Private iVars
   private var tokens: Set<AnyCancellable> = Set<AnyCancellable>()
 
-  func signUp(phoneNumber: String,
-              firstName: String,
-              lastName: String,
-              password: String,
-              confirmPassword: String) {
+  func signUp(phoneNumber: String) {
     
-    let request = SignupRequest(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
+    let request = SignupRequest(phoneNumber: phoneNumber)
     self._isLoading = true
     authRepo.signup(with: request)
       .sink { completion in

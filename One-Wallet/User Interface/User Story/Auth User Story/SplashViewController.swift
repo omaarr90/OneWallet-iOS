@@ -71,7 +71,7 @@ private extension SplashViewController {
     return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = ButtonContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("Continue", comment: "")
+      contentConfiguration.title = NSLocalizedString("SplashViewController.ContinueButton", comment: "Continue Button")
       contentConfiguration.backkgroundColor = .systemBlue
       cell.buttonContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
@@ -82,7 +82,8 @@ private extension SplashViewController {
     return UICollectionView.CellRegistration<TitleCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = TitleContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("One Wallet", comment: "")
+      contentConfiguration.title = NSLocalizedString("SplashViewController.ExplanationText", comment: "First screen welcoming text")
+      contentConfiguration.fontStyle = .title2
       cell.titleContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
@@ -121,5 +122,6 @@ private extension SplashViewController {
 extension SplashViewController {
   @objc
   private func continueButtonTapped(_ sender: UIButton) {
+    self.navigationController?.pushViewController(SignUpViewController(), animated: true)
   }
 }
