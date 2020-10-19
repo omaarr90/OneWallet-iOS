@@ -19,6 +19,10 @@
 		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
 		4C9BE954253668E800394248 /* splash-wallet-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C9BE953253668E800394248 /* splash-wallet-animation.json */; };
 		4CD08EE6253798D8004ABCE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CD08EE8253798D8004ABCE7 /* Localizable.strings */; };
+		4CD08EF3253C0152004ABCE7 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD08EF2253C0152004ABCE7 /* LayoutGuide.swift */; };
+		4CD08EF9253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD08EF8253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift */; };
+		4CD08F02253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD08F01253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift */; };
+		4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD08F06253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift */; };
 		4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE7B252BD05F001771CF /* TitleCell.swift */; };
 		4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE822533BA40001771CF /* AuthRepo.swift */; };
 		4CD2FE8925365863001771CF /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 4CD2FE8825365863001771CF /* GRDB */; };
@@ -65,6 +69,10 @@
 		4CD08EE7253798D8004ABCE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4CD08EEC253798F1004ABCE7 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4CD08EED253798F1004ABCE7 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4CD08EF2253C0152004ABCE7 /* LayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
+		4CD08EF8253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInputAccessoryViewWrapperView.swift; sourceTree = "<group>"; };
+		4CD08F01253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		4CD08F06253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		4CD2FE7B252BD05F001771CF /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		4CD2FE822533BA40001771CF /* AuthRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
 		4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationController.swift; sourceTree = "<group>"; };
@@ -115,6 +123,7 @@
 		4C06BF61251412A00007A4CA /* Auth User Story */ = {
 			isa = PBXGroup;
 			children = (
+				4CD08F00253DB946004ABCE7 /* Verify Phone Number */,
 				4C06BF62251412A00007A4CA /* Signup */,
 				4C9BE9412536636F00394248 /* SplashViewController.swift */,
 			);
@@ -183,6 +192,31 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		4CD08EF1253C011A004ABCE7 /* Design System */ = {
+			isa = PBXGroup;
+			children = (
+				4CD08EF2253C0152004ABCE7 /* LayoutGuide.swift */,
+			);
+			path = "Design System";
+			sourceTree = "<group>";
+		};
+		4CD08EF7253C06DE004ABCE7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CD08EF8253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4CD08F00253DB946004ABCE7 /* Verify Phone Number */ = {
+			isa = PBXGroup;
+			children = (
+				4CD08F01253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift */,
+				4CD08F06253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift */,
+			);
+			path = "Verify Phone Number";
+			sourceTree = "<group>";
+		};
 		4CD2FE802533B5BF001771CF /* Repoistories */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,11 +275,13 @@
 			isa = PBXGroup;
 			children = (
 				4CF7E39D2514109000BA078F /* App */,
+				4CD08EF1253C011A004ABCE7 /* Design System */,
 				4CF7E3722514102D00BA078F /* Info.plist */,
 				4CD2FE802533B5BF001771CF /* Repoistories */,
 				4CF7E39F251410AC00BA078F /* Resources */,
 				4CD2FE8D25365A60001771CF /* User Interface */,
 				4C4686A8252B8A7E004A5AB6 /* Utils */,
+				4CD08EF7253C06DE004ABCE7 /* Views */,
 			);
 			path = "One-Wallet";
 			sourceTree = "<group>";
@@ -449,12 +485,16 @@
 				4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */,
 				4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */,
 				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
+				4CD08EF9253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,
 				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
+				4CD08F02253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift in Sources */,
 				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
 				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
+				4CD08EF3253C0152004ABCE7 /* LayoutGuide.swift in Sources */,
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
+				4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

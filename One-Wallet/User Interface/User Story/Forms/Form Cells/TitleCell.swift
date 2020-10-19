@@ -73,7 +73,7 @@ class TitleContentView: UIView, UIContentView {
     NSLayoutConstraint.activate([
       title.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
       title.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-      title.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+      title.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: LayoutGuide.Margine.titleTop),
       title.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
       
     ])

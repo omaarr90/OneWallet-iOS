@@ -15,13 +15,11 @@ class SignUpViewController: FormViewController {
   enum FormSection: Int {
     case header
     case userDetails
-    case button
   }
   
   enum FormRow {
     case title
     case phonNumber
-    case button
   }
   
   var dataSource: UICollectionViewDiffableDataSource<FormSection, FormRow>! = nil
@@ -35,8 +33,21 @@ class SignUpViewController: FormViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    submitButtonText = NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
     configureDataSource()
     configureObservers()
+  }
+  
+  override func submitButtonTapped(_ button: UIButton) {
+    Logger.info("")
+    guard let phoneNumber = phoneNumberTextField?.text else {
+      Logger.error("Missing Required Field")
+      return
+    }
+    viewModel.signUp(phoneNumber: phoneNumber)
+    let verifyViewController = VerifyPhoneNumberViewController()
+    verifyViewController.phoneNumber = "+966542652273"
+    self.navigationController?.pushViewController(verifyViewController, animated: true)
   }
 }
 
@@ -69,23 +80,20 @@ private extension SignUpViewController {
       switch section {
       case .userDetails:
         return collectionView.dequeueConfiguredReusableCell(using: self.textFieldCellRegistration, for: indexPath, item: item)
-      case .button:
-        return collectionView.dequeueConfiguredReusableCell(using: self.buttonCellRegistration, for: indexPath, item: item)
       case .header:
         return collectionView.dequeueConfiguredReusableCell(using: self.titleCellRegistration, for: indexPath, item: item)
       }
     }
     // load our initial data
     let snapshot = initialSnapshot()
-    dataSource.apply(snapshot)
+    dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
   }
   
   func initialSnapshot() -> NSDiffableDataSourceSnapshot<FormSection, FormRow> {
     var snapshot = NSDiffableDataSourceSnapshot<FormSection, FormRow>()
-    snapshot.appendSections([.header, .userDetails, .button])
+    snapshot.appendSections([.header, .userDetails])
     snapshot.appendItems([.title], toSection: .header)
     snapshot.appendItems([.phonNumber], toSection: .userDetails)
-    snapshot.appendItems([.button], toSection: .button)
     return snapshot
   }
 }
@@ -97,30 +105,22 @@ private extension SignUpViewController {
       // Populate the cell with our item description.
       var contentConfiguration = TextFieldContentConfiguration()
       contentConfiguration.borderStyle = .roundedRect
-      switch formRow {
-      case .phonNumber:
-        contentConfiguration.placeHolder = NSLocalizedString("SignUpViewController.PhoneNumberField.PlaceHolder", comment: "Place holder for phone number")
-      case .button:
-        break
-      case .title:
-        break
-      }
-      
+      contentConfiguration.placeHolder = NSLocalizedString("SignUpViewController.PhoneNumberField.PlaceHolder", comment: "Place holder for phone number")
       cell.textFieldContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
   }
 
-  private var buttonCellRegistration: UICollectionView.CellRegistration<ButtonCell, FormRow> {
-    return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
-      // Populate the cell with our item description.
-      var contentConfiguration = ButtonContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
-      contentConfiguration.backkgroundColor = .systemBlue
-      cell.buttonContentConfiguration = contentConfiguration
-      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
-    }
-  }
+//  private var buttonCellRegistration: UICollectionView.CellRegistration<ButtonCell, FormRow> {
+//    return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
+//      // Populate the cell with our item description.
+//      var contentConfiguration = ButtonContentConfiguration()
+//      contentConfiguration.title = NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
+//      contentConfiguration.backkgroundColor = .systemBlue
+//      cell.buttonContentConfiguration = contentConfiguration
+//      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+//    }
+//  }
   
   private var titleCellRegistration: UICollectionView.CellRegistration<TitleCell, FormRow> {
     return UICollectionView.CellRegistration<TitleCell, FormRow> { cell, indexPath, formRow in
@@ -143,28 +143,12 @@ private extension SignUpViewController {
     }
     
     let textFieldCell = cell as? TextFieldCell
-    let buttonCell = cell as? ButtonCell
     
     switch item {
     case .phonNumber:
       self.phoneNumberTextField = textFieldCell?.textField
-    case .button:
-      buttonCell?.button?.addTarget(self, action: #selector(signupButtonTapped(_:)), for: .touchUpInside)
     case .title:
       break
     }
-  }
-}
-// MARK:- Actions
-extension SignUpViewController {
-  @objc
-  private func signupButtonTapped(_ sender: UIButton) {
-    Logger.info("")
-    guard let phoneNumber = phoneNumberTextField?.text else {
-      Logger.error("Missing Required Field")
-      return
-    }
-    
-    viewModel.signUp(phoneNumber: phoneNumber)
   }
 }

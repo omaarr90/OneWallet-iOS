@@ -11,24 +11,29 @@ class SplashViewController: FormViewController {
   
   // MARK:- CollectionView iVars
   enum FormSection: Int {
+    case header
     case image
     case text
-    case button
   }
   
   enum FormRow {
+    case header
     case image
     case text
-    case button
   }
   
   var dataSource: UICollectionViewDiffableDataSource<FormSection, FormRow>! = nil
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Do any additional setup after loading the view.
     configureDataSource()
+    submitButtonText = NSLocalizedString("SplashViewController.ContinueButton", comment: "Continue Button")
+  }
+  
+  // MARK: Actions
+  @objc
+  override func submitButtonTapped(_ button: UIButton) {
+    self.navigationController?.pushViewController(SignUpViewController(), animated: true)
   }
 }
 
@@ -42,48 +47,53 @@ private extension SplashViewController {
         return nil
       }
       switch section {
-      case .button:
-        return collectionView.dequeueConfiguredReusableCell(using: self.buttonCellRegistration, for: indexPath, item: item)
       case .text:
         return collectionView.dequeueConfiguredReusableCell(using: self.titleCellRegistration, for: indexPath, item: item)
       case .image:
         return collectionView.dequeueConfiguredReusableCell(using: self.animatedImageCellRegistration, for: indexPath, item: item)
+      case .header:
+        return collectionView.dequeueConfiguredReusableCell(using: self.titleCellRegistration, for: indexPath, item: item)
       }
     }
     // load our initial data
     let snapshot = initialSnapshot()
-    dataSource.apply(snapshot)
+    dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
   }
   
   func initialSnapshot() -> NSDiffableDataSourceSnapshot<FormSection, FormRow> {
     var snapshot = NSDiffableDataSourceSnapshot<FormSection, FormRow>()
-    snapshot.appendSections([.image, .text, .button])
+    snapshot.appendSections([.header, .image, .text])
+    snapshot.appendItems([.header], toSection: .header)
     snapshot.appendItems([.image], toSection: .image)
     snapshot.appendItems([.text], toSection: .text)
-    snapshot.appendItems([.button], toSection: .button)
     return snapshot
   }
 }
 
 // MARK:- Cell Registration
 private extension SplashViewController {
-  private var buttonCellRegistration: UICollectionView.CellRegistration<ButtonCell, FormRow> {
-    return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
-      // Populate the cell with our item description.
-      var contentConfiguration = ButtonContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("SplashViewController.ContinueButton", comment: "Continue Button")
-      contentConfiguration.backkgroundColor = .systemBlue
-      cell.buttonContentConfiguration = contentConfiguration
-      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
-    }
-  }
+//  private var buttonCellRegistration: UICollectionView.CellRegistration<ButtonCell, FormRow> {
+//    return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
+//      // Populate the cell with our item description.
+//      var contentConfiguration = ButtonContentConfiguration()
+//      contentConfiguration.title = NSLocalizedString("SplashViewController.ContinueButton", comment: "Continue Button")
+//      contentConfiguration.backkgroundColor = .systemBlue
+//      cell.buttonContentConfiguration = contentConfiguration
+//      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+//    }
+//  }
   
   private var titleCellRegistration: UICollectionView.CellRegistration<TitleCell, FormRow> {
     return UICollectionView.CellRegistration<TitleCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = TitleContentConfiguration()
-      contentConfiguration.title = NSLocalizedString("SplashViewController.ExplanationText", comment: "First screen welcoming text")
-      contentConfiguration.fontStyle = .title2
+      if formRow == .text {
+        contentConfiguration.title = NSLocalizedString("SplashViewController.ExplanationText", comment: "First screen welcoming text")
+        contentConfiguration.fontStyle = .title2
+      } else if formRow == .header {
+        contentConfiguration.title = NSLocalizedString("SplashViewController.HeaderText", comment: "First screen header text")
+        contentConfiguration.fontStyle = .largeTitle
+      }
       cell.titleContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
@@ -104,24 +114,5 @@ private extension SplashViewController {
 // MARK:- CollectionView Delegate
 private extension SplashViewController {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    guard let item = dataSource.itemIdentifier(for: indexPath) else {
-      return
-    }
-    
-    let buttonCell = cell as? ButtonCell
-    
-    switch item {
-    case .button:
-      buttonCell?.button?.addTarget(self, action: #selector(continueButtonTapped(_:)), for: .touchUpInside)
-    default:
-      break
-    }
-  }
-}
-// MARK:- Actions
-extension SplashViewController {
-  @objc
-  private func continueButtonTapped(_ sender: UIButton) {
-    self.navigationController?.pushViewController(SignUpViewController(), animated: true)
   }
 }

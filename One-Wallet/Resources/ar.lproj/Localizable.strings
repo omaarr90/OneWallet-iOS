@@ -1,17 +1,38 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
+/* Default title for buttons inside forms */
+"FormViewController.submitButtonText.title" = "التالي";
+
 /* Place holder for phone number */
-"SignUpViewController.PhoneNumberField.PlaceHolder" = "رقم الجوال"; /* NEW */
+"SignUpViewController.PhoneNumberField.PlaceHolder" = "رقم الجوال";
 
 /* Title for signup button */
-"SignUpViewController.SignupButton.Title" = "تسجيل"; /* NEW */
+"SignUpViewController.SignupButton.Title" = "تسجيل";
 
 /* Text for title */
-"SignUpViewController.TitleText.text" = "قم بإدخال رقم الجوال لتبدأ"; /* NEW */
+"SignUpViewController.TitleText.text" = "قم بإدخال رقم الجوال لتبدأ";
 
 /* Continue Button */
-"SplashViewController.ContinueButton" = "استمرار"; /* NEW */
+"SplashViewController.ContinueButton" = "استمرار";
 
 /* First screen welcoming text */
-"SplashViewController.ExplanationText" = "أهلا بك في محافظة واحدة، حيث يمكنك إدارة المحافظ المالية مع الأهل والأصدقاء"; /* NEW */
+"SplashViewController.ExplanationText" = "أهلا بك في محفظة واحدة، حيث يمكنك إدارة المحافظ المالية مع الأهل والأصدقاء";
+
+/* First screen header text */
+"SplashViewController.HeaderText" = "محفظة واحدة";
+
+/* Place holder for otp */
+"VerifyPhoneNumberViewController.OTPField.PlaceHolder" = "الرمز";
+
+/* Title for request code again button */
+"VerifyPhoneNumberViewController.RequestCode.Title" = "لم أحصل على الرمز";
+
+/* Title for submit button button */
+"VerifyPhoneNumberViewController.SubmitButton.Title" = "تحقق"; /* NEW */
+
+/* Text for title */
+"VerifyPhoneNumberViewController.TitleText.text" = "قم بإدخال الرمز المرسل إلى";
+
+/* Title for wrong number button */
+"VerifyPhoneNumberViewController.WrongNumber.Title" = "الرقم خاطئ؟";
 

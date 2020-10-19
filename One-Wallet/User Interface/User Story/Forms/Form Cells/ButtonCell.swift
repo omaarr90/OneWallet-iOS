@@ -33,8 +33,9 @@ class ButtonCell: UICollectionViewListCell {
 struct ButtonContentConfiguration: UIContentConfiguration, Hashable {
   
   var title: String? = nil
+  var titleColor: UIColor?
   var backkgroundColor: UIColor?
-  
+
   func makeContentView() -> UIView & UIContentView {
     return ButtonContentView(configuration: self)
   }
@@ -80,7 +81,7 @@ class ButtonContentView: UIView, UIContentView {
       button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       button.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       button.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-      button.heightAnchor.constraint(equalToConstant: 44.0)
+      button.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
 
     ])
   }
@@ -92,7 +93,8 @@ class ButtonContentView: UIView, UIContentView {
     appliedConfiguration = configuration
     
     
-    button.setTitle(configuration.title, for: .normal)
     button.backgroundColor = configuration.backkgroundColor
+    button.setTitleColor(configuration.titleColor, for: .normal)
+    button.setTitle(configuration.title, for: .normal)
   }
 }
