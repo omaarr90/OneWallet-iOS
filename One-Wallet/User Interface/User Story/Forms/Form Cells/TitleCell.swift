@@ -85,7 +85,7 @@ class TitleContentView: UIView, UIContentView {
     guard appliedConfiguration != configuration else { return }
     appliedConfiguration = configuration
     
-    title.font = UIFont.preferredFont(forTextStyle: configuration.fontStyle)
+    title.font = UIFont.preferredFont(forTextStyle: configuration.fontStyle).semiBold()
     title.textAlignment = .center
     title.text = configuration.title
   }
