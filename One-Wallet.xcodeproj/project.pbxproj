@@ -15,6 +15,10 @@
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
+		4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6B82540D92400960C8C /* GRDBStorage.swift */; };
+		4C4FE6C12540D95500960C8C /* GRDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6C02540D95500960C8C /* GRDBManager.swift */; };
+		4C4FE6C62540DA1D00960C8C /* GRDBSchemeMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6C52540DA1D00960C8C /* GRDBSchemeMigrator.swift */; };
+		4C4FE6DE2540E5B600960C8C /* schema.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4C4FE6DD2540E5B600960C8C /* schema.sql */; };
 		4C5A206E253FF5C200D8EB21 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
@@ -67,6 +71,10 @@
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		4C4FE6B82540D92400960C8C /* GRDBStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBStorage.swift; sourceTree = "<group>"; };
+		4C4FE6C02540D95500960C8C /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
+		4C4FE6C52540DA1D00960C8C /* GRDBSchemeMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBSchemeMigrator.swift; sourceTree = "<group>"; };
+		4C4FE6DD2540E5B600960C8C /* schema.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.sql; sourceTree = "<group>"; };
 		4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 		4C4686A8252B8A7E004A5AB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4C4FE6CD2540DBA300960C8C /* Foundation Extensions */,
 				4C9CAA07253DC7C0005909E9 /* UI Extensions */,
 				4C9BE94B2536673000394248 /* Lottie */,
 				4C4686A9252B8A85004A5AB6 /* Loggins */,
@@ -192,6 +201,24 @@
 				4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */,
 			);
 			path = Loggins;
+			sourceTree = "<group>";
+		};
+		4C4FE6A52540D63700960C8C /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4C4FE6B82540D92400960C8C /* GRDBStorage.swift */,
+				4C4FE6C02540D95500960C8C /* GRDBManager.swift */,
+				4C4FE6C52540DA1D00960C8C /* GRDBSchemeMigrator.swift */,
+				4C4FE6DD2540E5B600960C8C /* schema.sql */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		4C4FE6CD2540DBA300960C8C /* Foundation Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Foundation Extensions";
 			sourceTree = "<group>";
 		};
 		4C5A2072253FF5C700D8EB21 /* Home */ = {
@@ -318,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF7E39D2514109000BA078F /* App */,
+				4C4FE6A52540D63700960C8C /* Database */,
 				4CD08EF1253C011A004ABCE7 /* Design System */,
 				4CF7E3722514102D00BA078F /* Info.plist */,
 				4CD2FE802533B5BF001771CF /* Repoistories */,
@@ -494,6 +522,7 @@
 			files = (
 				4CF7E3712514102D00BA078F /* LaunchScreen.storyboard in Resources */,
 				4CD08EE6253798D8004ABCE7 /* Localizable.strings in Resources */,
+				4C4FE6DE2540E5B600960C8C /* schema.sql in Resources */,
 				4C9BE954253668E800394248 /* splash-wallet-animation.json in Resources */,
 				4CF7E36E2514102D00BA078F /* Assets.xcassets in Resources */,
 			);
@@ -522,6 +551,7 @@
 			files = (
 				4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */,
 				4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */,
+				4C4FE6C62540DA1D00960C8C /* GRDBSchemeMigrator.swift in Sources */,
 				4C9CAA11253FF180005909E9 /* OTPFieldCell.swift in Sources */,
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,
 				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
@@ -530,6 +560,7 @@
 				4CD2FE9525365B62001771CF /* AuthNavigationController.swift in Sources */,
 				4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */,
 				4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */,
+				4C4FE6C12540D95500960C8C /* GRDBManager.swift in Sources */,
 				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
 				4C0369AC253FF74A005ED1FE /* HomeViewController.swift in Sources */,
 				4CD08EF9253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift in Sources */,
@@ -544,6 +575,7 @@
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
 				4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
+				4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
