@@ -19,6 +19,8 @@
 		4C4FE6C12540D95500960C8C /* GRDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6C02540D95500960C8C /* GRDBManager.swift */; };
 		4C4FE6C62540DA1D00960C8C /* GRDBSchemeMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6C52540DA1D00960C8C /* GRDBSchemeMigrator.swift */; };
 		4C4FE6DE2540E5B600960C8C /* schema.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4C4FE6DD2540E5B600960C8C /* schema.sql */; };
+		4C4FE6E42540E8B300960C8C /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6E32540E8B300960C8C /* KeyValueStore.swift */; };
+		4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */; };
 		4C5A206E253FF5C200D8EB21 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
@@ -75,6 +77,8 @@
 		4C4FE6C02540D95500960C8C /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
 		4C4FE6C52540DA1D00960C8C /* GRDBSchemeMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBSchemeMigrator.swift; sourceTree = "<group>"; };
 		4C4FE6DD2540E5B600960C8C /* schema.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.sql; sourceTree = "<group>"; };
+		4C4FE6E32540E8B300960C8C /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
+		4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSTableMetadata.swift; sourceTree = "<group>"; };
 		4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
@@ -206,10 +210,12 @@
 		4C4FE6A52540D63700960C8C /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				4C4FE6E22540E89E00960C8C /* Models */,
 				4C4FE6B82540D92400960C8C /* GRDBStorage.swift */,
 				4C4FE6C02540D95500960C8C /* GRDBManager.swift */,
 				4C4FE6C52540DA1D00960C8C /* GRDBSchemeMigrator.swift */,
 				4C4FE6DD2540E5B600960C8C /* schema.sql */,
+				4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -219,6 +225,14 @@
 			children = (
 			);
 			path = "Foundation Extensions";
+			sourceTree = "<group>";
+		};
+		4C4FE6E22540E89E00960C8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C4FE6E32540E8B300960C8C /* KeyValueStore.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4C5A2072253FF5C700D8EB21 /* Home */ = {
@@ -570,12 +584,14 @@
 				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
 				4CD08F02253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift in Sources */,
 				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
+				4C4FE6E42540E8B300960C8C /* KeyValueStore.swift in Sources */,
 				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
 				4CD08EF3253C0152004ABCE7 /* LayoutGuide.swift in Sources */,
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
 				4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 				4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */,
+				4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
