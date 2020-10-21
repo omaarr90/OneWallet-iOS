@@ -22,7 +22,7 @@ class GRDBSchemaMigrator {
     }
     Logger.info("Migrations complete.")
     
-//        SSKPreferences.markGRDBSchemaAsLatest()
+    WalletPreferences.shared.markGRDBSchemaAsLatest()
   }
   
   private var hasCreatedInitialSchema: Bool {
