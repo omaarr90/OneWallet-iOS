@@ -8,6 +8,39 @@
 
 import UIKit
 
+private protocol OTPCodeTextFieldDelegate: AnyObject {
+  func textFieldDidDeletePrevious()
+}
+
+// MARK: -
+
+// Editing a code should feel seamless, as even though
+// the UITextField only lets you edit a single digit at
+// a time.  For deletes to work properly, we need to
+// detect delete events that would affect the _previous_
+// digit.
+private class OTPCodeTextField: UITextField {
+  
+  fileprivate weak var codeDelegate: OTPCodeTextFieldDelegate?
+  
+  override func deleteBackward() {
+    var isDeletePrevious = false
+    if let selectedTextRange = selectedTextRange {
+      let cursorPosition = offset(from: beginningOfDocument, to: selectedTextRange.start)
+      if cursorPosition == 0 {
+        isDeletePrevious = true
+      }
+    }
+    
+    super.deleteBackward()
+    
+    if isDeletePrevious {
+      codeDelegate?.textFieldDidDeletePrevious()
+    }
+  }
+  
+}
+
 class TextFieldCell: UICollectionViewListCell {
   var textFieldContentConfiguration: TextFieldContentConfiguration? {
     didSet {
@@ -36,11 +69,11 @@ struct TextFieldContentConfiguration: UIContentConfiguration, Hashable {
   var delegate: UITextFieldDelegate? = nil
   var isSecureTextEntry: Bool = false
   
-  func makeContentView() -> UIView & UIContentView {
+  internal func makeContentView() -> UIView & UIContentView {
     return TextFieldContentView(configuration: self)
   }
   
-  func updated(for state: UIConfigurationState) -> Self {
+  internal func updated(for state: UIConfigurationState) -> Self {
     guard let state = state as? UICellConfigurationState else { return self }
     let updatedConfig = self
     if state.isSelected || state.isHighlighted {
@@ -81,7 +114,7 @@ class TextFieldContentView: UIView, UIContentView {
     }
   }
   
-  fileprivate let textField = UITextField()
+  fileprivate let textField = OTPCodeTextField()
   
   private func setupInternalViews() {
     addSubview(textField)

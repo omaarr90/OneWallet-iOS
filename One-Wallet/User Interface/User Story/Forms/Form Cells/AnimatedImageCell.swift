@@ -67,8 +67,6 @@ class AnimatedImageContentView: UIView, UIContentView {
   private func setupInternalViews() {
     addSubview(animatedImage)
     animatedImage.translatesAutoresizingMaskIntoConstraints = false
-    animatedImage.clipsToBounds = true
-    animatedImage.layer.cornerRadius = 8.0
     NSLayoutConstraint.activate([
       animatedImage.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
       animatedImage.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),

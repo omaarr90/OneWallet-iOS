@@ -19,4 +19,14 @@ final class WalletApp {
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
   }
+  
+  func showHome() {
+    guard let window = self.window else {
+      fatalError("Root Window not set")
+    }
+    
+    let home = HomeViewController()
+    window.rootViewController = home
+    window.makeKeyAndVisible()
+  }
 }
