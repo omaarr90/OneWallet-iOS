@@ -72,7 +72,7 @@ class AnimatedImageContentView: UIView, UIContentView {
       animatedImage.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       animatedImage.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       animatedImage.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-      animatedImage.heightAnchor.constraint(equalToConstant: 244.0)
+      animatedImage.heightAnchor.constraint(equalToConstant: 144.0)
       
     ])
   }

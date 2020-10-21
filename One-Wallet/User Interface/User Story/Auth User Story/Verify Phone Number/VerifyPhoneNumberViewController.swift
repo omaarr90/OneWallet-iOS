@@ -91,7 +91,7 @@ private extension VerifyPhoneNumberViewController {
     return UICollectionView.CellRegistration<TextFieldCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = TextFieldContentConfiguration()
-      contentConfiguration.borderStyle = .bezel
+      contentConfiguration.borderStyle = .roundedRect
       contentConfiguration.placeHolder = NSLocalizedString("VerifyPhoneNumberViewController.OTPField.PlaceHolder", comment: "Place holder for otp")
       cell.textFieldContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()

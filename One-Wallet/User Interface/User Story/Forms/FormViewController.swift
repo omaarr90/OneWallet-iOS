@@ -61,7 +61,12 @@ extension FormViewController {
   func configureCollectionView() {
     let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
     view.addSubview(collectionView)
-    collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+    ])
     collectionView.backgroundColor = .clear
     self.formCollectionView = collectionView
     collectionView.delegate = self
