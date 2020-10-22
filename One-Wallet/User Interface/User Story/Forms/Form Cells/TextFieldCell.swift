@@ -124,7 +124,7 @@ class TextFieldContentView: UIView, UIContentView {
       textField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       textField.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       textField.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-      textField.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
+//      textField.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
     ])
   }
   

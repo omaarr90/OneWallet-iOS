@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C005849254170AC0015DDE6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C005848254170AC0015DDE6 /* APIClient.swift */; };
+		4C005851254171D50015DDE6 /* NetworkResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C005850254171D50015DDE6 /* NetworkResponses.swift */; };
+		4C005856254173540015DDE6 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C005855254173540015DDE6 /* RequestBuilder.swift */; };
+		4C00585C254178D80015DDE6 /* MoviesRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C00585B254178D80015DDE6 /* MoviesRepo.swift */; };
+		4C005861254198980015DDE6 /* NetworkManagerEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C005860254198980015DDE6 /* NetworkManagerEvaluator.swift */; };
+		4C005866254199E90015DDE6 /* RequestAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C005865254199E90015DDE6 /* RequestAdapters.swift */; };
 		4C0369AC253FF74A005ED1FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0369AB253FF74A005ED1FE /* HomeViewController.swift */; };
 		4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF63251412A00007A4CA /* SignUpViewController.swift */; };
 		4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF64251412A00007A4CA /* SignUpViewModel.swift */; };
@@ -67,6 +73,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C005848254170AC0015DDE6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4C005850254171D50015DDE6 /* NetworkResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponses.swift; sourceTree = "<group>"; };
+		4C005855254173540015DDE6 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		4C00585B254178D80015DDE6 /* MoviesRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepo.swift; sourceTree = "<group>"; };
+		4C005860254198980015DDE6 /* NetworkManagerEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerEvaluator.swift; sourceTree = "<group>"; };
+		4C005865254199E90015DDE6 /* RequestAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapters.swift; sourceTree = "<group>"; };
 		4C0369AB253FF74A005ED1FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4C06BF63251412A00007A4CA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4C06BF64251412A00007A4CA /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +154,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C005847254170940015DDE6 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				4C005848254170AC0015DDE6 /* APIClient.swift */,
+				4C005850254171D50015DDE6 /* NetworkResponses.swift */,
+				4C005855254173540015DDE6 /* RequestBuilder.swift */,
+				4C005860254198980015DDE6 /* NetworkManagerEvaluator.swift */,
+				4C005865254199E90015DDE6 /* RequestAdapters.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		4C00585A254178B30015DDE6 /* Movies Repo */ = {
+			isa = PBXGroup;
+			children = (
+				4C00585B254178D80015DDE6 /* MoviesRepo.swift */,
+			);
+			path = "Movies Repo";
+			sourceTree = "<group>";
+		};
 		4C0369AA253FF733005ED1FE /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +337,7 @@
 		4CD2FE802533B5BF001771CF /* Repoistories */ = {
 			isa = PBXGroup;
 			children = (
+				4C00585A254178B30015DDE6 /* Movies Repo */,
 				4CD2FE812533B5CE001771CF /* Auth Repo */,
 			);
 			path = Repoistories;
@@ -361,6 +394,7 @@
 		4CF7E3632514102D00BA078F /* One-Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				4C005847254170940015DDE6 /* Networks */,
 				4CF7E39D2514109000BA078F /* App */,
 				4C4FE6A52540D63700960C8C /* Database */,
 				4CD08EF1253C011A004ABCE7 /* Design System */,
@@ -584,6 +618,8 @@
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4C9CAA09253DC7D9005909E9 /* UIFont+Styles.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,
+				4C005856254173540015DDE6 /* RequestBuilder.swift in Sources */,
+				4C005861254198980015DDE6 /* NetworkManagerEvaluator.swift in Sources */,
 				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
 				4CD08F02253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift in Sources */,
 				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
@@ -595,7 +631,11 @@
 				4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 				4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */,
+				4C00585C254178D80015DDE6 /* MoviesRepo.swift in Sources */,
+				4C005851254171D50015DDE6 /* NetworkResponses.swift in Sources */,
+				4C005866254199E90015DDE6 /* RequestAdapters.swift in Sources */,
 				4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */,
+				4C005849254170AC0015DDE6 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

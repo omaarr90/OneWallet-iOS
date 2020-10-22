@@ -81,7 +81,7 @@ class ButtonContentView: UIView, UIContentView {
       button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       button.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       button.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-      button.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
+//      button.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
 
     ])
   }

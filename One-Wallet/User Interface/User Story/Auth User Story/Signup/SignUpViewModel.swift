@@ -39,7 +39,7 @@ class SignUpViewModel {
 
   func signUp(phoneNumber: String) {
     
-    let request = SignupRequest(phoneNumber: phoneNumber)
+    let request = SignupRequest(phoneNumber: phoneNumber, transport: "sms")
     self._isLoading = true
     authRepo.signup(with: request)
       .sink { completion in

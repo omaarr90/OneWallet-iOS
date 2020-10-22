@@ -28,7 +28,10 @@ class SignUpViewController: FormViewController {
   private var phoneNumberTextField: UITextField?
   
   // MARK:- private iVars
-  private var viewModel = SignUpViewModel(authRepo: MockAuthRepo())
+  private var viewModel: SignUpViewModel {
+    let authRepo = WalletAuthRepo(api: WalletService.api)
+    return SignUpViewModel(authRepo: authRepo)
+  }
   private var tokens = Set<AnyCancellable>()
   
   override func viewDidLoad() {
@@ -44,10 +47,10 @@ class SignUpViewController: FormViewController {
       Logger.error("Missing Required Field")
       return
     }
-    viewModel.signUp(phoneNumber: phoneNumber)
+    viewModel.signUp(phoneNumber: "+966542652273")
     let verifyViewController = VerifyPhoneNumberViewController()
     verifyViewController.phoneNumber = "+966542652273"
-    self.navigationController?.pushViewController(verifyViewController, animated: true)
+//    self.navigationController?.pushViewController(verifyViewController, animated: true)
   }
 }
 
