@@ -32,7 +32,10 @@ class VerifyPhoneNumberViewController: FormViewController {
   private var otpTextField: UITextField?
 
   // MARK:- private iVars
-  private var viewModel = VerifyPhoneNumberViewModel(authRepo: MockAuthRepo())
+  private var viewModel: VerifyPhoneNumberViewModel {
+    let authRepo = WalletAuthRepo(api: WalletService.api)
+    return VerifyPhoneNumberViewModel(authRepo: authRepo)
+  }
   private var tokens = Set<AnyCancellable>()
   var phoneNumber: String!
     
@@ -44,7 +47,8 @@ class VerifyPhoneNumberViewController: FormViewController {
   
   override func submitButtonTapped(_ button: UIButton) {
     Logger.info("")
-    WalletApp.shared.showHome()
+    let verificationCode = otpTextField?.text
+    viewModel.verify(phoneNumber: self.phoneNumber, verificationCode: verificationCode!)
   }
 }
 

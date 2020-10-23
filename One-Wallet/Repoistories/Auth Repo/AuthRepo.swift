@@ -13,29 +13,56 @@ public struct SignupRequest: NetworkModel {
   let transport: String
 }
 
-public struct SignupResponse: NetworkModel {
-  let id: UUID
-  let phoneNumber: String
-  let verifiedByPhoneNumber: Bool
+//public struct SignupResponse: NetworkModel {
+//  let id: UUID
+//  let phoneNumber: String
+//  let verifiedByPhoneNumber: Bool
+//}
+
+public struct VerifyPhoneNumberRequest: NetworkModel {
+  let registrationId: String
+  let signalingKey: String
 }
 
 private extension Request {
-  static func signup(model: SignupRequest, completion: @escaping (Result<SignupResponse, APIError>) -> Void) -> Request {
+  static func signup(model: SignupRequest, completion: @escaping (Result<Void, APIError>) -> Void) -> Request {
     Request.basic(baseURL: WalletService.baseURL, path: "v1/accounts/\(model.transport)/code/\(model.phoneNumber)") { result in
-      result.decoding(SignupResponse.self, completion: completion)
+      switch result {
+      case .success(_):
+        completion(.success(()))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
+  
+  static func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest, completion: @escaping (Result<Void, APIError>) -> Void) -> Request {
+    Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/acccounts/code/\(verificationCode)", body: model) { result in
+      switch result {
+      case .success(_):
+        completion(.success(()))
+      case .failure(let error):
+        completion(.failure(error))
+      }
     }
   }
 }
 
 public protocol AuthRepo {
-  func signup(with model: SignupRequest) -> AnyPublisher<SignupResponse, Error>
+  func signup(with model: SignupRequest) -> AnyPublisher<Void, Error>
+  func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error>
 }
 
 public class MockAuthRepo: AuthRepo {
-  public func signup(with model: SignupRequest) -> AnyPublisher<SignupResponse, Error> {
+  public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error> {
     return Future { resolve in
-      let response = SignupResponse(id: UUID(), phoneNumber: model.phoneNumber, verifiedByPhoneNumber: true)
-      return resolve(.success(response))
+      return resolve(.success(()))
+    }.eraseToAnyPublisher()
+  }
+  
+  public func signup(with model: SignupRequest) -> AnyPublisher<Void, Error> {
+    return Future { resolve in
+      return resolve(.success(()))
     }.eraseToAnyPublisher()
   }
 }
@@ -49,7 +76,7 @@ public class WalletAuthRepo: AuthRepo {
     self.api = api
   }
   
-  public func signup(with model: SignupRequest) -> AnyPublisher<SignupResponse, Error> {
+  public func signup(with model: SignupRequest) -> AnyPublisher<Void, Error> {
     return Future { resolve in
       self.api.send(request: .signup(model: model) {  result in
         switch result {
@@ -61,4 +88,18 @@ public class WalletAuthRepo: AuthRepo {
       })
     }.eraseToAnyPublisher()
   }
+  
+  public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error> {
+    return Future { resolve in
+      self.api.send(request: .verifyPhoneNumber(verificationCode: verificationCode, model: model) { result in
+        switch result {
+        case .success(let response):
+          resolve(.success(response))
+        case .failure(let error):
+          resolve(.failure(error))
+        }
+      })
+    }.eraseToAnyPublisher()
+  }
+
 }

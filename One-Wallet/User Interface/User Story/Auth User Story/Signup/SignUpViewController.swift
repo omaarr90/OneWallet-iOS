@@ -29,8 +29,8 @@ class SignUpViewController: FormViewController {
   
   // MARK:- private iVars
   private var viewModel: SignUpViewModel {
-    let authRepo = WalletAuthRepo(api: WalletService.api)
-    return SignUpViewModel(authRepo: authRepo)
+//    let authRepo = WalletAuthRepo(api: WalletService.api)
+    return SignUpViewModel(authRepo: MockAuthRepo())
   }
   private var tokens = Set<AnyCancellable>()
   
@@ -43,30 +43,38 @@ class SignUpViewController: FormViewController {
   
   override func submitButtonTapped(_ button: UIButton) {
     Logger.info("")
-    guard let phoneNumber = phoneNumberTextField?.text else {
-      Logger.error("Missing Required Field")
-      return
-    }
+//    guard let phoneNumber = phoneNumberTextField?.text else {
+//      Logger.error("Missing Required Field")
+//      return
+//    }
     viewModel.signUp(phoneNumber: "+966542652273")
     let verifyViewController = VerifyPhoneNumberViewController()
     verifyViewController.phoneNumber = "+966542652273"
-//    self.navigationController?.pushViewController(verifyViewController, animated: true)
   }
 }
 
 // MARK:- DataSource
 private extension SignUpViewController {
   func configureObservers() {
-    viewModel.isLoading.sink { isLoading in
+    viewModel.isLoading
+      .sink { [weak self] isLoading in
       Logger.debug("isLoading \(isLoading)")
     }.store(in: &tokens)
     
-    viewModel.error.sink { error in
+    viewModel.error
+      .print()
+      .sink { [weak self] error in
       Logger.error("error: \(String(describing: error))")
     }.store(in: &tokens)
     
-    viewModel.response.sink { response in
+    viewModel.response
+      .print()
+      .sink { [weak self] response in
+      guard response != nil else { return }
       Logger.debug("response: \(String(describing: response))")
+      let verifyViewController = VerifyPhoneNumberViewController()
+      verifyViewController.phoneNumber = "+966542652273"
+      self?.navigationController?.pushViewController(verifyViewController, animated: true)
     }.store(in: &tokens)
   }
 }

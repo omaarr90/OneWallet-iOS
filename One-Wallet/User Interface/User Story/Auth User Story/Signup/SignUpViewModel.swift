@@ -19,12 +19,12 @@ class SignUpViewModel {
   }
   
   //MARK:- Private Published Objects
-  @Published private var _response: SignupResponse? = nil
+  @Published private var _response: Void? = nil
   @Published private var _isLoading: Bool = false
   @Published private var _error: Error? = nil
   
   //MARK:- Published Objects as Publishers
-  var response: AnyPublisher<SignupResponse?, Never> {
+  var response: AnyPublisher<Void?, Never> {
     return $_response.eraseToAnyPublisher()
   }
   var isLoading: AnyPublisher<Bool, Never> {
@@ -42,18 +42,17 @@ class SignUpViewModel {
     let request = SignupRequest(phoneNumber: phoneNumber, transport: "sms")
     self._isLoading = true
     authRepo.signup(with: request)
-      .sink { completion in
-        self._isLoading = false
+      .sink { [weak self] completion in
+        self?._isLoading = false
         switch completion {
         case .finished:
           break
         case .failure(let error):
-          self._error = error
+          self?._error = error
         }
-      } receiveValue: { response in
-        self._response = response
+      } receiveValue: { [weak self] response in
+        self?._response = response
       }
       .store(in: &tokens)
-
   }
 }
