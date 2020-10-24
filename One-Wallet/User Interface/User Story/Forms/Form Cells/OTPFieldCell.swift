@@ -7,6 +7,40 @@
 
 import UIKit
 
+
+private protocol OTPCodeTextFieldDelegate: AnyObject {
+  func textFieldDidDeletePrevious()
+}
+
+// MARK: -
+
+// Editing a code should feel seamless, as even though
+// the UITextField only lets you edit a single digit at
+// a time.  For deletes to work properly, we need to
+// detect delete events that would affect the _previous_
+// digit.
+private class OTPCodeTextField: UITextField {
+  
+  fileprivate weak var codeDelegate: OTPCodeTextFieldDelegate?
+  
+  override func deleteBackward() {
+    var isDeletePrevious = false
+    if let selectedTextRange = selectedTextRange {
+      let cursorPosition = offset(from: beginningOfDocument, to: selectedTextRange.start)
+      if cursorPosition == 0 {
+        isDeletePrevious = true
+      }
+    }
+    
+    super.deleteBackward()
+    
+    if isDeletePrevious {
+      codeDelegate?.textFieldDidDeletePrevious()
+    }
+  }
+  
+}
+
 class OTPFieldCell: UICollectionViewListCell {
   var otpFieldContentConfiguration: OTPFieldContentConfiguration? {
     didSet {

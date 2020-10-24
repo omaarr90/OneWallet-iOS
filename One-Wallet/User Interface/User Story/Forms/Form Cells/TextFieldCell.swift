@@ -8,39 +8,6 @@
 
 import UIKit
 
-private protocol OTPCodeTextFieldDelegate: AnyObject {
-  func textFieldDidDeletePrevious()
-}
-
-// MARK: -
-
-// Editing a code should feel seamless, as even though
-// the UITextField only lets you edit a single digit at
-// a time.  For deletes to work properly, we need to
-// detect delete events that would affect the _previous_
-// digit.
-private class OTPCodeTextField: UITextField {
-  
-  fileprivate weak var codeDelegate: OTPCodeTextFieldDelegate?
-  
-  override func deleteBackward() {
-    var isDeletePrevious = false
-    if let selectedTextRange = selectedTextRange {
-      let cursorPosition = offset(from: beginningOfDocument, to: selectedTextRange.start)
-      if cursorPosition == 0 {
-        isDeletePrevious = true
-      }
-    }
-    
-    super.deleteBackward()
-    
-    if isDeletePrevious {
-      codeDelegate?.textFieldDidDeletePrevious()
-    }
-  }
-  
-}
-
 class TextFieldCell: UICollectionViewListCell {
   var textFieldContentConfiguration: TextFieldContentConfiguration? {
     didSet {
@@ -114,18 +81,21 @@ class TextFieldContentView: UIView, UIContentView {
     }
   }
   
-  fileprivate let textField = OTPCodeTextField()
+  fileprivate let textField = UITextField()
   
   private func setupInternalViews() {
     addSubview(textField)
     textField.translatesAutoresizingMaskIntoConstraints = false
+    let heightConstraint = textField.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
+    heightConstraint.priority = .defaultLow
     NSLayoutConstraint.activate([
       textField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
       textField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       textField.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       textField.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-//      textField.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
+      heightConstraint
     ])
+    
   }
   
   private var appliedConfiguration: TextFieldContentConfiguration!

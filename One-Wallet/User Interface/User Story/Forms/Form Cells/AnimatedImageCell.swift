@@ -67,13 +67,15 @@ class AnimatedImageContentView: UIView, UIContentView {
   private func setupInternalViews() {
     addSubview(animatedImage)
     animatedImage.translatesAutoresizingMaskIntoConstraints = false
+    
+    let heightConstraint = animatedImage.heightAnchor.constraint(equalToConstant: 144)
+    heightConstraint.priority = .defaultLow
     NSLayoutConstraint.activate([
       animatedImage.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
       animatedImage.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       animatedImage.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       animatedImage.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-//      animatedImage.heightAnchor.constraint(equalToConstant: 144.0)
-      
+      heightConstraint
     ])
   }
   

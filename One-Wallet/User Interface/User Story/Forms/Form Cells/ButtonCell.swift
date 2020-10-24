@@ -75,14 +75,17 @@ class ButtonContentView: UIView, UIContentView {
     addSubview(button)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.clipsToBounds = true
-    button.layer.cornerRadius = 8.0
+    button.layer.cornerRadius = 6.0
+    
+    let heightConstraint = button.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
+    heightConstraint.priority = .defaultLow
+
     NSLayoutConstraint.activate([
       button.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
       button.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
       button.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       button.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-//      button.heightAnchor.constraint(equalToConstant: LayoutGuide.Height.primaryControl)
-
+      heightConstraint
     ])
   }
   
