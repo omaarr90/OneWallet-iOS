@@ -32,10 +32,11 @@ class VerifyPhoneNumberViewController: FormViewController {
   private var otpTextField: UITextField?
 
   // MARK:- private iVars
-  private var viewModel: VerifyPhoneNumberViewModel {
+  private lazy var viewModel: VerifyPhoneNumberViewModel = {
     let authRepo = WalletAuthRepo(api: WalletService.api)
     return VerifyPhoneNumberViewModel(authRepo: authRepo)
-  }
+  }()
+  
   private var tokens = Set<AnyCancellable>()
   var phoneNumber: String!
     
@@ -43,12 +44,53 @@ class VerifyPhoneNumberViewController: FormViewController {
     super.viewDidLoad()
     self.submitButtonText = NSLocalizedString("VerifyPhoneNumberViewController.SubmitButton.Title", comment: "Title for submit button button")
     configureDataSource()
+    configureObservers()
   }
   
   override func submitButtonTapped(_ button: UIButton) {
     Logger.info("")
     let verificationCode = otpTextField?.text
     viewModel.verify(phoneNumber: self.phoneNumber, verificationCode: verificationCode!)
+  }
+}
+
+// MARK:- View Controller State Management
+private extension VerifyPhoneNumberViewController {
+  func isLoadingUpdated(isLoading: Bool) {
+    submitButton?.isEnabled = !isLoading
+    otpTextField?.isEnabled = !isLoading
+    
+    submitButtonText = isLoading ? NSLocalizedString("VerifyPhoneNumberViewController.SubmitButton.Title.Loading", comment: "Title for submit button when loading") : NSLocalizedString("VerifyPhoneNumberViewController.SubmitButton.Title", comment: "Title for submit button button")
+  }
+  
+  func errorReceived(error: Error) {
+    
+  }
+  
+  func responseReceived() {
+    WalletApp.shared.showHome()
+  }
+}
+
+// MARK:- DataSource
+private extension VerifyPhoneNumberViewController {
+  func configureObservers() {
+    viewModel.isLoading
+      .sink { [weak self] isLoading in
+        self?.isLoadingUpdated(isLoading: isLoading)
+      }.store(in: &tokens)
+    
+    viewModel.error
+      .sink { [weak self] error in
+        guard let error = error else { return }
+        self?.errorReceived(error: error)
+      }.store(in: &tokens)
+    
+    viewModel.response
+      .sink { [weak self] response in
+        guard response != nil else { return }
+        self?.responseReceived()
+      }.store(in: &tokens)
   }
 }
 

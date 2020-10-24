@@ -13,15 +13,9 @@ public struct SignupRequest: NetworkModel {
   let transport: String
 }
 
-//public struct SignupResponse: NetworkModel {
-//  let id: UUID
-//  let phoneNumber: String
-//  let verifiedByPhoneNumber: Bool
-//}
-
 public struct VerifyPhoneNumberRequest: NetworkModel {
-  let registrationId: String
-  let signalingKey: String
+  let registrationId: UInt32
+  var discoverableByPhoneNumber = false
 }
 
 private extension Request {
@@ -37,7 +31,7 @@ private extension Request {
   }
   
   static func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest, completion: @escaping (Result<Void, APIError>) -> Void) -> Request {
-    Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/acccounts/code/\(verificationCode)", body: model) { result in
+    Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/accounts/code/\(verificationCode)", body: model) { result in
       switch result {
       case .success(_):
         completion(.success(()))
@@ -58,6 +52,7 @@ public class MockAuthRepo: AuthRepo {
     return Future { resolve in
       return resolve(.success(()))
     }
+    .delay(for: 5, scheduler: RunLoop.main)
     .eraseToAnyPublisher()
   }
   
@@ -65,6 +60,7 @@ public class MockAuthRepo: AuthRepo {
     return Future { resolve in
       return resolve(.success(()))
     }
+    .delay(for: 5, scheduler: RunLoop.main)
     .eraseToAnyPublisher()
   }
 }

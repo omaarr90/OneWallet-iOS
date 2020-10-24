@@ -39,14 +39,11 @@ public protocol NetworkModel: Codable {
 public extension NetworkModel {
   static var decoder: JSONDecoder {
     let decoder = JSONDecoder()
-    // this is a sensible default setting, as many APIs use snake_case_naming
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
     return decoder
   }
   
   static var encoder: JSONEncoder {
     let encoder = JSONEncoder()
-    encoder.keyEncodingStrategy = .convertToSnakeCase
     return encoder
   }
 }

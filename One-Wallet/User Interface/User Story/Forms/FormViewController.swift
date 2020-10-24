@@ -32,6 +32,7 @@ class FormViewController: UIViewController {
         return
       }
       button.setTitle(submitButtonText, for: .normal)
+      button.setTitle(submitButtonText, for: .disabled)
     }
   }
   

@@ -65,7 +65,7 @@ public struct WalletService {
   public static var api: APIClient = {
     let configuration = URLSessionConfiguration.default
     //    configuration.httpAdditionalHeaders = [ "Authorization": "Bearer \(apiKey)"]
-    return APIClient(configuration: configuration, adapters: [LoggerAdapter()])
+    return APIClient(configuration: configuration, adapters: [LoggerAdapter(), AuthAdapter()])
   }()
 }
 
@@ -74,6 +74,7 @@ extension WalletService {
     
     func beforeSend(_ request: URLRequest) {
       Logger.debug("about to send request: \(request)")
+      Logger.verbose("Curl Command for \(String(describing: request.url?.absoluteString))\n\(request.curlString)\n")
     }
     
     func onSuccess(request: URLRequest) {
@@ -86,6 +87,23 @@ extension WalletService {
     
     func onResponse(response: URLResponse?, data: Data?) {
       Logger.info("Response recieved \(String(describing: response)) with data: \(String(describing: data))")
+    }
+    
+    private func logCurl(for request: URLRequest) {
+      
+    }
+  }
+}
+
+extension WalletService {
+  struct AuthAdapter: RequestAdapter {
+    func adapt(_ request: inout URLRequest) {
+      //
+      guard let basicAuth = try? KeychainManager.shared.getBasicAuth() else {
+        Logger.debug("Not setting Authorization header for request \(request)")
+        return
+      }
+      request.setValue("Basic \(basicAuth)", forHTTPHeaderField: "Authorization")
     }
   }
 }

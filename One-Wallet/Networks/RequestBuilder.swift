@@ -20,6 +20,8 @@ public protocol RequestBuilder {
   var path: String { get }
   var params: [URLQueryItem]? { get }
   var headers: [String: String] { get }
+//  var authUsername: String? { get }
+//  var authPassword: String? { get }
   func toURLRequest() -> URLRequest
   
   func encodeRequestBody() -> Data?
@@ -34,6 +36,7 @@ public extension RequestBuilder {
     request.allHTTPHeaderFields = headers
     request.httpMethod = method.rawValue.uppercased()
     request.httpBody = encodeRequestBody()
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     return request
   }
   
@@ -47,6 +50,8 @@ public struct BasicRequestBuilder: RequestBuilder {
   public var path: String
   public var params: [URLQueryItem]?
   public var headers: [String: String] = [:]
+//  public var authUsername: String?
+//  public var authPassword: String?
 }
 
 public struct PostRequestBuilder<Body: NetworkModel>: RequestBuilder {
@@ -55,6 +60,8 @@ public struct PostRequestBuilder<Body: NetworkModel>: RequestBuilder {
   public var path: String
   public var params: [URLQueryItem]?
   public var headers: [String: String] = [:]
+//  public var authUsername: String?
+//  public var authPassword: String?
   public var body: Body?
   
   init(method: HTTPMethod = .post,

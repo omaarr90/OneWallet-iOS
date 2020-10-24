@@ -29,8 +29,8 @@ class SignUpViewController: FormViewController {
   
   // MARK:- private iVars
   private lazy var viewModel: SignUpViewModel = {
-//    let authRepo = WalletAuthRepo(api: WalletService.api)
-    return SignUpViewModel(authRepo: MockAuthRepo())
+    let authRepo = WalletAuthRepo(api: WalletService.api)
+    return SignUpViewModel(authRepo: authRepo)
   }()
   
   private var tokens = Set<AnyCancellable>()
@@ -48,7 +48,27 @@ class SignUpViewController: FormViewController {
 //      Logger.error("Missing Required Field")
 //      return
 //    }
-    viewModel.signUp(phoneNumber: "+966542652273")
+    viewModel.signUp(phoneNumber: "+966557987731")
+  }
+}
+
+// MARK:- View Controller State Management
+private extension SignUpViewController {
+  func isLoadingUpdated(isLoading: Bool) {
+    submitButton?.isEnabled = !isLoading
+    phoneNumberTextField?.isEnabled = !isLoading
+    
+    submitButtonText = isLoading ? NSLocalizedString("SignUpViewController.SignupButton.Title.Loading", comment: "Title for submit button when loading") : NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
+  }
+  
+  func errorReceived(error: Error) {
+    
+  }
+  
+  func responseReceived() {
+    let verifyViewController = VerifyPhoneNumberViewController()
+    verifyViewController.phoneNumber = "+966557987731"
+    self.navigationController?.pushViewController(verifyViewController, animated: true)
   }
 }
 
@@ -57,21 +77,19 @@ private extension SignUpViewController {
   func configureObservers() {
     viewModel.isLoading
       .sink { [weak self] isLoading in
-      Logger.debug("isLoading \(isLoading)")
+        self?.isLoadingUpdated(isLoading: isLoading)
     }.store(in: &tokens)
     
     viewModel.error
       .sink { [weak self] error in
-      Logger.error("error: \(String(describing: error))")
+        guard let error = error else { return }
+        self?.errorReceived(error: error)
     }.store(in: &tokens)
     
     viewModel.response
       .sink { [weak self] response in
       guard response != nil else { return }
-      Logger.debug("response: \(String(describing: response))")
-      let verifyViewController = VerifyPhoneNumberViewController()
-      verifyViewController.phoneNumber = "+966542652273"
-      self?.navigationController?.pushViewController(verifyViewController, animated: true)
+        self?.responseReceived()
     }.store(in: &tokens)
   }
 }

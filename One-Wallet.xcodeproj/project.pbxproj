@@ -29,6 +29,11 @@
 		4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */; };
 		4C4FE6F12540F61200960C8C /* WalletPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6F02540F61200960C8C /* WalletPreferences.swift */; };
 		4C5A206E253FF5C200D8EB21 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */; };
+		4C8C95A325440C110080BCC3 /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95A225440C110080BCC3 /* Cryptography.swift */; };
+		4C8C95AB25440D6D0080BCC3 /* Data+Convinent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95AA25440D6D0080BCC3 /* Data+Convinent.swift */; };
+		4C8C95B1254467DA0080BCC3 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4C8C95B0254467DA0080BCC3 /* KeychainAccess */; };
+		4C8C95B8254468120080BCC3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95B7254468120080BCC3 /* KeychainManager.swift */; };
+		4C8C95BD254472B20080BCC3 /* URLRequest+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
 		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
@@ -94,6 +99,10 @@
 		4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSTableMetadata.swift; sourceTree = "<group>"; };
 		4C4FE6F02540F61200960C8C /* WalletPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPreferences.swift; sourceTree = "<group>"; };
 		4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		4C8C95A225440C110080BCC3 /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
+		4C8C95AA25440D6D0080BCC3 /* Data+Convinent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convinent.swift"; sourceTree = "<group>"; };
+		4C8C95B7254468120080BCC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Debug.swift"; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
 		4C9BE94C2536674700394248 /* Lottie+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lottie+Hashable.swift"; sourceTree = "<group>"; };
@@ -131,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8C95B1254467DA0080BCC3 /* KeychainAccess in Frameworks */,
 				4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */,
 				4CD2FE8925365863001771CF /* GRDB in Frameworks */,
 				4CE7FA9925366194006A0E86 /* Lottie in Frameworks */,
@@ -225,6 +235,8 @@
 		4C4686A8252B8A7E004A5AB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C95B6254467F30080BCC3 /* Keychain */,
+				4C8C95A125440BF40080BCC3 /* Crypto */,
 				4C4FE6CD2540DBA300960C8C /* Foundation Extensions */,
 				4C9CAA07253DC7C0005909E9 /* UI Extensions */,
 				4C9BE94B2536673000394248 /* Lottie */,
@@ -257,6 +269,8 @@
 		4C4FE6CD2540DBA300960C8C /* Foundation Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C95AA25440D6D0080BCC3 /* Data+Convinent.swift */,
+				4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */,
 			);
 			path = "Foundation Extensions";
 			sourceTree = "<group>";
@@ -283,6 +297,22 @@
 				4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */,
 			);
 			path = "Base Collection View";
+			sourceTree = "<group>";
+		};
+		4C8C95A125440BF40080BCC3 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C95A225440C110080BCC3 /* Cryptography.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		4C8C95B6254467F30080BCC3 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C95B7254468120080BCC3 /* KeychainManager.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		4C9BE94B2536673000394248 /* Lottie */ = {
@@ -477,6 +507,7 @@
 				4C46869E252B89E2004A5AB6 /* SwiftyBeaver */,
 				4CD2FE8825365863001771CF /* GRDB */,
 				4CE7FA9825366194006A0E86 /* Lottie */,
+				4C8C95B0254467DA0080BCC3 /* KeychainAccess */,
 			);
 			productName = "One-Wallet";
 			productReference = 4CF7E3612514102D00BA078F /* One-Wallet.app */;
@@ -554,6 +585,7 @@
 				4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 				4CD2FE8725365863001771CF /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				4CE7FA9725366194006A0E86 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				4C8C95AF254467DA0080BCC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 4CF7E3622514102D00BA078F /* Products */;
 			projectDirPath = "";
@@ -604,6 +636,7 @@
 				4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */,
 				4C4FE6C62540DA1D00960C8C /* GRDBSchemeMigrator.swift in Sources */,
 				4C9CAA11253FF180005909E9 /* OTPFieldCell.swift in Sources */,
+				4C8C95AB25440D6D0080BCC3 /* Data+Convinent.swift in Sources */,
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,
 				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
 				4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */,
@@ -612,7 +645,9 @@
 				4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */,
 				4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */,
 				4C4FE6C12540D95500960C8C /* GRDBManager.swift in Sources */,
+				4C8C95B8254468120080BCC3 /* KeychainManager.swift in Sources */,
 				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
+				4C8C95BD254472B20080BCC3 /* URLRequest+Debug.swift in Sources */,
 				4C0369AC253FF74A005ED1FE /* HomeViewController.swift in Sources */,
 				4CD08EF9253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
@@ -623,6 +658,7 @@
 				4C06BF6B251412A00007A4CA /* SignUpViewModel.swift in Sources */,
 				4CD08F02253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift in Sources */,
 				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
+				4C8C95A325440C110080BCC3 /* Cryptography.swift in Sources */,
 				4C4FE6F12540F61200960C8C /* WalletPreferences.swift in Sources */,
 				4C4FE6E42540E8B300960C8C /* KeyValueStore.swift in Sources */,
 				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
@@ -982,6 +1018,14 @@
 				minimumVersion = 1.9.2;
 			};
 		};
+		4C8C95AF254467DA0080BCC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.1;
+			};
+		};
 		4CD2FE8725365863001771CF /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -1005,6 +1049,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
 			productName = SwiftyBeaver;
+		};
+		4C8C95B0254467DA0080BCC3 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C8C95AF254467DA0080BCC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		4CD2FE8825365863001771CF /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Security
 
 class VerifyPhoneNumberViewModel {
   
@@ -37,7 +38,11 @@ class VerifyPhoneNumberViewModel {
   
   func verify(phoneNumber: String, verificationCode: String) {
     
-    let request = VerifyPhoneNumberRequest(registrationId: "ss", signalingKey: "ss")
+    let authKey = self.generateServerAuthToken()
+    let registrationID = self.generateRegistrationId()
+    try? KeychainManager.shared.saveBasicAuthCredintials(username: phoneNumber, password: authKey)
+    try? KeychainManager.shared.saveRegistrationID(registrationId: registrationID)
+    let request = VerifyPhoneNumberRequest(registrationId: registrationID)
     self._isLoading = true
     authRepo.verifyPhoneNumber(verificationCode: verificationCode, model: request)
       .sink { completion in
@@ -54,4 +59,13 @@ class VerifyPhoneNumberViewModel {
       .store(in: &tokens)
   }
 
+  private func generateServerAuthToken() -> String {
+    return Cryptography.generateRandomBytes(count: 16).hexadecimalString()
+  }
+  
+  private func generateRegistrationId() -> UInt32 {
+    let registrationID = arc4random_uniform(16380) + 1
+    return registrationID
+  }
+  
 }
