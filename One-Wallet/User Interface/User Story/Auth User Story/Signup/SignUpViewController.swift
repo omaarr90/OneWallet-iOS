@@ -28,10 +28,11 @@ class SignUpViewController: FormViewController {
   private var phoneNumberTextField: UITextField?
   
   // MARK:- private iVars
-  private var viewModel: SignUpViewModel {
+  private lazy var viewModel: SignUpViewModel = {
 //    let authRepo = WalletAuthRepo(api: WalletService.api)
     return SignUpViewModel(authRepo: MockAuthRepo())
-  }
+  }()
+  
   private var tokens = Set<AnyCancellable>()
   
   override func viewDidLoad() {
@@ -48,8 +49,6 @@ class SignUpViewController: FormViewController {
 //      return
 //    }
     viewModel.signUp(phoneNumber: "+966542652273")
-    let verifyViewController = VerifyPhoneNumberViewController()
-    verifyViewController.phoneNumber = "+966542652273"
   }
 }
 
@@ -62,13 +61,11 @@ private extension SignUpViewController {
     }.store(in: &tokens)
     
     viewModel.error
-      .print()
       .sink { [weak self] error in
       Logger.error("error: \(String(describing: error))")
     }.store(in: &tokens)
     
     viewModel.response
-      .print()
       .sink { [weak self] response in
       guard response != nil else { return }
       Logger.debug("response: \(String(describing: response))")

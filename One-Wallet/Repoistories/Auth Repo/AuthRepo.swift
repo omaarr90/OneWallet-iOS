@@ -57,13 +57,15 @@ public class MockAuthRepo: AuthRepo {
   public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error> {
     return Future { resolve in
       return resolve(.success(()))
-    }.eraseToAnyPublisher()
+    }
+    .eraseToAnyPublisher()
   }
   
   public func signup(with model: SignupRequest) -> AnyPublisher<Void, Error> {
     return Future { resolve in
       return resolve(.success(()))
-    }.eraseToAnyPublisher()
+    }
+    .eraseToAnyPublisher()
   }
 }
 
