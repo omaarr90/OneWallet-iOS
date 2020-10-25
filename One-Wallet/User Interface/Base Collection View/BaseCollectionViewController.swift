@@ -31,7 +31,7 @@ extension BaseCollectionViewController {
   
   func generateLayout() -> UICollectionViewLayout {
     var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-    listConfiguration.showsSeparators = false
+    listConfiguration.showsSeparators = true
     listConfiguration.backgroundColor = .systemBackground
     let layout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
     return layout

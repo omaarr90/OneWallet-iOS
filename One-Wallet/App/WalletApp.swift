@@ -33,8 +33,8 @@ final class WalletApp {
       fatalError("Root Window not set")
     }
     
-    let home = HomeViewController()
-    window.rootViewController = home
+    let navigationController = WalletNavigationController(rootViewController: ContactsViewController())
+    window.rootViewController = navigationController
     window.makeKeyAndVisible()
   }
 }

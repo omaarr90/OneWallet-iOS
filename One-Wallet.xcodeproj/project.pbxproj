@@ -35,6 +35,9 @@
 		4C8C95B8254468120080BCC3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95B7254468120080BCC3 /* KeychainManager.swift */; };
 		4C8C95BD254472B20080BCC3 /* URLRequest+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */; };
 		4C8C95C2254522870080BCC3 /* WalletAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95C1254522870080BCC3 /* WalletAccount.swift */; };
+		4C8C95C825455A230080BCC3 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95C725455A230080BCC3 /* ContactsViewController.swift */; };
+		4C8C95CD25455A660080BCC3 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95CC25455A660080BCC3 /* ContactsViewModel.swift */; };
+		4C8C95D225455AAE0080BCC3 /* ContactsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95D125455AAE0080BCC3 /* ContactsRepo.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
 		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
@@ -105,6 +108,9 @@
 		4C8C95B7254468120080BCC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Debug.swift"; sourceTree = "<group>"; };
 		4C8C95C1254522870080BCC3 /* WalletAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAccount.swift; sourceTree = "<group>"; };
+		4C8C95C725455A230080BCC3 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		4C8C95CC25455A660080BCC3 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		4C8C95D125455AAE0080BCC3 /* ContactsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepo.swift; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
 		4C9BE94C2536674700394248 /* Lottie+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lottie+Hashable.swift"; sourceTree = "<group>"; };
@@ -287,16 +293,10 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4C5A2072253FF5C700D8EB21 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		4C6F39C7253FF6D600D163BB /* Base Collection View */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C95D625455D110080BCC3 /* Cells */,
 				4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */,
 			);
 			path = "Base Collection View";
@@ -316,6 +316,22 @@
 				4C8C95B7254468120080BCC3 /* KeychainManager.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		4C8C95C625455A0C0080BCC3 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C95C725455A230080BCC3 /* ContactsViewController.swift */,
+				4C8C95CC25455A660080BCC3 /* ContactsViewModel.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		4C8C95D625455D110080BCC3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4C9BE94B2536673000394248 /* Lottie */ = {
@@ -380,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				4CD2FE822533BA40001771CF /* AuthRepo.swift */,
+				4C8C95D125455AAE0080BCC3 /* ContactsRepo.swift */,
 			);
 			path = "Auth Repo";
 			sourceTree = "<group>";
@@ -472,7 +489,7 @@
 		4CF7E39E2514109F00BA078F /* User Story */ = {
 			isa = PBXGroup;
 			children = (
-				4C5A2072253FF5C700D8EB21 /* Home */,
+				4C8C95C625455A0C0080BCC3 /* Contacts */,
 				4C06BF61251412A00007A4CA /* Auth User Story */,
 				4C06BF65251412A00007A4CA /* Forms */,
 			);
@@ -663,10 +680,13 @@
 				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
 				4C8C95A325440C110080BCC3 /* Cryptography.swift in Sources */,
 				4C4FE6F12540F61200960C8C /* WalletPreferences.swift in Sources */,
+				4C8C95CD25455A660080BCC3 /* ContactsViewModel.swift in Sources */,
 				4C4FE6E42540E8B300960C8C /* KeyValueStore.swift in Sources */,
+				4C8C95C825455A230080BCC3 /* ContactsViewController.swift in Sources */,
 				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
 				4CD08EF3253C0152004ABCE7 /* LayoutGuide.swift in Sources */,
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
+				4C8C95D225455AAE0080BCC3 /* ContactsRepo.swift in Sources */,
 				4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 				4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */,
