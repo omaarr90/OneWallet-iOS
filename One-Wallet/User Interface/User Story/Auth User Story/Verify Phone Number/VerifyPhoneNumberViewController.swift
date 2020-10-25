@@ -201,6 +201,11 @@ private extension VerifyPhoneNumberViewController {
 
 private extension VerifyPhoneNumberViewController {
   @objc func wrongNumberTapped(sender: UIButton) {
+    let _ = try? GRDBManager.shared.grdbStorage.pool.write { database in
+      try? WalletAccount.localAccount?.delete(database)
+    }
+    KeychainManager.shared.resetAll()
+    
     self.navigationController?.popViewController(animated: true)
   }
 }

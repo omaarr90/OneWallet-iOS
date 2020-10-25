@@ -38,10 +38,10 @@ class VerifyPhoneNumberViewModel {
   
   func verify(phoneNumber: String, verificationCode: String) {
     
-    let authKey = self.generateServerAuthToken()
-    let registrationID = self.generateRegistrationId()
-    try? KeychainManager.shared.saveBasicAuthCredintials(username: phoneNumber, password: authKey)
-    try? KeychainManager.shared.saveRegistrationID(registrationId: registrationID)
+    try? KeychainManager.shared.saveUserID(userID: phoneNumber)
+    let walletAccount = WalletAccount.getOrCreateLocalAccount(phoneNumber: phoneNumber)
+    let _ = walletAccount.generateServerAuthToken()
+    let registrationID = walletAccount.generateRegistrationId()
     let request = VerifyPhoneNumberRequest(registrationId: registrationID)
     self._isLoading = true
     authRepo.verifyPhoneNumber(verificationCode: verificationCode, model: request)
@@ -54,18 +54,9 @@ class VerifyPhoneNumberViewModel {
           self._error = error
         }
       } receiveValue: { response in
+        walletAccount.markAsRegistered()
         self._response = response
       }
       .store(in: &tokens)
-  }
-
-  private func generateServerAuthToken() -> String {
-    return Cryptography.generateRandomBytes(count: 16).hexadecimalString()
-  }
-  
-  private func generateRegistrationId() -> UInt32 {
-    let registrationID = arc4random_uniform(16380) + 1
-    return registrationID
-  }
-  
+  }  
 }

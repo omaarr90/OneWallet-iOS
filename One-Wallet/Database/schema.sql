@@ -11,3 +11,13 @@ CREATE
         )
 ;
 
+CREATE
+    TABLE
+        IF NOT EXISTS "model_WalletAccount" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+            ,"registrationId" INTEGER
+            ,"phoneNumber" TEXT
+            ,"isOnboarded" INTEGER
+            ,"isRegistered" INTEGER
+        )
+;

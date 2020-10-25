@@ -27,8 +27,12 @@ public class KeychainManager {
     if didRun == false {
       //delete keychain data for old login
       UserDefaults.standard.set(true, forKey: didRunForFirstTime)
-      try? keychain.removeAll()
+      self.resetAll()
     }
+  }
+  
+  public func resetAll() {
+    try? keychain.removeAll()
   }
   
   public func saveBasicAuthCredintials(username: String, password: String) throws {

@@ -34,6 +34,7 @@
 		4C8C95B1254467DA0080BCC3 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4C8C95B0254467DA0080BCC3 /* KeychainAccess */; };
 		4C8C95B8254468120080BCC3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95B7254468120080BCC3 /* KeychainManager.swift */; };
 		4C8C95BD254472B20080BCC3 /* URLRequest+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */; };
+		4C8C95C2254522870080BCC3 /* WalletAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95C1254522870080BCC3 /* WalletAccount.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
 		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
@@ -103,6 +104,7 @@
 		4C8C95AA25440D6D0080BCC3 /* Data+Convinent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convinent.swift"; sourceTree = "<group>"; };
 		4C8C95B7254468120080BCC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		4C8C95BC254472B20080BCC3 /* URLRequest+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Debug.swift"; sourceTree = "<group>"; };
+		4C8C95C1254522870080BCC3 /* WalletAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAccount.swift; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
 		4C9BE94C2536674700394248 /* Lottie+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lottie+Hashable.swift"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			children = (
 				4C4FE6E32540E8B300960C8C /* KeyValueStore.swift */,
 				4C4FE6F02540F61200960C8C /* WalletPreferences.swift */,
+				4C8C95C1254522870080BCC3 /* WalletAccount.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				4C00585C254178D80015DDE6 /* MoviesRepo.swift in Sources */,
 				4C005851254171D50015DDE6 /* NetworkResponses.swift in Sources */,
 				4C005866254199E90015DDE6 /* RequestAdapters.swift in Sources */,
+				4C8C95C2254522870080BCC3 /* WalletAccount.swift in Sources */,
 				4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */,
 				4C005849254170AC0015DDE6 /* APIClient.swift in Sources */,
 			);

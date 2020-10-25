@@ -15,6 +15,14 @@ final class WalletApp {
   
   func configure(with window: UIWindow?) {
     self.window = window
+    if let localAccount = WalletAccount.localAccount, localAccount.isRegistered {
+      showHome()
+    } else {
+      showRegistration()
+    }
+  }
+  
+  func showRegistration() {
     let navigationController = AuthNavigationController(rootViewController: SplashViewController())
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()

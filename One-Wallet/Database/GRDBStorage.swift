@@ -1,7 +1,7 @@
 import Foundation
 import GRDB
 
-struct GRDBStorage {
+public struct GRDBStorage {
   
   let pool: DatabasePool
     
