@@ -41,6 +41,9 @@
 		4C8C95DC254563460080BCC3 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4C8C95DB254563460080BCC3 /* PhoneNumberKit */; };
 		4C8C95E22545B69A0080BCC3 /* SystemContactsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95E12545B69A0080BCC3 /* SystemContactsFetcher.swift */; };
 		4C8C95EA2545B80C0080BCC3 /* WalletContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95E92545B80C0080BCC3 /* WalletContact.swift */; };
+		4C8C95F02545C1C70080BCC3 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95EF2545C1C70080BCC3 /* ImageCache.swift */; };
+		4C8C95F52545C2020080BCC3 /* WalletContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95F42545C2020080BCC3 /* WalletContactsManager.swift */; };
+		4C8C95FA2546C7CC0080BCC3 /* ContactDiscoveryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95F92546C7CC0080BCC3 /* ContactDiscoveryOperation.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
 		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
@@ -116,6 +119,9 @@
 		4C8C95D125455AAE0080BCC3 /* ContactsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepo.swift; sourceTree = "<group>"; };
 		4C8C95E12545B69A0080BCC3 /* SystemContactsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemContactsFetcher.swift; sourceTree = "<group>"; };
 		4C8C95E92545B80C0080BCC3 /* WalletContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContact.swift; sourceTree = "<group>"; };
+		4C8C95EF2545C1C70080BCC3 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		4C8C95F42545C2020080BCC3 /* WalletContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContactsManager.swift; sourceTree = "<group>"; };
+		4C8C95F92546C7CC0080BCC3 /* ContactDiscoveryOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDiscoveryOperation.swift; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
 		4C9BE94C2536674700394248 /* Lottie+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lottie+Hashable.swift"; sourceTree = "<group>"; };
@@ -249,6 +255,7 @@
 		4C4686A8252B8A7E004A5AB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C95EE2545C1B80080BCC3 /* Caching */,
 				4C8C95E02545B68E0080BCC3 /* Contacts */,
 				4C8C95B6254467F30080BCC3 /* Keychain */,
 				4C8C95A125440BF40080BCC3 /* Crypto */,
@@ -348,6 +355,23 @@
 				4C8C95E12545B69A0080BCC3 /* SystemContactsFetcher.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		4C8C95EE2545C1B80080BCC3 /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C95EF2545C1C70080BCC3 /* ImageCache.swift */,
+			);
+			path = Caching;
+			sourceTree = "<group>";
+		};
+		4C8C95FE2546CEAC0080BCC3 /* Contacts Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C95F42545C2020080BCC3 /* WalletContactsManager.swift */,
+				4C8C95F92546C7CC0080BCC3 /* ContactDiscoveryOperation.swift */,
+			);
+			path = "Contacts Discovery";
 			sourceTree = "<group>";
 		};
 		4C9BE94B2536673000394248 /* Lottie */ = {
@@ -460,11 +484,12 @@
 		4CF7E3632514102D00BA078F /* One-Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				4C005847254170940015DDE6 /* Networks */,
+				4C8C95FE2546CEAC0080BCC3 /* Contacts Discovery */,
 				4CF7E39D2514109000BA078F /* App */,
 				4C4FE6A52540D63700960C8C /* Database */,
 				4CD08EF1253C011A004ABCE7 /* Design System */,
 				4CF7E3722514102D00BA078F /* Info.plist */,
+				4C005847254170940015DDE6 /* Networks */,
 				4CD2FE802533B5BF001771CF /* Repoistories */,
 				4CF7E39F251410AC00BA078F /* Resources */,
 				4CD2FE8D25365A60001771CF /* User Interface */,
@@ -679,6 +704,7 @@
 				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
 				4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */,
 				4C5A206E253FF5C200D8EB21 /* BaseCollectionViewController.swift in Sources */,
+				4C8C95F52545C2020080BCC3 /* WalletContactsManager.swift in Sources */,
 				4CD2FE9525365B62001771CF /* AuthNavigationController.swift in Sources */,
 				4CD2FE7C252BD05F001771CF /* TitleCell.swift in Sources */,
 				4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */,
@@ -687,8 +713,10 @@
 				4C8C95B8254468120080BCC3 /* KeychainManager.swift in Sources */,
 				4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */,
 				4C8C95BD254472B20080BCC3 /* URLRequest+Debug.swift in Sources */,
+				4C8C95F02545C1C70080BCC3 /* ImageCache.swift in Sources */,
 				4C0369AC253FF74A005ED1FE /* HomeViewController.swift in Sources */,
 				4CD08EF9253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift in Sources */,
+				4C8C95FA2546C7CC0080BCC3 /* ContactDiscoveryOperation.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4C9CAA09253DC7D9005909E9 /* UIFont+Styles.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,

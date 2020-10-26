@@ -18,4 +18,8 @@ public struct Cryptography {
     }
     fatalError("Could not generate random bytes")
   }
+  
+  public static func truncatedSHA1Base64EncodedWithoutPadding(_ value: String) -> String? {
+    return value
+  }
 }

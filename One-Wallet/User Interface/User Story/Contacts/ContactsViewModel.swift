@@ -19,12 +19,12 @@ class ContactsViewModel {
   }
   
   //MARK:- Private Published Objects
-  @Published private var _response: [Contact]? = nil
+  @Published private var _response: [WalletUser]? = nil
   @Published private var _isLoading: Bool = false
   @Published private var _error: Error? = nil
   
   //MARK:- Published Objects as Publishers
-  var response: AnyPublisher<[Contact]?, Never> {
+  var response: AnyPublisher<[WalletUser]?, Never> {
     return $_response.eraseToAnyPublisher()
   }
   var isLoading: AnyPublisher<Bool, Never> {
@@ -39,19 +39,18 @@ class ContactsViewModel {
 
   func getAllContacts() {
     self._isLoading = true
-    contactsRepo.getAllContacts()
-      .sink { completion in
-        self._isLoading = false
-        switch completion {
-        case .finished:
-          break
-        case .failure(let error):
-          self._error = error
-        }
-      } receiveValue: { contacts in
-        self._response = contacts
-      }
-      .store(in: &tokens)
-
+//    contactsRepo.getAllContacts()
+//      .sink { completion in
+//        self._isLoading = false
+//        switch completion {
+//        case .finished:
+//          break
+//        case .failure(let error):
+//          self._error = error
+//        }
+//      } receiveValue: { contacts in
+//        self._response = contacts
+//      }
+//      .store(in: &tokens)
   }
 }

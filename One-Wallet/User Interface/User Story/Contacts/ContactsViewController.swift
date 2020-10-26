@@ -19,7 +19,7 @@ class ContactsViewController: BaseCollectionViewController {
 //    let Contact
 //  }
   
-  var dataSource: UICollectionViewDiffableDataSource<Section, Contact>! = nil
+  var dataSource: UICollectionViewDiffableDataSource<Section, WalletUser>! = nil
   
   // MARK:- private iVars
   private lazy var viewModel: ContactsViewModel = {
@@ -46,8 +46,8 @@ private extension ContactsViewController {
     
   }
   
-  func responseReceived(contacts: [Contact]) {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Contact>()
+  func responseReceived(contacts: [WalletUser]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, WalletUser>()
     snapshot.appendSections([.contacts])
     snapshot.appendItems(contacts, toSection: .contacts)
     dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
@@ -79,8 +79,8 @@ private extension ContactsViewController {
 // MARK:- DataSource
 private extension ContactsViewController {
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Contact>(collectionView: collectionView) {
-      (collectionView: UICollectionView, indexPath: IndexPath, item: Contact) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, WalletUser>(collectionView: collectionView) {
+      (collectionView: UICollectionView, indexPath: IndexPath, item: WalletUser) -> UICollectionViewCell? in
       // Return the cell.
       guard let section = Section(rawValue: indexPath.section) else {
         return nil
@@ -95,8 +95,8 @@ private extension ContactsViewController {
     dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
   }
   
-  func initialSnapshot() -> NSDiffableDataSourceSnapshot<Section, Contact> {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Contact>()
+  func initialSnapshot() -> NSDiffableDataSourceSnapshot<Section, WalletUser> {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, WalletUser>()
     snapshot.appendSections([.contacts])
     snapshot.appendItems([], toSection: .contacts)
     return snapshot
@@ -106,11 +106,11 @@ private extension ContactsViewController {
 // MARK:- Cell Registration
 private extension ContactsViewController {
   
-  private var contactCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, Contact> {
-    return UICollectionView.CellRegistration<UICollectionViewListCell, Contact> { cell, indexPath, contact in
+  private var contactCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, WalletUser> {
+    return UICollectionView.CellRegistration<UICollectionViewListCell, WalletUser> { cell, indexPath, contact in
       // Populate the cell with our item description.
       var contentConfiguration = cell.defaultContentConfiguration()
-      contentConfiguration.text = contact.name
+      contentConfiguration.text = contact.contact?.firstName
       contentConfiguration.secondaryText = contact.phoneNumber
       contentConfiguration.image = UIImage.init(systemName: "person.circle")
       contentConfiguration.imageProperties.tintColor = .label

@@ -55,6 +55,7 @@ class VerifyPhoneNumberViewModel {
         }
       } receiveValue: { response in
         walletAccount.markAsRegistered()
+        WalletContactsManager.shared.fetchSystemContactsOnceIfAlreadyAuthorized()
         self._response = response
       }
       .store(in: &tokens)

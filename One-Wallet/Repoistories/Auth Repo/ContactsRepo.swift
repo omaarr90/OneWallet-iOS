@@ -8,28 +8,38 @@
 import Foundation
 import Combine
 
-public struct Contact: Hashable {
-  let phoneNumber: String
-  let name: String
+
+public struct ContactIntersectionRequest: NetworkModel {
+  let contacts: Set<String>
 }
 
+public struct ContactIntersectionResponse: NetworkModel {
+  let contacts: [ContactIntersection]
+}
+
+public struct ContactIntersection: NetworkModel {
+  let token: String
+}
+
+
 public protocol ContactsRepo {
-  func getAllContacts() -> AnyPublisher<[Contact], Error>
+  func intersectContacts(with model: ContactIntersectionRequest) -> AnyPublisher<ContactIntersectionResponse, Error>
 }
 
 public class MockContactsRepo: ContactsRepo {
-  public func getAllContacts() -> AnyPublisher<[Contact], Error> {
+  public func intersectContacts(with model: ContactIntersectionRequest) -> AnyPublisher<ContactIntersectionResponse, Error> {
+    let subset = model.contacts.prefix(10)
+    let intersection = subset.map { ContactIntersection.init(token: $0)}
+    let response = ContactIntersectionResponse.init(contacts: intersection)
     return Future { resolve in
-      let contacts = [Contact(phoneNumber: "+966542652273", name: "Omar"), Contact(phoneNumber: "+966542652274", name: "Bander")]
-      resolve(.success(contacts))
-    }.eraseToAnyPublisher()
+      resolve(.success(response))
+    }
+    .eraseToAnyPublisher()
   }
 }
 
 public class WalletContactsRepo: ContactsRepo {
-  public func getAllContacts() -> AnyPublisher<[Contact], Error> {
+  public func intersectContacts(with model: ContactIntersectionRequest) -> AnyPublisher<ContactIntersectionResponse, Error> {
     fatalError("not implemented")
   }
-  
-  
 }
