@@ -50,9 +50,9 @@ public protocol AuthRepo {
 public class MockAuthRepo: AuthRepo {
   public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error> {
     return Future { resolve in
-      return resolve(.success(()))
+      return resolve(.failure(APIError.unhandledResponse))
     }
-    .delay(for: 30, scheduler: RunLoop.main)
+    .delay(for: 1, scheduler: RunLoop.main)
     .eraseToAnyPublisher()
   }
   

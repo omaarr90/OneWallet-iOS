@@ -1,7 +1,31 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
+/* No comment provided by engineer. */
+"Error" = "Error"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.decodingError.description" = "An error has occured. Please try again"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.networkError.description" = "An error has occured. Please try again"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.requestError.description" = "An error has occured. Please try again"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.serverError.description" = "An error has occured. Please try again"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.unhandledResponse.description" = "An error has occured. Please try again"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.unknownResponse.description" = "An error has occured. Please try again"; /* NEW */
+
 /* Default title for buttons inside forms */
 "FormViewController.submitButtonText.title" = "Next";
+
+/* No comment provided by engineer. */
+"O.K" = "O.K"; /* NEW */
 
 /* Place holder for phone number */
 "SignUpViewController.PhoneNumberField.PlaceHolder" = "Phone Number";
@@ -10,7 +34,7 @@
 "SignUpViewController.SignupButton.Title" = "Signup";
 
 /* Title for submit button when loading */
-"SignUpViewController.SignupButton.Title.Loading" = "Registering..."; /* NEW */
+"SignUpViewController.SignupButton.Title.Loading" = "Registering...";
 
 /* Text for title */
 "SignUpViewController.TitleText.text" = "Enter your phone number to get started";
@@ -34,7 +58,7 @@
 "VerifyPhoneNumberViewController.SubmitButton.Title" = "Verify";
 
 /* Title for submit button when loading */
-"VerifyPhoneNumberViewController.SubmitButton.Title.Loading" = "Verifying..."; /* NEW */
+"VerifyPhoneNumberViewController.SubmitButton.Title.Loading" = "Verifying...";
 
 /* Text for title */
 "VerifyPhoneNumberViewController.TitleText.text" = "Enter the code we sent to";

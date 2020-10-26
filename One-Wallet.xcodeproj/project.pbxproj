@@ -45,6 +45,7 @@
 		4C8C95F52545C2020080BCC3 /* WalletContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95F42545C2020080BCC3 /* WalletContactsManager.swift */; };
 		4C8C95FA2546C7CC0080BCC3 /* ContactDiscoveryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95F92546C7CC0080BCC3 /* ContactDiscoveryOperation.swift */; };
 		4C8F35A725471C4300EF4580 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F35A625471C4300EF4580 /* ShimmerView.swift */; };
+		4C8F35AC254737ED00EF4580 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F35AB254737ED00EF4580 /* UIViewController+Alert.swift */; };
 		4C9BE9422536636F00394248 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9412536636F00394248 /* SplashViewController.swift */; };
 		4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE9462536653A00394248 /* AnimatedImageCell.swift */; };
 		4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BE94C2536674700394248 /* Lottie+Hashable.swift */; };
@@ -124,6 +125,7 @@
 		4C8C95F42545C2020080BCC3 /* WalletContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContactsManager.swift; sourceTree = "<group>"; };
 		4C8C95F92546C7CC0080BCC3 /* ContactDiscoveryOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDiscoveryOperation.swift; sourceTree = "<group>"; };
 		4C8F35A625471C4300EF4580 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		4C8F35AB254737ED00EF4580 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		4C9BE9412536636F00394248 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C9BE9462536653A00394248 /* AnimatedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
 		4C9BE94C2536674700394248 /* Lottie+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lottie+Hashable.swift"; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				4C9CAA08253DC7D9005909E9 /* UIFont+Styles.swift */,
+				4C8F35AB254737ED00EF4580 /* UIViewController+Alert.swift */,
 			);
 			path = "UI Extensions";
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */,
 				4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */,
 				4C4FE6C62540DA1D00960C8C /* GRDBSchemeMigrator.swift in Sources */,
+				4C8F35AC254737ED00EF4580 /* UIViewController+Alert.swift in Sources */,
 				4C9CAA11253FF180005909E9 /* OTPFieldCell.swift in Sources */,
 				4C8C95AB25440D6D0080BCC3 /* Data+Convinent.swift in Sources */,
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,

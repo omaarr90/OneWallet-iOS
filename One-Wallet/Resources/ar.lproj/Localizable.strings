@@ -1,7 +1,31 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
+/* No comment provided by engineer. */
+"Error" = "خطأ"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.decodingError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.networkError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.requestError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.serverError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.unhandledResponse.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+
+/* No comment provided by engineer. */
+"Error.unknownResponse.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+
 /* Default title for buttons inside forms */
 "FormViewController.submitButtonText.title" = "التالي";
+
+/* No comment provided by engineer. */
+"O.K" = "حسناً"; /* NEW */
 
 /* Place holder for phone number */
 "SignUpViewController.PhoneNumberField.PlaceHolder" = "رقم الجوال";
@@ -10,7 +34,7 @@
 "SignUpViewController.SignupButton.Title" = "تسجيل";
 
 /* Title for submit button when loading */
-"SignUpViewController.SignupButton.Title.Loading" = "جاري التسجيل..."; /* NEW */
+"SignUpViewController.SignupButton.Title.Loading" = "جاري التسجيل...";
 
 /* Text for title */
 "SignUpViewController.TitleText.text" = "قم بإدخال رقم الجوال لتبدأ";
@@ -34,7 +58,7 @@
 "VerifyPhoneNumberViewController.SubmitButton.Title" = "تحقق";
 
 /* Title for submit button when loading */
-"VerifyPhoneNumberViewController.SubmitButton.Title.Loading" = "جاري التحقق..."; /* NEW */
+"VerifyPhoneNumberViewController.SubmitButton.Title.Loading" = "جاري التحقق...";
 
 /* Text for title */
 "VerifyPhoneNumberViewController.TitleText.text" = "قم بإدخال الرمز المرسل إلى";

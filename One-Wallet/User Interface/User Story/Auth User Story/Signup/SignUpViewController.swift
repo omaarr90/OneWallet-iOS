@@ -62,7 +62,7 @@ private extension SignUpViewController {
   }
   
   func errorReceived(error: Error) {
-    
+    self.errorAlert(with: error.localizedDescription)
   }
   
   func responseReceived() {

@@ -64,7 +64,7 @@ private extension VerifyPhoneNumberViewController {
   }
   
   func errorReceived(error: Error) {
-    
+    self.errorAlert(with: error.localizedDescription)
   }
   
   func responseReceived() {

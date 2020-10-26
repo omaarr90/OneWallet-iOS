@@ -120,6 +120,25 @@ extension APIError {
   }
 }
 
+extension APIError: LocalizedError {
+  public var errorDescription: String? {
+    switch self {
+    case .unknownResponse:
+      return NSLocalizedString("Error.unknownResponse.description", comment: "")
+    case .networkError(_):
+      return NSLocalizedString("Error.networkError.description", comment: "")
+    case .requestError(_):
+      return NSLocalizedString("Error.requestError.description", comment: "")
+    case .serverError(_):
+      return NSLocalizedString("Error.serverError.description", comment: "")
+    case .decodingError(_):
+      return NSLocalizedString("Error.decodingError.description", comment: "")
+    case .unhandledResponse:
+      return NSLocalizedString("Error.unhandledResponse.description", comment: "")
+    }
+  }
+}
+
 public struct Request {
   let builder: RequestBuilder
   let completion: (Result<Data, APIError>) -> Void
