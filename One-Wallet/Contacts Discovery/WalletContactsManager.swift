@@ -10,9 +10,9 @@ import PhoneNumberKit
 import Combine
 
 private extension WalletContact {
-  func e164Numbers() -> [String] {
-    let allNumbers = PhoneNumberKit().parse(phoneNumbers)
-    return allNumbers.map { PhoneNumberKit().format($0, toType: .e164) }
+  func e164Numbers(with phoneNumberKit: PhoneNumberKit) -> [String] {
+    let allNumbers = phoneNumberKit.parse(phoneNumbers)
+    return allNumbers.map { phoneNumberKit.format($0, toType: .e164) }
   }
 }
 
@@ -24,13 +24,17 @@ public class WalletContactsManager {
   
   private var tokens = Set<AnyCancellable>()
   
+  private lazy var phoneNumberKit: PhoneNumberKit = {
+    return PhoneNumberKit()
+  }()
+
   private init() {
     self.systemContactsFetcher = SystemContactsFetcher()
     self.systemContactsFetcher.delegate = self
   }
   
   private func phoneNumbersForIntersection(with contacts: [WalletContact]) -> Set<String> {
-    let allNumbers = contacts.flatMap { $0.e164Numbers() }
+    let allNumbers = contacts.flatMap { $0.e164Numbers(with: self.phoneNumberKit) }
     return Set(allNumbers)
   }
 }
@@ -42,9 +46,20 @@ private extension WalletContactsManager {
     let operation = ContactDiscoveryOperation(e164sToLookup: phoneNumbers)
     operation.perform(on: DispatchQueue.main)
       .sink { discoverdContacts in
-        //
+        self.storeDiscoveredContacts(discoverdContacts, allContacts: contacts)
       }
       .store(in: &tokens)
+  }
+  
+  func storeDiscoveredContacts(_ discoveredContacts: Set<DiscoveredContactInfo>, allContacts: [WalletContact]) {
+    for info in discoveredContacts {
+      guard let e164 = info.e164 else { continue }
+      let contact = allContacts.first { $0.phoneNumbers.contains(e164) }
+      let walletUser = WalletUser(id: nil, phoneNumber: e164, contact: contact)
+      try? GRDBManager.shared.grdbStorage.pool.write { database in
+        try? walletUser.save(database)
+      }
+    }
   }
 }
 

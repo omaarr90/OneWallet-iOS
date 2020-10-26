@@ -26,7 +26,7 @@ CREATE
     TABLE
         IF NOT EXISTS "model_WalletUser" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
-            ,"phoneNumbers" INTEGER
+            ,"phoneNumber" TEXT
             ,"contact" BLOB
         )
 ;

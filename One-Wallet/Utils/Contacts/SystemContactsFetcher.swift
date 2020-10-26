@@ -224,10 +224,10 @@ public class SystemContactsFetcher: NSObject {
       }
     }
     
-    guard !systemContactsHaveBeenRequestedAtLeastOnce else {
-      completion(nil)
-      return
-    }
+//    guard !systemContactsHaveBeenRequestedAtLeastOnce else {
+//      completion(nil)
+//      return
+//    }
     setupObservationIfNecessary()
     
     switch authorizationStatus {
@@ -264,9 +264,9 @@ public class SystemContactsFetcher: NSObject {
       self.delegate?.systemContactsFetcher(self, hasAuthorizationStatus: authorizationStatus)
       return
     }
-    guard !systemContactsHaveBeenRequestedAtLeastOnce else {
-      return
-    }
+//    guard !systemContactsHaveBeenRequestedAtLeastOnce else {
+//      return
+//    }
     
     updateContacts(completion: nil, isUserRequested: false)
   }

@@ -57,22 +57,11 @@ private extension ContactsViewController {
 // MARK:- DataSource
 private extension ContactsViewController {
   func configureObservers() {
-    viewModel.isLoading
-      .sink { [weak self] isLoading in
-        self?.isLoadingUpdated(isLoading: isLoading)
-      }.store(in: &tokens)
-    
-    viewModel.error
-      .sink { [weak self] error in
-        guard let error = error else { return }
-        self?.errorReceived(error: error)
-      }.store(in: &tokens)
-    
-    viewModel.response
-      .sink { [weak self] response in
-        guard let response = response else { return }
-        self?.responseReceived(contacts: response)
-      }.store(in: &tokens)
+    viewModel.users
+      .sink { users in
+        self.updateSnapShot(with: users, animatingDifferences: true)
+      }
+      .store(in: &tokens)
   }
 }
 
@@ -91,15 +80,14 @@ private extension ContactsViewController {
       }
     }
     // load our initial data
-    let snapshot = initialSnapshot()
-    dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
+    updateSnapShot(with: [], animatingDifferences: false)
   }
   
-  func initialSnapshot() -> NSDiffableDataSourceSnapshot<Section, WalletUser> {
+  func updateSnapShot(with users: [WalletUser], animatingDifferences: Bool) {
     var snapshot = NSDiffableDataSourceSnapshot<Section, WalletUser>()
     snapshot.appendSections([.contacts])
-    snapshot.appendItems([], toSection: .contacts)
-    return snapshot
+    snapshot.appendItems(users, toSection: .contacts)
+    dataSource.apply(snapshot, animatingDifferences: animatingDifferences, completion: nil)
   }
 }
 

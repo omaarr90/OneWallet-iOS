@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import GRDB
 
 class ContactsViewModel {
   
@@ -15,42 +16,32 @@ class ContactsViewModel {
   
   init(contactsRepo: ContactsRepo) {
     self.contactsRepo = contactsRepo
-    self.getAllContacts()
+    self.setupObserving()
   }
   
   //MARK:- Private Published Objects
-  @Published private var _response: [WalletUser]? = nil
-  @Published private var _isLoading: Bool = false
-  @Published private var _error: Error? = nil
+  @Published private var _users: [WalletUser] = []
   
   //MARK:- Published Objects as Publishers
-  var response: AnyPublisher<[WalletUser]?, Never> {
-    return $_response.eraseToAnyPublisher()
-  }
-  var isLoading: AnyPublisher<Bool, Never> {
-    return $_isLoading.eraseToAnyPublisher()
-  }
-  var error: AnyPublisher<Error?, Never> {
-    return $_error.eraseToAnyPublisher()
+  var users: AnyPublisher<[WalletUser], Never> {
+    return $_users.eraseToAnyPublisher()
   }
   
   //MARK:- Private iVars
   private var tokens: Set<AnyCancellable> = Set<AnyCancellable>()
+  
+  private func setupObserving() {
+    let observation = ValueObservation.tracking { database in
+      try WalletUser.fetchAll(database)
+    }
+    observation
+      .publisher(in: GRDBManager.shared.grdbStorage.pool)
+      .replaceError(with: [])
+      .receive(on: DispatchQueue.main)
+      .sink(receiveValue: { users in
+        self._users = users
+      })
+      .store(in: &tokens)
 
-  func getAllContacts() {
-    self._isLoading = true
-//    contactsRepo.getAllContacts()
-//      .sink { completion in
-//        self._isLoading = false
-//        switch completion {
-//        case .finished:
-//          break
-//        case .failure(let error):
-//          self._error = error
-//        }
-//      } receiveValue: { contacts in
-//        self._response = contacts
-//      }
-//      .store(in: &tokens)
   }
 }
