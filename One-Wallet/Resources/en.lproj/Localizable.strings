@@ -9,6 +9,9 @@
 /* Title for signup button */
 "SignUpViewController.SignupButton.Title" = "Signup";
 
+/* Title for submit button when loading */
+"SignUpViewController.SignupButton.Title.Loading" = "Registering..."; /* NEW */
+
 /* Text for title */
 "SignUpViewController.TitleText.text" = "Enter your phone number to get started";
 
@@ -28,7 +31,10 @@
 "VerifyPhoneNumberViewController.RequestCode.Title" = "I didn't get a code";
 
 /* Title for submit button button */
-"VerifyPhoneNumberViewController.SubmitButton.Title" = "Verify"; /* NEW */
+"VerifyPhoneNumberViewController.SubmitButton.Title" = "Verify";
+
+/* Title for submit button when loading */
+"VerifyPhoneNumberViewController.SubmitButton.Title.Loading" = "Verifying..."; /* NEW */
 
 /* Text for title */
 "VerifyPhoneNumberViewController.TitleText.text" = "Enter the code we sent to";

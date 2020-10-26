@@ -39,6 +39,7 @@ class ContactDiscoveryOperation: ContactDiscovering {
         return Set(discoveredNumbers.map { DiscoveredContactInfo(e164: $0, uuid: nil) })
       }
       .replaceError(with: Set<DiscoveredContactInfo>())
+      .receive(on: queue)
       .eraseToAnyPublisher()
   }
   
@@ -88,6 +89,6 @@ class ContactDiscoveryOperation: ContactDiscovering {
 
 extension ContactDiscoveryOperation {
   private var repo: ContactsRepo {
-    return MockContactsRepo()
+    return WalletContactsRepo(api: WalletService.api)
   }
 }

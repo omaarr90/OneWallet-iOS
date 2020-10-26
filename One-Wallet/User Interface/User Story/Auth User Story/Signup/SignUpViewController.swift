@@ -30,7 +30,7 @@ class SignUpViewController: FormViewController {
   // MARK:- private iVars
   private lazy var viewModel: SignUpViewModel = {
     let authRepo = WalletAuthRepo(api: WalletService.api)
-    return SignUpViewModel(authRepo: authRepo)
+    return SignUpViewModel(authRepo: MockAuthRepo())
   }()
   
   private var tokens = Set<AnyCancellable>()
@@ -55,7 +55,7 @@ class SignUpViewController: FormViewController {
 // MARK:- View Controller State Management
 private extension SignUpViewController {
   func isLoadingUpdated(isLoading: Bool) {
-    submitButton?.isEnabled = !isLoading
+    self.isLoading = isLoading
     phoneNumberTextField?.isEnabled = !isLoading
     
     submitButtonText = isLoading ? NSLocalizedString("SignUpViewController.SignupButton.Title.Loading", comment: "Title for submit button when loading") : NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
@@ -76,17 +76,21 @@ private extension SignUpViewController {
 private extension SignUpViewController {
   func configureObservers() {
     viewModel.isLoading
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] isLoading in
         self?.isLoadingUpdated(isLoading: isLoading)
-    }.store(in: &tokens)
+    }
+      .store(in: &tokens)
     
     viewModel.error
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] error in
         guard let error = error else { return }
         self?.errorReceived(error: error)
     }.store(in: &tokens)
     
     viewModel.response
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] response in
       guard response != nil else { return }
         self?.responseReceived()
@@ -136,17 +140,6 @@ private extension SignUpViewController {
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
   }
-
-//  private var buttonCellRegistration: UICollectionView.CellRegistration<ButtonCell, FormRow> {
-//    return UICollectionView.CellRegistration<ButtonCell, FormRow> { cell, indexPath, formRow in
-//      // Populate the cell with our item description.
-//      var contentConfiguration = ButtonContentConfiguration()
-//      contentConfiguration.title = NSLocalizedString("SignUpViewController.SignupButton.Title", comment: "Title for signup button")
-//      contentConfiguration.backkgroundColor = .systemBlue
-//      cell.buttonContentConfiguration = contentConfiguration
-//      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
-//    }
-//  }
   
   private var titleCellRegistration: UICollectionView.CellRegistration<TitleCell, FormRow> {
     return UICollectionView.CellRegistration<TitleCell, FormRow> { cell, indexPath, formRow in
@@ -164,6 +157,7 @@ private extension SignUpViewController {
 // MARK:- CollectionView Delegate
 private extension SignUpViewController {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    cell.startAnimating()
     guard let item = dataSource.itemIdentifier(for: indexPath) else {
       return
     }

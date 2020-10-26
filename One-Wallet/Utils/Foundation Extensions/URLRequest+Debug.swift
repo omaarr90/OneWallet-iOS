@@ -22,6 +22,8 @@ extension URLRequest {
     
     var command = [baseCommand]
     
+    command.append("-k")
+    
     if let method = httpMethod, method != "GET" && method != "HEAD" {
       command.append("-X \(method)")
     }

@@ -64,7 +64,6 @@ public struct WalletService {
   public static let baseURL = URL(string: "https://textsecure-service.whispersystems.org/")!
   public static var api: APIClient = {
     let configuration = URLSessionConfiguration.default
-    //    configuration.httpAdditionalHeaders = [ "Authorization": "Bearer \(apiKey)"]
     return APIClient(configuration: configuration, adapters: [LoggerAdapter(), AuthAdapter()])
   }()
 }

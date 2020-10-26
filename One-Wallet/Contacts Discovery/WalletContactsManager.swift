@@ -27,6 +27,10 @@ public class WalletContactsManager {
   private lazy var phoneNumberKit: PhoneNumberKit = {
     return PhoneNumberKit()
   }()
+  
+  private lazy var intersectionQueue: DispatchQueue = {
+    return DispatchQueue.init(label: "WalletContactsManager_IntersectionQueue", qos: .utility)
+  }()
 
   private init() {
     self.systemContactsFetcher = SystemContactsFetcher()
@@ -44,7 +48,7 @@ private extension WalletContactsManager {
   func update(with contacts: [WalletContact]) {
     let phoneNumbers = self.phoneNumbersForIntersection(with: contacts)
     let operation = ContactDiscoveryOperation(e164sToLookup: phoneNumbers)
-    operation.perform(on: DispatchQueue.main)
+    operation.perform(on: intersectionQueue)
       .sink { discoverdContacts in
         self.storeDiscoveredContacts(discoverdContacts, allContacts: contacts)
       }
@@ -52,6 +56,9 @@ private extension WalletContactsManager {
   }
   
   func storeDiscoveredContacts(_ discoveredContacts: Set<DiscoveredContactInfo>, allContacts: [WalletContact]) {
+    let _ = try? GRDBManager.shared.grdbStorage.pool.write({ database in
+      try? WalletUser.deleteAll(database)
+    })
     for info in discoveredContacts {
       guard let e164 = info.e164 else { continue }
       let contact = allContacts.first { $0.phoneNumbers.contains(e164) }

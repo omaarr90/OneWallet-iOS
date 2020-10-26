@@ -34,7 +34,7 @@ class VerifyPhoneNumberViewController: FormViewController {
   // MARK:- private iVars
   private lazy var viewModel: VerifyPhoneNumberViewModel = {
     let authRepo = WalletAuthRepo(api: WalletService.api)
-    return VerifyPhoneNumberViewModel(authRepo: authRepo)
+    return VerifyPhoneNumberViewModel(authRepo: MockAuthRepo())
   }()
   
   private var tokens = Set<AnyCancellable>()

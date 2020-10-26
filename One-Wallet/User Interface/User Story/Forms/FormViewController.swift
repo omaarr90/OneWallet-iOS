@@ -10,6 +10,11 @@ import UIKit
 
 class FormViewController: UIViewController {
   
+  var isLoading: Bool = false {
+    didSet {
+      self.reloadInputViews()
+    }
+  }
   var submitButton: UIButton?
   override var inputAccessoryView: UIView? {
     let submitButton = UIButton.init(frame: .init(x: 0, y: 0, width: 0, height: 40))
@@ -28,11 +33,7 @@ class FormViewController: UIViewController {
   
   var submitButtonText: String = NSLocalizedString("FormViewController.submitButtonText.title", comment: "Default title for buttons inside forms") {
     didSet {
-      guard let button = submitButton else {
-        return
-      }
-      button.setTitle(submitButtonText, for: .normal)
-      button.setTitle(submitButtonText, for: .disabled)
+      self.reloadInputViews()
     }
   }
   
@@ -53,6 +54,14 @@ class FormViewController: UIViewController {
   @objc
   func submitButtonTapped(_ button: UIButton) {
     fatalError("Implement in subclasses")
+  }
+  
+  func setIsLoading(isLoading: Bool) {
+    guard let button = submitButton else {
+      return
+    }
+    button.isEnabled = !isLoading
+    self.reloadInputViews()
   }
 }
 

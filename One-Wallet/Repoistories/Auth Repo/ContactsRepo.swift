@@ -28,7 +28,7 @@ public protocol ContactsRepo {
 
 public class MockContactsRepo: ContactsRepo {
   public func intersectContacts(with model: ContactIntersectionRequest) -> AnyPublisher<ContactIntersectionResponse, Error> {
-    let subset = model.contacts.prefix(10)
+    let subset = model.contacts.prefix(15)
     let intersection = subset.map { ContactIntersection.init(token: $0)}
     let response = ContactIntersectionResponse.init(contacts: intersection)
     return Future { resolve in
@@ -38,8 +38,34 @@ public class MockContactsRepo: ContactsRepo {
   }
 }
 
+private extension Request {
+  static func contactsIntersection(model: ContactIntersectionRequest, completion: @escaping (Result<ContactIntersectionResponse, APIError>) -> Void) -> Request {
+    Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/directory/tokens", params: nil, body: model) { result in
+      result.decoding(ContactIntersectionResponse.self, completion: completion)
+    }
+  }
+}
+
 public class WalletContactsRepo: ContactsRepo {
+  
+  private var api: APIClient
+  
+  init(api: APIClient) {
+    self.api = api
+  }
+
   public func intersectContacts(with model: ContactIntersectionRequest) -> AnyPublisher<ContactIntersectionResponse, Error> {
-    fatalError("not implemented")
+    return Future { resolve in
+      self.api.send(request: .contactsIntersection(model: model, completion: { result in
+        switch result {
+        case .success(let response):
+          resolve(.success(response))
+        case .failure(let error):
+          resolve(.failure(error))
+        }
+      }))
+
+    }
+    .eraseToAnyPublisher()
   }
 }

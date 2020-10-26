@@ -9,6 +9,9 @@
 /* Title for signup button */
 "SignUpViewController.SignupButton.Title" = "تسجيل";
 
+/* Title for submit button when loading */
+"SignUpViewController.SignupButton.Title.Loading" = "جاري التسجيل..."; /* NEW */
+
 /* Text for title */
 "SignUpViewController.TitleText.text" = "قم بإدخال رقم الجوال لتبدأ";
 
@@ -28,7 +31,10 @@
 "VerifyPhoneNumberViewController.RequestCode.Title" = "لم أحصل على الرمز";
 
 /* Title for submit button button */
-"VerifyPhoneNumberViewController.SubmitButton.Title" = "تحقق"; /* NEW */
+"VerifyPhoneNumberViewController.SubmitButton.Title" = "تحقق";
+
+/* Title for submit button when loading */
+"VerifyPhoneNumberViewController.SubmitButton.Title.Loading" = "جاري التحقق..."; /* NEW */
 
 /* Text for title */
 "VerifyPhoneNumberViewController.TitleText.text" = "قم بإدخال الرمز المرسل إلى";

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 public struct Cryptography {
   
@@ -20,6 +21,15 @@ public struct Cryptography {
   }
   
   public static func truncatedSHA1Base64EncodedWithoutPadding(_ value: String) -> String? {
-    return value
+    guard let data = value.data(using: .utf8) else {
+      assertionFailure("Couldn't create data for \(value)")
+      return nil
+    }
+    
+    let hash = Insecure.SHA1.hash(data: data)
+    let truncated = hash.prefix(10)
+    let truncatedData = Data(truncated)
+    let base64 = truncatedData.base64EncodedString(options: .init(rawValue: 0))
+     return base64.replacingOccurrences(of: "=", with: "")
   }
 }

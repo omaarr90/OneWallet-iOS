@@ -36,10 +36,10 @@ public class KeychainManager {
   }
   
   public func saveBasicAuthCredintials(username: String, password: String) throws {
-    let basicAuthCredentials = "\(username):\(password)".data(using: .utf8)
-    guard let base64AuthCredentials = basicAuthCredentials?.base64EncodedString(options: .init(rawValue: 0)) else {
-      fatalError("unable to encode basic auth credintials")
+    guard let basicAuthCredentials = "\(username):\(password)".data(using: .utf8) else {
+      fatalError("unable to generate basic auth credintials")
     }
+    let base64AuthCredentials = basicAuthCredentials.base64EncodedString(options: .init(rawValue: 0))
     try keychain.set(base64AuthCredentials, key: basicAuthKey)
   }
   
