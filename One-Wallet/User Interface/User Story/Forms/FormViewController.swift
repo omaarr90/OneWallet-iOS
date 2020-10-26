@@ -8,6 +8,22 @@
 
 import UIKit
 
+private extension UIButton {
+  func addLoadingIndicator() {
+    self.isEnabled = false
+    let indicator = UIActivityIndicatorView(style: .medium)
+    indicator.color = .white
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    self.addSubview(indicator)
+    NSLayoutConstraint.activate([
+      indicator.topAnchor.constraint(equalTo: self.topAnchor),
+      indicator.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      indicator.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: LayoutGuide.Margine.defaultTrailing),
+    ])
+    indicator.startAnimating()
+  }
+}
+
 class FormViewController: UIViewController {
   
   var isLoading: Bool = false {
@@ -24,6 +40,9 @@ class FormViewController: UIViewController {
     submitButton.clipsToBounds = true
     submitButton.layer.cornerRadius = 6.0
     submitButton.setTitle(submitButtonText, for: .normal)
+    if isLoading {
+      submitButton.addLoadingIndicator()
+    }
     
     self.submitButton = submitButton
     return SafeAreaInputAccessoryViewWrapperView(for: submitButton, color: .systemFill)

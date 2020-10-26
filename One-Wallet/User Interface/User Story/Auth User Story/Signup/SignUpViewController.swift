@@ -157,7 +157,6 @@ private extension SignUpViewController {
 // MARK:- CollectionView Delegate
 private extension SignUpViewController {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    cell.startAnimating()
     guard let item = dataSource.itemIdentifier(for: indexPath) else {
       return
     }

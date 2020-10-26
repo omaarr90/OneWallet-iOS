@@ -57,7 +57,7 @@ class VerifyPhoneNumberViewController: FormViewController {
 // MARK:- View Controller State Management
 private extension VerifyPhoneNumberViewController {
   func isLoadingUpdated(isLoading: Bool) {
-    submitButton?.isEnabled = !isLoading
+    self.isLoading = isLoading
     otpTextField?.isEnabled = !isLoading
     
     submitButtonText = isLoading ? NSLocalizedString("VerifyPhoneNumberViewController.SubmitButton.Title.Loading", comment: "Title for submit button when loading") : NSLocalizedString("VerifyPhoneNumberViewController.SubmitButton.Title", comment: "Title for submit button button")

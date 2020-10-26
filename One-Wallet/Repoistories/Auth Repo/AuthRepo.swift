@@ -60,7 +60,7 @@ public class MockAuthRepo: AuthRepo {
     return Future { resolve in
       return resolve(.success(()))
     }
-    .delay(for: 30, scheduler: RunLoop.main)
+    .delay(for: 1, scheduler: RunLoop.main)
     .eraseToAnyPublisher()
   }
 }
