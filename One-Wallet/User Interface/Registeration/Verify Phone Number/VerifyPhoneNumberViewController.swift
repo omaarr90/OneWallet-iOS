@@ -165,7 +165,7 @@ private extension VerifyPhoneNumberViewController {
       // Populate the cell with our item description.
       var contentConfiguration = TitleContentConfiguration()
       let title = NSLocalizedString("VerifyPhoneNumberViewController.TitleText.text", comment: "Text for title")
-      contentConfiguration.title = "\(title) \(self.phoneNumber!)"
+      contentConfiguration.title = "\(title) \(self.phoneNumber)"
       contentConfiguration.fontStyle = .title1
       cell.titleContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()

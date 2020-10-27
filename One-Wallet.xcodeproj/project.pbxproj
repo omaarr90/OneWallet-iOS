@@ -19,6 +19,7 @@
 		4C06BF6C251412A00007A4CA /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF66251412A00007A4CA /* FormViewController.swift */; };
 		4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF68251412A00007A4CA /* TextFieldCell.swift */; };
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
+		4C43DF572547FAD800DD1202 /* WalletUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF562547FAD800DD1202 /* WalletUIController.swift */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
 		4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6B82540D92400960C8C /* GRDBStorage.swift */; };
@@ -102,6 +103,7 @@
 		4C06BF66251412A00007A4CA /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		4C43DF562547FAD800DD1202 /* WalletUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletUIController.swift; sourceTree = "<group>"; };
 		4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		4C4FE6B82540D92400960C8C /* GRDBStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBStorage.swift; sourceTree = "<group>"; };
 		4C4FE6C02540D95500960C8C /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				4C0369AA253FF733005ED1FE /* Home */,
 				4C6F39C7253FF6D600D163BB /* Base Collection View */,
 				4CD2FE8E25365A78001771CF /* Common View Controllers */,
+				4C43DF562547FAD800DD1202 /* WalletUIController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				4CD08F02253DB97B004ABCE7 /* VerifyPhoneNumberViewController.swift in Sources */,
 				4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */,
 				4C8C95A325440C110080BCC3 /* Cryptography.swift in Sources */,
+				4C43DF572547FAD800DD1202 /* WalletUIController.swift in Sources */,
 				4C4FE6F12540F61200960C8C /* WalletPreferences.swift in Sources */,
 				4C8C95CD25455A660080BCC3 /* ContactsViewModel.swift in Sources */,
 				4C4FE6E42540E8B300960C8C /* KeyValueStore.swift in Sources */,
