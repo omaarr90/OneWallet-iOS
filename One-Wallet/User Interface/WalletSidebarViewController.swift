@@ -20,7 +20,6 @@ class WalletSidebarViewController: BaseCollectionViewController {
   
   enum Option {
     case wallets
-    case contacts
     case notifications
     case settings
   }
@@ -76,7 +75,7 @@ private extension WalletSidebarViewController {
   func initialSnapshot() -> NSDiffableDataSourceSnapshot<Section, Option> {
     var snapshot = NSDiffableDataSourceSnapshot<Section, Option>()
     snapshot.appendSections([.main])
-    snapshot.appendItems([.wallets, .contacts, .notifications, .settings], toSection: .main)
+    snapshot.appendItems([.wallets, .notifications, .settings], toSection: .main)
     return snapshot
   }
 }
@@ -101,8 +100,6 @@ private extension WalletSidebarViewController.Option {
     switch self {
     case .wallets:
       return NSLocalizedString("WalletSidebarViewController.Row.wallets.description", comment: "")
-    case .contacts:
-      return NSLocalizedString("WalletSidebarViewController.Row.contacts.description", comment: "")
     case .notifications:
       return NSLocalizedString("WalletSidebarViewController.Row.notifications.description", comment: "")
     case .settings:
@@ -114,8 +111,6 @@ private extension WalletSidebarViewController.Option {
     switch self {
     case .wallets:
       return UIImage(systemName: "creditcard")
-    case .contacts:
-      return UIImage(systemName: "person.3")
     case .notifications:
       return UIImage(systemName: "exclamationmark.triangle")
     case .settings:

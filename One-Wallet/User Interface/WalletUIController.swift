@@ -15,11 +15,9 @@ class WalletUIController {
   // MARK:- Sidebar View Controllers
   private var sidebarController: WalletSidebarViewController
   private var walletListController: UIViewController
-  private var contactListController: UIViewController
   
   // MARK:- Tabbar ViewControllers
   private var walletListNavigationController: UIViewController
-  private var contactListNavigationController: UIViewController
   private var notificationsNavigationController: UIViewController
   private var settingsNavigationController: UIViewController
   
@@ -34,20 +32,12 @@ class WalletUIController {
     let walletListController = WalletListViewController()
     self.walletListController = walletListController
     
-    let contactListController = ContactsViewController()
-    self.contactListController = contactListController
     
     let walletListNavigationController = WalletNavigationController(rootViewController: walletListController)
     walletListNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.wallets.description", comment: ""),
                                   image: UIImage(systemName: "creditcard"),
                                   selectedImage: UIImage(systemName: "creditcard"))
     self.walletListNavigationController = walletListNavigationController
-    
-    let contactListNavigationController = WalletNavigationController(rootViewController: contactListController)
-    contactListNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.contacts.description", comment: ""),
-                                  image: UIImage(systemName: "person.3"),
-                                  selectedImage: UIImage(systemName: "person.3"))
-    self.contactListNavigationController = contactListNavigationController
     
     let notificationsNavigationController = WalletNavigationController(rootViewController: UIViewController())
     notificationsNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.notifications.description", comment: ""),
@@ -63,7 +53,6 @@ class WalletUIController {
     
     let tabBarController = UITabBarController()
     tabBarController.viewControllers = [walletListNavigationController,
-                                        contactListNavigationController,
                                         notificationsNavigationController,
                                         settingsNavigationController]
     self.tabBarController = tabBarController
@@ -92,10 +81,7 @@ extension WalletUIController: WalletSidebarViewControllerDelegate {
     switch option {
     case .wallets:
       self.splitViewController.setViewController(walletListController, for: .supplementary)
-      self.splitViewController.show(.supplementary)
-    case .contacts:
-      self.splitViewController.setViewController(contactListController, for: .secondary)
-      self.splitViewController.hide(.supplementary)
+      self.splitViewController.show(.secondary)
     case .notifications:
       break
     case .settings:
