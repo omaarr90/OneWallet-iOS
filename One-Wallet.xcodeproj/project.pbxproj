@@ -216,16 +216,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		4C06BF61251412A00007A4CA /* Auth User Story */ = {
-			isa = PBXGroup;
-			children = (
-				4CD08F00253DB946004ABCE7 /* Verify Phone Number */,
-				4C06BF62251412A00007A4CA /* Signup */,
-				4C9BE9412536636F00394248 /* SplashViewController.swift */,
-			);
-			path = "Auth User Story";
-			sourceTree = "<group>";
-		};
 		4C06BF62251412A00007A4CA /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +368,16 @@
 			path = "Contacts Discovery";
 			sourceTree = "<group>";
 		};
+		4C8F35B02547C15F00EF4580 /* Registeration */ = {
+			isa = PBXGroup;
+			children = (
+				4CD08F00253DB946004ABCE7 /* Verify Phone Number */,
+				4C06BF62251412A00007A4CA /* Signup */,
+				4C9BE9412536636F00394248 /* SplashViewController.swift */,
+			);
+			path = Registeration;
+			sourceTree = "<group>";
+		};
 		4C9BE94B2536673000394248 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,21 +450,23 @@
 		4CD2FE8D25365A60001771CF /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C95C625455A0C0080BCC3 /* Contacts */,
+				4C06BF65251412A00007A4CA /* Forms */,
+				4C8F35B02547C15F00EF4580 /* Registeration */,
 				4C0369AA253FF733005ED1FE /* Home */,
 				4C6F39C7253FF6D600D163BB /* Base Collection View */,
-				4CD2FE8E25365A78001771CF /* View Controllers */,
-				4CF7E39E2514109F00BA078F /* User Story */,
+				4CD2FE8E25365A78001771CF /* Common View Controllers */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
 		};
-		4CD2FE8E25365A78001771CF /* View Controllers */ = {
+		4CD2FE8E25365A78001771CF /* Common View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */,
 				4CD2FE9425365B62001771CF /* AuthNavigationController.swift */,
 			);
-			path = "View Controllers";
+			path = "Common View Controllers";
 			sourceTree = "<group>";
 		};
 		4CF7E3582514102D00BA078F = {
@@ -531,16 +533,6 @@
 				4CF7E3A0251410E200BA078F /* WalletApp.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		4CF7E39E2514109F00BA078F /* User Story */ = {
-			isa = PBXGroup;
-			children = (
-				4C8C95C625455A0C0080BCC3 /* Contacts */,
-				4C06BF61251412A00007A4CA /* Auth User Story */,
-				4C06BF65251412A00007A4CA /* Forms */,
-			);
-			path = "User Story";
 			sourceTree = "<group>";
 		};
 		4CF7E39F251410AC00BA078F /* Resources */ = {
