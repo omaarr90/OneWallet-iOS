@@ -1,31 +1,31 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
 /* No comment provided by engineer. */
-"Error" = "خطأ"; /* NEW */
+"Error" = "خطأ";
 
 /* No comment provided by engineer. */
-"Error.decodingError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+"Error.decodingError.description" = "حدث خطأ. من فضلك حاول مجدداً";
 
 /* No comment provided by engineer. */
-"Error.networkError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+"Error.networkError.description" = "حدث خطأ. من فضلك حاول مجدداً";
 
 /* No comment provided by engineer. */
-"Error.requestError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+"Error.requestError.description" = "حدث خطأ. من فضلك حاول مجدداً";
 
 /* No comment provided by engineer. */
-"Error.serverError.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+"Error.serverError.description" = "حدث خطأ. من فضلك حاول مجدداً";
 
 /* No comment provided by engineer. */
-"Error.unhandledResponse.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+"Error.unhandledResponse.description" = "حدث خطأ. من فضلك حاول مجدداً";
 
 /* No comment provided by engineer. */
-"Error.unknownResponse.description" = "حدث خطأ. من فضلك حاول مجدداً"; /* NEW */
+"Error.unknownResponse.description" = "حدث خطأ. من فضلك حاول مجدداً";
 
 /* Default title for buttons inside forms */
 "FormViewController.submitButtonText.title" = "التالي";
 
 /* No comment provided by engineer. */
-"O.K" = "حسناً"; /* NEW */
+"O.K" = "حسناً";
 
 /* Place holder for phone number */
 "SignUpViewController.PhoneNumberField.PlaceHolder" = "رقم الجوال";
@@ -65,4 +65,16 @@
 
 /* Title for wrong number button */
 "VerifyPhoneNumberViewController.WrongNumber.Title" = "الرقم خاطئ؟";
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.contacts.description" = "جهات الإتصال"; /* NEW */
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.notifications.description" = "التنبيهات"; /* NEW */
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.settings.description" = "الاعدادات"; /* NEW */
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.wallets.description" = "المحافظ";
 

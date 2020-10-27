@@ -20,6 +20,9 @@
 		4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF68251412A00007A4CA /* TextFieldCell.swift */; };
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
 		4C43DF572547FAD800DD1202 /* WalletUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF562547FAD800DD1202 /* WalletUIController.swift */; };
+		4C43DF5C2548492300DD1202 /* WalletSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF5B2548492300DD1202 /* WalletSidebarViewController.swift */; };
+		4C43DF622548501300DD1202 /* WalletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF612548501300DD1202 /* WalletListViewController.swift */; };
+		4C43DF672548506100DD1202 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF662548506100DD1202 /* WalletViewController.swift */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
 		4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6B82540D92400960C8C /* GRDBStorage.swift */; };
@@ -104,6 +107,9 @@
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		4C43DF562547FAD800DD1202 /* WalletUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletUIController.swift; sourceTree = "<group>"; };
+		4C43DF5B2548492300DD1202 /* WalletSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSidebarViewController.swift; sourceTree = "<group>"; };
+		4C43DF612548501300DD1202 /* WalletListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListViewController.swift; sourceTree = "<group>"; };
+		4C43DF662548506100DD1202 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		4C4FE6B82540D92400960C8C /* GRDBStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBStorage.swift; sourceTree = "<group>"; };
 		4C4FE6C02540D95500960C8C /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
@@ -246,6 +252,15 @@
 				4C9CAA10253FF180005909E9 /* OTPFieldCell.swift */,
 			);
 			path = "Form Cells";
+			sourceTree = "<group>";
+		};
+		4C43DF6025484FF400DD1202 /* Wallets */ = {
+			isa = PBXGroup;
+			children = (
+				4C43DF612548501300DD1202 /* WalletListViewController.swift */,
+				4C43DF662548506100DD1202 /* WalletViewController.swift */,
+			);
+			path = Wallets;
 			sourceTree = "<group>";
 		};
 		4C4686A8252B8A7E004A5AB6 /* Utils */ = {
@@ -452,6 +467,7 @@
 		4CD2FE8D25365A60001771CF /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				4C43DF6025484FF400DD1202 /* Wallets */,
 				4C8C95C625455A0C0080BCC3 /* Contacts */,
 				4C06BF65251412A00007A4CA /* Forms */,
 				4C8F35B02547C15F00EF4580 /* Registeration */,
@@ -459,6 +475,7 @@
 				4C6F39C7253FF6D600D163BB /* Base Collection View */,
 				4CD2FE8E25365A78001771CF /* Common View Controllers */,
 				4C43DF562547FAD800DD1202 /* WalletUIController.swift */,
+				4C43DF5B2548492300DD1202 /* WalletSidebarViewController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -697,9 +714,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */,
+				4C43DF622548501300DD1202 /* WalletListViewController.swift in Sources */,
 				4C9BE9472536653A00394248 /* AnimatedImageCell.swift in Sources */,
 				4C4FE6C62540DA1D00960C8C /* GRDBSchemeMigrator.swift in Sources */,
+				4C43DF672548506100DD1202 /* WalletViewController.swift in Sources */,
 				4C8F35AC254737ED00EF4580 /* UIViewController+Alert.swift in Sources */,
+				4C43DF5C2548492300DD1202 /* WalletSidebarViewController.swift in Sources */,
 				4C9CAA11253FF180005909E9 /* OTPFieldCell.swift in Sources */,
 				4C8C95AB25440D6D0080BCC3 /* Data+Convinent.swift in Sources */,
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,

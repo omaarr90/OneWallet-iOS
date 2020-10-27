@@ -1,31 +1,31 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
 /* No comment provided by engineer. */
-"Error" = "Error"; /* NEW */
+"Error" = "Error";
 
 /* No comment provided by engineer. */
-"Error.decodingError.description" = "An error has occured. Please try again"; /* NEW */
+"Error.decodingError.description" = "An error has occured. Please try again";
 
 /* No comment provided by engineer. */
-"Error.networkError.description" = "An error has occured. Please try again"; /* NEW */
+"Error.networkError.description" = "An error has occured. Please try again";
 
 /* No comment provided by engineer. */
-"Error.requestError.description" = "An error has occured. Please try again"; /* NEW */
+"Error.requestError.description" = "An error has occured. Please try again";
 
 /* No comment provided by engineer. */
-"Error.serverError.description" = "An error has occured. Please try again"; /* NEW */
+"Error.serverError.description" = "An error has occured. Please try again";
 
 /* No comment provided by engineer. */
-"Error.unhandledResponse.description" = "An error has occured. Please try again"; /* NEW */
+"Error.unhandledResponse.description" = "An error has occured. Please try again";
 
 /* No comment provided by engineer. */
-"Error.unknownResponse.description" = "An error has occured. Please try again"; /* NEW */
+"Error.unknownResponse.description" = "An error has occured. Please try again";
 
 /* Default title for buttons inside forms */
 "FormViewController.submitButtonText.title" = "Next";
 
 /* No comment provided by engineer. */
-"O.K" = "O.K"; /* NEW */
+"O.K" = "O.K";
 
 /* Place holder for phone number */
 "SignUpViewController.PhoneNumberField.PlaceHolder" = "Phone Number";
@@ -65,4 +65,16 @@
 
 /* Title for wrong number button */
 "VerifyPhoneNumberViewController.WrongNumber.Title" = "Wrong number?";
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.contacts.description" = "Contacts"; /* NEW */
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.notifications.description" = "Notifications"; /* NEW */
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.settings.description" = "Settings"; /* NEW */
+
+/* No comment provided by engineer. */
+"WalletSidebarViewController.Row.wallets.description" = "Wallets";
 

@@ -31,7 +31,7 @@ class ContactsViewController: BaseCollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Contacts"
+    self.title = NSLocalizedString("WalletSidebarViewController.Row.contacts.description", comment: "")
     configureDataSource()
     configureObservers()
   }

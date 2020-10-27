@@ -15,10 +15,7 @@ class BaseCollectionViewController: UIViewController {
     super.viewDidLoad()
     configureCollectionView()
   }
-}
-
-// MARK:- CollectionView Layout
-extension BaseCollectionViewController {
+  
   
   func configureCollectionView() {
     let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
@@ -38,9 +35,15 @@ extension BaseCollectionViewController {
   }
 }
 
+// MARK:- CollectionView Layout
+extension BaseCollectionViewController {
+}
+
 // MARK:- CollectionView DataSource
 extension BaseCollectionViewController {
 }
 
 // MARK:- CollectionView Delegate
-extension BaseCollectionViewController: UICollectionViewDelegate {}
+extension BaseCollectionViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+}
