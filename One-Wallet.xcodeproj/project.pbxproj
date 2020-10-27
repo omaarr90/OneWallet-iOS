@@ -492,8 +492,8 @@
 		4CF7E3632514102D00BA078F /* One-Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				4C8C95FE2546CEAC0080BCC3 /* Contacts Discovery */,
 				4CF7E39D2514109000BA078F /* App */,
+				4C8C95FE2546CEAC0080BCC3 /* Contacts Discovery */,
 				4C4FE6A52540D63700960C8C /* Database */,
 				4CD08EF1253C011A004ABCE7 /* Design System */,
 				4CF7E3722514102D00BA078F /* Info.plist */,

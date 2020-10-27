@@ -18,6 +18,11 @@ public struct VerifyPhoneNumberRequest: NetworkModel {
   var discoverableByPhoneNumber = false
 }
 
+public struct VerifyPhoneNumberResponse: NetworkModel {
+  let uuid: String
+  var storageCapable: Bool
+}
+
 private extension Request {
   static func signup(model: SignupRequest, completion: @escaping (Result<Void, APIError>) -> Void) -> Request {
     Request.basic(baseURL: WalletService.baseURL, path: "v1/accounts/\(model.transport)/code/\(model.phoneNumber)") { result in
@@ -30,25 +35,20 @@ private extension Request {
     }
   }
   
-  static func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest, completion: @escaping (Result<Void, APIError>) -> Void) -> Request {
+  static func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest, completion: @escaping (Result<VerifyPhoneNumberResponse, APIError>) -> Void) -> Request {
     Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/accounts/code/\(verificationCode)", body: model) { result in
-      switch result {
-      case .success(_):
-        completion(.success(()))
-      case .failure(let error):
-        completion(.failure(error))
-      }
+      result.decoding(VerifyPhoneNumberResponse.self, completion: completion)
     }
   }
 }
 
 public protocol AuthRepo {
   func signup(with model: SignupRequest) -> AnyPublisher<Void, Error>
-  func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error>
+  func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<VerifyPhoneNumberResponse, Error>
 }
 
 public class MockAuthRepo: AuthRepo {
-  public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error> {
+  public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<VerifyPhoneNumberResponse, Error> {
     return Future { resolve in
       return resolve(.failure(APIError.unhandledResponse))
     }
@@ -87,7 +87,7 @@ public class WalletAuthRepo: AuthRepo {
     }.eraseToAnyPublisher()
   }
   
-  public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<Void, Error> {
+  public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<VerifyPhoneNumberResponse, Error> {
     return Future { resolve in
       self.api.send(request: .verifyPhoneNumber(verificationCode: verificationCode, model: model) { result in
         switch result {

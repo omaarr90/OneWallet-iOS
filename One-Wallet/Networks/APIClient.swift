@@ -98,11 +98,13 @@ extension WalletService {
   struct AuthAdapter: RequestAdapter {
     func adapt(_ request: inout URLRequest) {
       //
-      guard let basicAuth = try? KeychainManager.shared.getBasicAuth() else {
+      guard let username = WalletAccount.localAccount?.getServerUserName(),
+            let password = try? KeychainManager.shared.getServerAuthKey() else {
         Logger.debug("Not setting Authorization header for request \(request)")
         return
       }
-      request.setValue("Basic \(basicAuth)", forHTTPHeaderField: "Authorization")
+      let basicAuthValue = Cryptography.basicAuth(username: username, password: password)
+      request.setValue("Basic \(basicAuthValue)", forHTTPHeaderField: "Authorization")
     }
   }
 }

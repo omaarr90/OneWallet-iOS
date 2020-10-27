@@ -19,6 +19,7 @@ CREATE
             ,"phoneNumber" TEXT
             ,"isOnboarded" INTEGER
             ,"isRegistered" INTEGER
+            ,"uuid" TEXT
         )
 ;
 

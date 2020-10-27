@@ -18,12 +18,12 @@ class VerifyPhoneNumberViewModel {
   }
   
   //MARK:- Private Published Objects
-  @Published private var _response: Void? = nil
+  @Published private var _response: VerifyPhoneNumberResponse? = nil
   @Published private var _isLoading: Bool = false
   @Published private var _error: Error? = nil
   
   //MARK:- Published Objects as Publishers
-  var response: AnyPublisher<Void?, Never> {
+  var response: AnyPublisher<VerifyPhoneNumberResponse?, Never> {
     return $_response.eraseToAnyPublisher()
   }
   var isLoading: AnyPublisher<Bool, Never> {
@@ -55,6 +55,7 @@ class VerifyPhoneNumberViewModel {
         }
       } receiveValue: { response in
         walletAccount.markAsRegistered()
+        walletAccount.setUUID(uuid: response.uuid)
         WalletContactsManager.shared.fetchSystemContactsOnceIfAlreadyAuthorized()
         self._response = response
       }

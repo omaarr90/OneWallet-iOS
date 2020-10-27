@@ -30,7 +30,7 @@ class SignUpViewController: FormViewController {
   // MARK:- private iVars
   private lazy var viewModel: SignUpViewModel = {
     let authRepo = WalletAuthRepo(api: WalletService.api)
-    return SignUpViewModel(authRepo: MockAuthRepo())
+    return SignUpViewModel(authRepo: authRepo)
   }()
   
   private var tokens = Set<AnyCancellable>()

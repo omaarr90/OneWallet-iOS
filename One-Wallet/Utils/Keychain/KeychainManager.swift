@@ -14,8 +14,7 @@ public class KeychainManager {
   public static let shared = KeychainManager()
   
   private let walletService = "walletService"
-  private let basicAuthKey = "basicAuthKey"
-  private let registrationID = "registrationID"
+  private let serverAuthKey = "serverAuthKey"
   private let userIDKey = "userIDKey"
   private let didRunForFirstTime = "didRunForFirstTime"
   
@@ -35,34 +34,19 @@ public class KeychainManager {
     try? keychain.removeAll()
   }
   
-  public func saveBasicAuthCredintials(username: String, password: String) throws {
-    guard let basicAuthCredentials = "\(username):\(password)".data(using: .utf8) else {
-      fatalError("unable to generate basic auth credintials")
-    }
-    let base64AuthCredentials = basicAuthCredentials.base64EncodedString(options: .init(rawValue: 0))
-    try keychain.set(base64AuthCredentials, key: basicAuthKey)
+  public func saveServerAuthKey(authKey: String) throws {
+    try keychain.set(authKey, key: serverAuthKey)
   }
   
   public func saveUserID(userID: String) throws {
     try keychain.set(userID, key: userIDKey)
   }
   
-  public func saveRegistrationID(registrationId: UInt32) throws {
-    try keychain.set("\(registrationId)", key: registrationID)
-  }
-  
-  public func getBasicAuth() throws -> String? {
-    return try keychain.getString(basicAuthKey)
+  public func getServerAuthKey() throws -> String? {
+    return try keychain.getString(serverAuthKey)
   }
   
   public func getUserID() throws -> String? {
     return try keychain.getString(userIDKey)
-  }
-
-  public func getRegistrationID() throws -> UInt32? {
-    if let registrationID = try keychain.getString(registrationID) {
-      return UInt32(registrationID)
-    }
-    return nil
   }
 }

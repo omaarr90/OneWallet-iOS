@@ -32,4 +32,12 @@ public struct Cryptography {
     let base64 = truncatedData.base64EncodedString(options: .init(rawValue: 0))
      return base64.replacingOccurrences(of: "=", with: "")
   }
+  
+  public static func basicAuth(username: String, password: String) -> String {
+    guard let basicAuthCredentials = "\(username):\(password)".data(using: .utf8) else {
+      fatalError("unable to generate basic auth credintials")
+    }
+    let base64AuthCredentials = basicAuthCredentials.base64EncodedString(options: .init(rawValue: 0))
+    return base64AuthCredentials
+  }
 }

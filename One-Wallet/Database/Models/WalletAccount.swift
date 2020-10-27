@@ -14,6 +14,7 @@ public struct WalletAccount: Codable {
   public let phoneNumber: String?
   public let isOnboarded: Bool
   public var isRegistered: Bool
+  public var uuid: String?
 }
 
 extension WalletAccount: Hashable {}
@@ -39,7 +40,7 @@ public extension WalletAccount {
     guard let phoneNumber = try? KeychainManager.shared.getUserID() else {
       fatalError("Cannot get user phone number")
     }
-    let account = WalletAccount(id: nil, registrationId: 0, phoneNumber: phoneNumber, isOnboarded: false, isRegistered: false)
+    let account = WalletAccount(id: nil, registrationId: 0, phoneNumber: phoneNumber, isOnboarded: false, isRegistered: false, uuid: nil)
     try? GRDBManager.shared.grdbStorage.pool.write { database in
       try account.insert(database)
     }
@@ -65,6 +66,17 @@ public extension WalletAccount {
     try? GRDBManager.shared.grdbStorage.pool.write { database in
       var account = try? WalletAccount.fetchOne(database, sql: "select * from \(Self.databaseTableName) where phoneNumber = ?", arguments: [phoneNumber])
       account?.isRegistered = true
+      try? account?.update(database)
+    }
+  }
+
+  func setUUID(uuid: String) {
+    guard let phoneNumber = self.phoneNumber else {
+      fatalError("Cannot get user phone number")
+    }
+    try? GRDBManager.shared.grdbStorage.pool.write { database in
+      var account = try? WalletAccount.fetchOne(database, sql: "select * from \(Self.databaseTableName) where phoneNumber = ?", arguments: [phoneNumber])
+      account?.uuid = uuid
       try? account?.update(database)
     }
   }
@@ -95,10 +107,7 @@ public extension WalletAccount {
   
   func generateServerAuthToken() -> String {
     let authKey = Cryptography.generateRandomBytes(count: 16).hexadecimalString()
-    guard let phoneNumber = self.phoneNumber else {
-      fatalError("phone number for self is not created")
-    }
-    try? KeychainManager.shared.saveBasicAuthCredintials(username: phoneNumber, password: authKey)
+    try? KeychainManager.shared.saveServerAuthKey(authKey: authKey)
     return authKey
   }
   
@@ -106,5 +115,14 @@ public extension WalletAccount {
     let registrationId = arc4random_uniform(16380) + 1
     self.setRegistrationId(registrationId: registrationId)
     return registrationId
+  }
+  
+  func getServerUserName() -> String? {
+    if let uuidString = self.uuid {
+      let uuid = UUID(uuidString: uuidString)
+      return uuid?.uuidString
+    } else {
+      return self.phoneNumber
+    }
   }
 }
