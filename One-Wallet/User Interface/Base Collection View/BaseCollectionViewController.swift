@@ -33,6 +33,19 @@ class BaseCollectionViewController: UIViewController {
     let layout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
     return layout
   }
+  
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    
+    guard self.traitCollection != previousTraitCollection else { return }
+    
+    if self.traitCollection.horizontalSizeClass == .regular {
+      // we're in split view
+      self.view.backgroundColor = .systemBlue
+    } else if self.traitCollection.horizontalSizeClass == .compact {
+      self.view.backgroundColor = .systemRed
+    }
+  }
 }
 
 // MARK:- CollectionView Layout

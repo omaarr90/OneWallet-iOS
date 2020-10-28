@@ -33,7 +33,7 @@ class WalletUIController {
     self.walletListController = walletListController
     
     
-    let walletListNavigationController = WalletNavigationController(rootViewController: walletListController)
+    let walletListNavigationController = WalletNavigationController(rootViewController: WalletListViewController())
     walletListNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.wallets.description", comment: ""),
                                   image: UIImage(systemName: "creditcard"),
                                   selectedImage: UIImage(systemName: "creditcard"))
@@ -60,10 +60,10 @@ class WalletUIController {
     let split = UISplitViewController(style: .tripleColumn)
     split.preferredSplitBehavior = .tile
     split.preferredDisplayMode = .oneBesideSecondary
-    split.setViewController(tabBarController, for: .compact)
     split.setViewController(sidebarController, for: .primary)
     split.setViewController(walletListController, for: .supplementary)
     split.setViewController(NoSelectedWalletViewController(), for: .secondary)
+    split.setViewController(tabBarController, for: .compact)
     self.splitViewController = split
 
   }
