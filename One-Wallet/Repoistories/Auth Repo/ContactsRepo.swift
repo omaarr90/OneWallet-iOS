@@ -40,7 +40,11 @@ public class MockContactsRepo: ContactsRepo {
 
 private extension Request {
   static func contactsIntersection(model: ContactIntersectionRequest, completion: @escaping (Result<ContactIntersectionResponse, APIError>) -> Void) -> Request {
-    Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/directory/tokens", params: nil, body: model) { result in
+    Request.post(method: .put,
+                 baseURL: containersProvider.networkingProvider.backendService.baseURL,
+                 path: "v1/directory/tokens",
+                 params: nil,
+                 body: model) { result in
       result.decoding(ContactIntersectionResponse.self, completion: completion)
     }
   }

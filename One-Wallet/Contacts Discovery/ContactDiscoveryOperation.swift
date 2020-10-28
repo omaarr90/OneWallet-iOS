@@ -89,6 +89,6 @@ class ContactDiscoveryOperation: ContactDiscovering {
 
 extension ContactDiscoveryOperation {
   private var repo: ContactsRepo {
-    return WalletContactsRepo(api: WalletService.api)
+    return containersProvider.repositoryProvider.contactsRepo
   }
 }

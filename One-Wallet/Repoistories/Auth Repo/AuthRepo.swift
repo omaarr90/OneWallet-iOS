@@ -25,7 +25,8 @@ public struct VerifyPhoneNumberResponse: NetworkModel {
 
 private extension Request {
   static func signup(model: SignupRequest, completion: @escaping (Result<Void, APIError>) -> Void) -> Request {
-    Request.basic(baseURL: WalletService.baseURL, path: "v1/accounts/\(model.transport)/code/\(model.phoneNumber)") { result in
+    Request.basic(baseURL: containersProvider.networkingProvider.backendService.baseURL,
+                  path: "v1/accounts/\(model.transport)/code/\(model.phoneNumber)") { result in
       switch result {
       case .success(_):
         completion(.success(()))
@@ -36,7 +37,10 @@ private extension Request {
   }
   
   static func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest, completion: @escaping (Result<VerifyPhoneNumberResponse, APIError>) -> Void) -> Request {
-    Request.post(method: .put, baseURL: WalletService.baseURL, path: "v1/accounts/code/\(verificationCode)", body: model) { result in
+    Request.post(method: .put,
+                 baseURL: containersProvider.networkingProvider.backendService.baseURL,
+                 path: "v1/accounts/code/\(verificationCode)",
+                 body: model) { result in
       result.decoding(VerifyPhoneNumberResponse.self, completion: completion)
     }
   }

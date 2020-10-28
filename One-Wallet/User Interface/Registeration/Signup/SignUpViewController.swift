@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-class SignUpViewController: FormViewController {
+class SignUpViewController: RegisterationBaseViewController {
   
   // MARK:- CollectionView iVars
   enum FormSection: Int {
@@ -29,8 +29,7 @@ class SignUpViewController: FormViewController {
   
   // MARK:- private iVars
   private lazy var viewModel: SignUpViewModel = {
-    let authRepo = WalletAuthRepo(api: WalletService.api)
-    return SignUpViewModel(authRepo: authRepo)
+    containersProvider.viewModelProvider.signUpViewModel
   }()
   
   private var tokens = Set<AnyCancellable>()

@@ -24,7 +24,7 @@ private extension UIButton {
   }
 }
 
-class FormViewController: UIViewController {
+class RegisterationBaseViewController: BaseCollectionViewController {
   
   var isLoading: Bool = false {
     didSet {
@@ -64,6 +64,29 @@ class FormViewController: UIViewController {
     self.formCollectionView.keyboardDismissMode = .interactive
   }
   
+  override func configureCollectionView() {
+    let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(collectionView)
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    ])
+    collectionView.backgroundColor = .clear
+    self.formCollectionView = collectionView
+    collectionView.delegate = self
+  }
+  
+  override func generateLayout() -> UICollectionViewLayout {
+    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+    listConfiguration.showsSeparators = false
+    listConfiguration.backgroundColor = .systemBackground
+    let layout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
+    return layout
+  }
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.becomeFirstResponder()
@@ -85,35 +108,9 @@ class FormViewController: UIViewController {
 }
 
 // MARK:- CollectionView Layout
-extension FormViewController {
-  
-  func configureCollectionView() {
-    let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(collectionView)
-    NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    ])
-    collectionView.backgroundColor = .clear
-    self.formCollectionView = collectionView
-    collectionView.delegate = self
-  }
-  
-  func generateLayout() -> UICollectionViewLayout {
-    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-    listConfiguration.showsSeparators = false
-    listConfiguration.backgroundColor = .systemBackground
-    let layout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
-    return layout
-  }
+extension RegisterationBaseViewController {
 }
 
 // MARK:- CollectionView DataSource
-extension FormViewController {
+extension RegisterationBaseViewController {
 }
-
-// MARK:- CollectionView Delegate
-extension FormViewController: UICollectionViewDelegate {}

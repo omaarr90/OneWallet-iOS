@@ -59,52 +59,53 @@ public struct APIClient {
   }
 }
 
-public struct WalletService {
+public protocol BackendService {
   // all endpoints will be based on this
-  public static let baseURL = URL(string: "https://textsecure-service.whispersystems.org/")!
-  public static var api: APIClient = {
+  var baseURL: URL { get }
+  var api: APIClient { get }
+}
+
+public struct TextSecureService: BackendService {
+  // all endpoints will be based on this
+  public var baseURL = URL(string: "https://textsecure-service.whispersystems.org/")!
+  public var api: APIClient = {
     let configuration = URLSessionConfiguration.default
     return APIClient(configuration: configuration, adapters: [LoggerAdapter(), AuthAdapter()])
   }()
 }
 
-extension WalletService {
-  struct LoggerAdapter: RequestAdapter {
+struct LoggerAdapter: RequestAdapter {
+  
+  func beforeSend(_ request: URLRequest) {
+    Logger.debug("about to send request: \(request)")
+    Logger.verbose("Curl Command for \(String(describing: request.url?.absoluteString))\n\(request.curlString)\n")
+  }
+  
+  func onSuccess(request: URLRequest) {
+    Logger.info("Success request for: \(request)")
+  }
+  
+  func onError(request: URLRequest, error: APIError) {
+    Logger.error("Request failed: \(request) with error: \(error)")
+  }
+  
+  func onResponse(response: URLResponse?, data: Data?) {
+    Logger.info("Response recieved \(String(describing: response)) with data: \(String(describing: data))")
+  }
+  
+  private func logCurl(for request: URLRequest) {
     
-    func beforeSend(_ request: URLRequest) {
-      Logger.debug("about to send request: \(request)")
-      Logger.verbose("Curl Command for \(String(describing: request.url?.absoluteString))\n\(request.curlString)\n")
-    }
-    
-    func onSuccess(request: URLRequest) {
-      Logger.info("Success request for: \(request)")
-    }
-    
-    func onError(request: URLRequest, error: APIError) {
-      Logger.error("Request failed: \(request) with error: \(error)")
-    }
-    
-    func onResponse(response: URLResponse?, data: Data?) {
-      Logger.info("Response recieved \(String(describing: response)) with data: \(String(describing: data))")
-    }
-    
-    private func logCurl(for request: URLRequest) {
-      
-    }
   }
 }
-
-extension WalletService {
-  struct AuthAdapter: RequestAdapter {
-    func adapt(_ request: inout URLRequest) {
-      //
-      guard let username = WalletAccount.localAccount?.getServerUserName(),
-            let password = try? KeychainManager.shared.getServerAuthKey() else {
-        Logger.debug("Not setting Authorization header for request \(request)")
-        return
-      }
-      let basicAuthValue = Cryptography.basicAuth(username: username, password: password)
-      request.setValue("Basic \(basicAuthValue)", forHTTPHeaderField: "Authorization")
+struct AuthAdapter: RequestAdapter {
+  func adapt(_ request: inout URLRequest) {
+    //
+    guard let username = WalletAccount.localAccount?.getServerUserName(),
+          let password = try? KeychainManager.shared.getServerAuthKey() else {
+      Logger.debug("Not setting Authorization header for request \(request)")
+      return
     }
+    let basicAuthValue = Cryptography.basicAuth(username: username, password: password)
+    request.setValue("Basic \(basicAuthValue)", forHTTPHeaderField: "Authorization")
   }
 }

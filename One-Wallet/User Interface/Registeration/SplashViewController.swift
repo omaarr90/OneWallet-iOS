@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SplashViewController: FormViewController {
+class SplashViewController: RegisterationBaseViewController {
   
   // MARK:- CollectionView iVars
   enum FormSection: Int {
