@@ -23,6 +23,7 @@
 		4C43DF5C2548492300DD1202 /* WalletSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF5B2548492300DD1202 /* WalletSidebarViewController.swift */; };
 		4C43DF622548501300DD1202 /* WalletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF612548501300DD1202 /* WalletListViewController.swift */; };
 		4C43DF672548506100DD1202 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF662548506100DD1202 /* WalletViewController.swift */; };
+		4C43DF7325497CCE00DD1202 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 4C43DF7225497CCE00DD1202 /* Swinject */; };
 		4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 4C46869E252B89E2004A5AB6 /* SwiftyBeaver */; };
 		4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4686A3252B8A7A004A5AB6 /* AppLogger.swift */; };
 		4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6B82540D92400960C8C /* GRDBStorage.swift */; };
@@ -176,6 +177,7 @@
 				4C46869F252B89E2004A5AB6 /* SwiftyBeaver in Frameworks */,
 				4CD2FE8925365863001771CF /* GRDB in Frameworks */,
 				4CE7FA9925366194006A0E86 /* Lottie in Frameworks */,
+				4C43DF7325497CCE00DD1202 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +590,7 @@
 				4CE7FA9825366194006A0E86 /* Lottie */,
 				4C8C95B0254467DA0080BCC3 /* KeychainAccess */,
 				4C8C95DB254563460080BCC3 /* PhoneNumberKit */,
+				4C43DF7225497CCE00DD1202 /* Swinject */,
 			);
 			productName = "One-Wallet";
 			productReference = 4CF7E3612514102D00BA078F /* One-Wallet.app */;
@@ -667,6 +670,7 @@
 				4CE7FA9725366194006A0E86 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				4C8C95AF254467DA0080BCC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				4C8C95DA254563460080BCC3 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
+				4C43DF7125497CCE00DD1202 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 4CF7E3622514102D00BA078F /* Products */;
 			projectDirPath = "";
@@ -1106,6 +1110,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4C43DF7125497CCE00DD1202 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 		4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
@@ -1149,6 +1161,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4C43DF7225497CCE00DD1202 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C43DF7125497CCE00DD1202 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		4C46869E252B89E2004A5AB6 /* SwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C46869D252B89E2004A5AB6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
