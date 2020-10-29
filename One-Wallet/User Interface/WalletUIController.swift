@@ -114,13 +114,13 @@ private class NoSelectedWalletViewController: UIViewController {
     titleLabel.textAlignment = .center
     titleLabel.numberOfLines = 0
     titleLabel.lineBreakMode = .byWordWrapping
-    titleLabel.text = NSLocalizedString("NO_SELECTED_CONVERSATION_TITLE", comment: "Title welcoming to the app")
+    titleLabel.text = NSLocalizedString("NO_SELECTED_WALLET_TITLE", comment: "Title welcoming to the app")
     
     bodyLabel.font = .preferredFont(forTextStyle: .body)
     bodyLabel.textAlignment = .center
     bodyLabel.numberOfLines = 0
     bodyLabel.lineBreakMode = .byWordWrapping
-    bodyLabel.text = NSLocalizedString("NO_SELECTED_CONVERSATION_DESCRIPTION", comment: "Explanation of how to see a conversation.")
+    bodyLabel.text = NSLocalizedString("NO_SELECTED_WALLET_DESCRIPTION", comment: "Explanation of how to see a conversation.")
     
     let centerStackView = UIStackView(arrangedSubviews: [logoContainer, titleLabel, bodyLabel])
     centerStackView.translatesAutoresizingMaskIntoConstraints = false

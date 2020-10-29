@@ -35,6 +35,8 @@ struct TextFieldContentConfiguration: UIContentConfiguration, Hashable {
   var borderStyle: UITextField.BorderStyle = .none
   var delegate: UITextFieldDelegate? = nil
   var isSecureTextEntry: Bool = false
+  var keyboardType: UIKeyboardType = .default
+  var textContentType: UITextContentType?
   
   internal func makeContentView() -> UIView & UIContentView {
     return TextFieldContentView(configuration: self)
@@ -52,13 +54,17 @@ struct TextFieldContentConfiguration: UIContentConfiguration, Hashable {
   static func == (lhs: TextFieldContentConfiguration, rhs: TextFieldContentConfiguration) -> Bool {
     return lhs.placeHolder == rhs.placeHolder &&
       lhs.borderStyle == rhs.borderStyle &&
-      lhs.isSecureTextEntry == rhs.isSecureTextEntry
+      lhs.isSecureTextEntry == rhs.isSecureTextEntry &&
+      lhs.keyboardType == rhs.keyboardType &&
+      lhs.textContentType == rhs.textContentType
   }
   
   func hash(into hasher: inout Hasher) {
     hasher.combine(placeHolder)
     hasher.combine(borderStyle)
     hasher.combine(isSecureTextEntry)
+    hasher.combine(keyboardType)
+    hasher.combine(textContentType)
   }
 }
 
@@ -107,6 +113,8 @@ class TextFieldContentView: UIView, UIContentView {
     textField.placeholder = configuration.placeHolder
     textField.borderStyle = configuration.borderStyle
     textField.delegate = configuration.delegate
+    textField.keyboardType = configuration.keyboardType
+    textField.textContentType = configuration.textContentType
     textField.isSecureTextEntry = configuration.isSecureTextEntry
   }
 }

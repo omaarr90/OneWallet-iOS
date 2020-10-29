@@ -48,8 +48,20 @@ class VerifyPhoneNumberViewController: RegisterationBaseViewController {
   
   override func submitButtonTapped(_ button: UIButton) {
     Logger.info("")
-    let verificationCode = otpTextField?.text
-    viewModel.verify(phoneNumber: self.phoneNumber, verificationCode: verificationCode!)
+    guard let phoneNumber = self.phoneNumber else {
+      fatalError("Phone number is nil")
+    }
+    guard let otp = otpTextField?.text,
+          otp.count > 0 else {
+      self.errorAlert(with: NSLocalizedString("VerifyPhoneNumberViewController.EmptyOTP.error", comment: ""))
+      return
+    }
+    
+    guard otp.count == 6 else {
+      self.errorAlert(with: NSLocalizedString("VerifyPhoneNumberViewController.InvalidOTP.error", comment: ""))
+      return
+    }
+    viewModel.verify(phoneNumber: phoneNumber, verificationCode: otp)
   }
 }
 
@@ -138,6 +150,8 @@ private extension VerifyPhoneNumberViewController {
       var contentConfiguration = TextFieldContentConfiguration()
       contentConfiguration.borderStyle = .roundedRect
       contentConfiguration.placeHolder = NSLocalizedString("VerifyPhoneNumberViewController.OTPField.PlaceHolder", comment: "Place holder for otp")
+      contentConfiguration.keyboardType = .numberPad
+      contentConfiguration.textContentType = .oneTimeCode
       cell.textFieldContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }

@@ -24,8 +24,20 @@
 /* Default title for buttons inside forms */
 "FormViewController.submitButtonText.title" = "التالي";
 
+/* Explanation of how to see a conversation. */
+"NO_SELECTED_WALLET_DESCRIPTION" = "قم باختيار محفظة لمشاهدة تفاصيلها"; /* NEW */
+
+/* Title welcoming to the app */
+"NO_SELECTED_WALLET_TITLE" = "أهلا بك في محفظة واحدة"; /* NEW */
+
 /* No comment provided by engineer. */
 "O.K" = "حسناً";
+
+/* No comment provided by engineer. */
+"SignUpViewController.EmptyPhoneNumber.error" = "من فضلك قم بإدخال رقم الجوال للتسجيل";
+
+/* No comment provided by engineer. */
+"SignUpViewController.InvalidPhoneNumber.error" = "من فضلك قم بإدخال رقم جوال صحيح للتسجيل";
 
 /* Place holder for phone number */
 "SignUpViewController.PhoneNumberField.PlaceHolder" = "رقم الجوال";
@@ -48,6 +60,12 @@
 /* First screen header text */
 "SplashViewController.HeaderText" = "محفظة واحدة";
 
+/* No comment provided by engineer. */
+"VerifyPhoneNumberViewController.EmptyOTP.error" = "من فضلك قم بإدخال الرمز المؤقت المرسل إلى جوالك";
+
+/* No comment provided by engineer. */
+"VerifyPhoneNumberViewController.InvalidOTP.error" = "من فضلك قم بإدخال الرقم المكون من ٦ خانات المرسل إلى جوالك"; /* NEW */
+
 /* Place holder for otp */
 "VerifyPhoneNumberViewController.OTPField.PlaceHolder" = "الرمز";
 
@@ -67,13 +85,13 @@
 "VerifyPhoneNumberViewController.WrongNumber.Title" = "الرقم خاطئ؟";
 
 /* No comment provided by engineer. */
-"WalletSidebarViewController.Row.contacts.description" = "جهات الإتصال"; /* NEW */
+"WalletSidebarViewController.Row.contacts.description" = "جهات الإتصال";
 
 /* No comment provided by engineer. */
-"WalletSidebarViewController.Row.notifications.description" = "التنبيهات"; /* NEW */
+"WalletSidebarViewController.Row.notifications.description" = "التنبيهات";
 
 /* No comment provided by engineer. */
-"WalletSidebarViewController.Row.settings.description" = "الاعدادات"; /* NEW */
+"WalletSidebarViewController.Row.settings.description" = "الاعدادات";
 
 /* No comment provided by engineer. */
 "WalletSidebarViewController.Row.wallets.description" = "المحافظ";

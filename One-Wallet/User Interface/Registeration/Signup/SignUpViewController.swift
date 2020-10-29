@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import PhoneNumberKit
 
 class SignUpViewController: RegisterationBaseViewController {
   
@@ -43,11 +44,18 @@ class SignUpViewController: RegisterationBaseViewController {
   
   override func submitButtonTapped(_ button: UIButton) {
     Logger.info("")
-//    guard let phoneNumber = phoneNumberTextField?.text else {
-//      Logger.error("Missing Required Field")
-//      return
-//    }
-    viewModel.signUp(phoneNumber: "+966557987731")
+    guard let text = phoneNumberTextField?.text else {
+      self.errorAlert(with: NSLocalizedString("SignUpViewController.EmptyPhoneNumber.error", comment: ""))
+      return
+    }
+    
+    let phoneNumberKit = PhoneNumberKit()
+    guard let phoneNumber = try? phoneNumberKit.parse(text) else {
+      self.errorAlert(with: NSLocalizedString("SignUpViewController.InvalidPhoneNumber.error", comment: ""))
+      return
+    }
+    let e164 = phoneNumberKit.format(phoneNumber, toType: .e164)
+    viewModel.signUp(phoneNumber: e164)
   }
 }
 
@@ -78,7 +86,7 @@ private extension SignUpViewController {
       .receive(on: DispatchQueue.main)
       .sink { [weak self] isLoading in
         self?.isLoadingUpdated(isLoading: isLoading)
-    }
+      }
       .store(in: &tokens)
     
     viewModel.error
@@ -86,14 +94,14 @@ private extension SignUpViewController {
       .sink { [weak self] error in
         guard let error = error else { return }
         self?.errorReceived(error: error)
-    }.store(in: &tokens)
+      }.store(in: &tokens)
     
     viewModel.response
       .receive(on: DispatchQueue.main)
       .sink { [weak self] response in
-      guard response != nil else { return }
+        guard response != nil else { return }
         self?.responseReceived()
-    }.store(in: &tokens)
+      }.store(in: &tokens)
   }
 }
 
@@ -135,6 +143,8 @@ private extension SignUpViewController {
       var contentConfiguration = TextFieldContentConfiguration()
       contentConfiguration.borderStyle = .roundedRect
       contentConfiguration.placeHolder = NSLocalizedString("SignUpViewController.PhoneNumberField.PlaceHolder", comment: "Place holder for phone number")
+      contentConfiguration.keyboardType = .phonePad
+      contentConfiguration.textContentType = .telephoneNumber
       cell.textFieldContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
@@ -150,7 +160,7 @@ private extension SignUpViewController {
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }
   }
-
+  
 }
 
 // MARK:- CollectionView Delegate

@@ -24,8 +24,20 @@
 /* Default title for buttons inside forms */
 "FormViewController.submitButtonText.title" = "Next";
 
+/* Explanation of how to see a conversation. */
+"NO_SELECTED_WALLET_DESCRIPTION" = "Select wallet to view its details"; /* NEW */
+
+/* Title welcoming to the app */
+"NO_SELECTED_WALLET_TITLE" = "Welcome to One Wallet"; /* NEW */
+
 /* No comment provided by engineer. */
 "O.K" = "O.K";
+
+/* No comment provided by engineer. */
+"SignUpViewController.EmptyPhoneNumber.error" = "Please enter your phone number to register";
+
+/* No comment provided by engineer. */
+"SignUpViewController.InvalidPhoneNumber.error" = "Please enter a valid mobile number to register";
 
 /* Place holder for phone number */
 "SignUpViewController.PhoneNumberField.PlaceHolder" = "Phone Number";
@@ -48,6 +60,12 @@
 /* First screen header text */
 "SplashViewController.HeaderText" = "One Wallet";
 
+/* No comment provided by engineer. */
+"VerifyPhoneNumberViewController.EmptyOTP.error" = "Please enter one time code sent to your phone";
+
+/* No comment provided by engineer. */
+"VerifyPhoneNumberViewController.InvalidOTP.error" = "Please enter 6 digit code sent to your phone"; /* NEW */
+
 /* Place holder for otp */
 "VerifyPhoneNumberViewController.OTPField.PlaceHolder" = "Code";
 
@@ -67,13 +85,13 @@
 "VerifyPhoneNumberViewController.WrongNumber.Title" = "Wrong number?";
 
 /* No comment provided by engineer. */
-"WalletSidebarViewController.Row.contacts.description" = "Contacts"; /* NEW */
+"WalletSidebarViewController.Row.contacts.description" = "Contacts";
 
 /* No comment provided by engineer. */
-"WalletSidebarViewController.Row.notifications.description" = "Notifications"; /* NEW */
+"WalletSidebarViewController.Row.notifications.description" = "Notifications";
 
 /* No comment provided by engineer. */
-"WalletSidebarViewController.Row.settings.description" = "Settings"; /* NEW */
+"WalletSidebarViewController.Row.settings.description" = "Settings";
 
 /* No comment provided by engineer. */
 "WalletSidebarViewController.Row.wallets.description" = "Wallets";
