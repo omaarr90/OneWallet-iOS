@@ -74,7 +74,7 @@ class GRDBSchemaMigrator {
   }
   
   static let grdbSchemaVersionDefault: UInt = 0
-  static let grdbSchemaVersionLatest: UInt = 2
+  static let grdbSchemaVersionLatest: UInt = 1
   
   // An optimization for new users, we have the first migration import the latest schema
   // and mark any other migrations as "already run".
@@ -89,9 +89,16 @@ class GRDBSchemaMigrator {
       try db.execute(sql: sql)
     }
     
+    migrator.registerMigration(MigrationId.createWallets.rawValue) { database in
+      let walletOne = Wallet(id: nil, name: "Wallet One", contributers: [])
+      let walletTwo = Wallet(id: nil, name: "Wallet Two", contributers: [])
+      try walletOne.insert(database)
+      try walletTwo.insert(database)
+    }
+
     // After importing the initial schema, we want to skip the remaining incremental migrations
     // so we register each migration id with a no-op implementation.
-    for migrationId in (MigrationId.allCases.filter { $0 != .createInitialSchema }) {
+    for migrationId in (MigrationId.allCases.filter { $0 != .createInitialSchema && $0 != .createWallets}) {
       migrator.registerMigration(migrationId.rawValue) { _ in
         Logger.info("skipping migration: \(migrationId) for new user.")
         // no-op
@@ -135,12 +142,6 @@ class GRDBSchemaMigrator {
     }
     
     // MARK: - Schema Migration Insertion Point
-    migrator.registerMigration(MigrationId.createWallets.rawValue) { database in
-      let walletOne = Wallet(id: nil, name: "Wallet One", contributers: [])
-      let walletTwo = Wallet(id: nil, name: "Wallet Two", contributers: [])
-      try walletOne.insert(database)
-      try walletTwo.insert(database)
-    }
   }
   
   func registerDataMigrations(migrator: DatabaseMigratorWrapper) {

@@ -1,26 +1,26 @@
 //
-//  ContactsViewModel.swift
+//  WalletListViewModel.swift
 //  One-Wallet
 //
-//  Created by Omar Alshammari on 08/03/1442 AH.
+//  Created by Omar Alshammari on 12/03/1442 AH.
 //
 
 import Foundation
 import Combine
 import GRDB
 
-class ContactsViewModel {
+class WalletListViewModel {
   
   init() {
     self.setupObserving()
   }
   
   //MARK:- Private Published Objects
-  @Published private var _users: [WalletUser] = []
+  @Published private var _wallets: [Wallet] = []
   
   //MARK:- Published Objects as Publishers
-  var users: AnyPublisher<[WalletUser], Never> {
-    return $_users.eraseToAnyPublisher()
+  var wallets: AnyPublisher<[Wallet], Never> {
+    return $_wallets.eraseToAnyPublisher()
   }
   
   //MARK:- Private iVars
@@ -28,16 +28,15 @@ class ContactsViewModel {
   
   private func setupObserving() {
     let observation = ValueObservation.tracking { database in
-      try WalletUser.fetchAll(database)
+      try Wallet.fetchAll(database)
     }
     observation
       .publisher(in: GRDBManager.shared.grdbStorage.pool)
       .replaceError(with: [])
       .receive(on: DispatchQueue.main)
       .sink(receiveValue: { users in
-        self._users = users
+        self._wallets = users
       })
       .store(in: &tokens)
-
   }
 }

@@ -23,8 +23,7 @@ class ContactsViewController: BaseCollectionViewController {
   
   // MARK:- private iVars
   private lazy var viewModel: ContactsViewModel = {
-    let repo = MockContactsRepo()
-    return ContactsViewModel(contactsRepo: repo)
+    return containersProvider.viewModelProvider.contactsViewModel
   }()
   
   private var tokens = Set<AnyCancellable>()

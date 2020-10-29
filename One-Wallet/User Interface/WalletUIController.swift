@@ -9,25 +9,26 @@ import UIKit
 import Lottie
 
 class WalletUIController {
-  private let window: UIWindow
+  private let window: UIWindow?
     
   private var splitViewController: UISplitViewController
   
   // MARK:- Sidebar View Controllers
-  private var sidebarController: WalletSidebarViewController
-  private var walletListController: UIViewController
-  private var compactWalletListController: UIViewController
+  private var walletListController: WalletListViewController
+  private var compactWalletListController: WalletListViewController
 
   private var walletListNavigationController: UINavigationController
+  
+  private var selectWalletDetails: WalletViewController?
 
-  init(window: UIWindow) {
+  init(window: UIWindow?) {
     self.window = window
-    
-    self.sidebarController = WalletSidebarViewController()
-    
+        
     self.walletListController = Self.createWalletList()
+    self.walletListController.purpose = .primary
     
     self.compactWalletListController = Self.createWalletList()
+    self.compactWalletListController.purpose = .compact
     self.walletListNavigationController = WalletNavigationController(rootViewController: self.compactWalletListController)
 
     self.splitViewController = UISplitViewController(style: .doubleColumn)
@@ -43,9 +44,11 @@ class WalletUIController {
   }
   
   func present() {
-    sidebarController.delegate = self
-    window.rootViewController = self.splitViewController
-    self.window.makeKeyAndVisible()
+    self.walletListController.delegate = self
+    self.compactWalletListController.delegate = self
+    self.splitViewController.delegate = self
+    window?.rootViewController = self.splitViewController
+    self.window?.makeKeyAndVisible()
   }
   
   private static func createWalletList() -> WalletListViewController {
@@ -53,19 +56,26 @@ class WalletUIController {
   }
 }
 
-
-extension WalletUIController: WalletSidebarViewControllerDelegate {
-  func sidebarViewController(_ viewController: WalletSidebarViewController, didSelectOption option: WalletSidebarViewController.Option) {
-    switch option {
-    case .wallets:
-      self.splitViewController.setViewController(walletListController, for: .supplementary)
-      self.splitViewController.show(.secondary)
-    case .notifications:
-      break
-    case .settings:
-      break
+extension WalletUIController: WalletListViewControllerDelegate {
+  func walletListViewController(_ walletListViewController: WalletListViewController, didSelectWallet wallet: Wallet) {
+    let walletViewController = WalletViewController()
+    walletViewController.wallet = wallet
+    
+    if let selectWalletDetails = self.selectWalletDetails,
+       selectWalletDetails == walletViewController {
+      Logger.debug("Not showing the same wallet again!")
+      return
     }
+    
+    self.splitViewController.setViewController(nil, for: .secondary)
+    self.splitViewController.setViewController(walletViewController, for: .secondary)
+    self.walletListNavigationController.setViewControllers([self.compactWalletListController, walletViewController], animated: true)
+
+    self.selectWalletDetails = walletViewController
   }
+}
+
+extension WalletUIController: UISplitViewControllerDelegate {
 }
 
 private class NoSelectedWalletViewController: UIViewController {

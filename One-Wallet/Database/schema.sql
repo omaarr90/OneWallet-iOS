@@ -31,3 +31,12 @@ CREATE
             ,"contact" BLOB
         )
 ;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "model_Wallet" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+            ,"name" TEXT NOT NULL
+            ,"contributers" BLOB
+        )
+;

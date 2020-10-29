@@ -10,16 +10,18 @@ import UIKit
 final class WalletApp {
   static let shared = WalletApp()
   private var window: UIWindow?
+  private var walletUI: WalletUIController?
   
   private init() {}
   
   func configure(with window: UIWindow?) {
     self.window = window
-    if let localAccount = WalletAccount.localAccount, localAccount.isRegistered {
+    self.walletUI = WalletUIController(window: window)
+//    if let localAccount = WalletAccount.localAccount, localAccount.isRegistered {
       showHome()
-    } else {
-      showRegistration()
-    }
+//    } else {
+//      showRegistration()
+//    }
   }
   
   func showRegistration() {
@@ -29,11 +31,6 @@ final class WalletApp {
   }
   
   func showHome() {
-    guard let window = self.window else {
-      fatalError("Root Window not set")
-    }
-    
-    let walletUI = WalletUIController(window: window)
-    walletUI.present()
+    walletUI?.present()
   }
 }

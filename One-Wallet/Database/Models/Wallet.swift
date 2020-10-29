@@ -17,11 +17,11 @@ public struct Wallet: Codable {
 extension Wallet: Hashable {}
 
 extension Wallet: FetchableRecord, PersistableRecord {
-  public static var databaseTableName: String = "model_WalletAccount"
+  public static var databaseTableName: String = "model_Wallet"
   private enum Columns {
     static let id = Column(CodingKeys.id)
-    static let registrationId = Column(CodingKeys.name)
-    static let phoneNumber = Column(CodingKeys.contributers)
+    static let name = Column(CodingKeys.name)
+    static let contributers = Column(CodingKeys.contributers)
   }
   
   mutating public func didInsert(with rowID: Int64, for column: String?) {

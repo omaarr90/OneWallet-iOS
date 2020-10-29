@@ -13,6 +13,7 @@ class BaseCollectionViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = .systemBackground
     configureCollectionView()
   }
   
@@ -35,7 +36,6 @@ class BaseCollectionViewController: UIViewController {
   func generateLayout() -> UICollectionViewLayout {
     var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
     listConfiguration.showsSeparators = true
-    listConfiguration.backgroundColor = .systemBackground
     let layout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
     return layout
   }

@@ -8,11 +8,12 @@
 import UIKit
 
 class WalletViewController: BaseCollectionViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-      self.title = "Wallet"
-    }
+  
+  var wallet: Wallet!
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
+    self.title = wallet.name
+  }
 }
