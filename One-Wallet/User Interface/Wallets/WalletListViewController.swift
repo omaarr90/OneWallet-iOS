@@ -10,14 +10,11 @@ import UIKit
 class WalletListViewController: BaseCollectionViewController {
   // MARK:- CollectionView iVars
   enum Section: Int {
-    case test
+    case wallets
   }
   
-  enum Row {
-    case test
-  }
   
-  var dataSource: UICollectionViewDiffableDataSource<Section, Row>! = nil
+  var dataSource: UICollectionViewDiffableDataSource<Section, Wallet>! = nil
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,14 +43,14 @@ class WalletListViewController: BaseCollectionViewController {
 // MARK:- DataSource
 private extension WalletListViewController {
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Row>(collectionView: collectionView) {
-      (collectionView: UICollectionView, indexPath: IndexPath, item: Row) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, Wallet>(collectionView: collectionView) {
+      (collectionView: UICollectionView, indexPath: IndexPath, item: Wallet) -> UICollectionViewCell? in
       // Return the cell.
       guard let section = Section(rawValue: indexPath.section) else {
         return nil
       }
       switch section {
-      case .test:
+      case .wallets:
         return collectionView.dequeueConfiguredReusableCell(using: self.titleCellRegistration, for: indexPath, item: item)
       }
     }
@@ -62,10 +59,10 @@ private extension WalletListViewController {
     dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
   }
   
-  func initialSnapshot() -> NSDiffableDataSourceSnapshot<Section, Row> {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Row>()
-    snapshot.appendSections([.test])
-    snapshot.appendItems([.test], toSection: .test)
+  func initialSnapshot() -> NSDiffableDataSourceSnapshot<Section, Wallet> {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, Wallet>()
+    snapshot.appendSections([.wallets])
+    snapshot.appendItems([], toSection: .wallets)
     return snapshot
   }
 }
@@ -73,14 +70,12 @@ private extension WalletListViewController {
 // MARK:- Cell Registration
 private extension WalletListViewController {
   
-  private var titleCellRegistration: UICollectionView.CellRegistration<TitleCell, Row> {
-    return UICollectionView.CellRegistration<TitleCell, Row> { cell, indexPath, formRow in
+  private var titleCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, Wallet> {
+    return UICollectionView.CellRegistration<UICollectionViewListCell, Wallet> { cell, indexPath, wallet in
       // Populate the cell with our item description.
-      var contentConfiguration = TitleContentConfiguration()
-      contentConfiguration.title = "Wallet List"
-      contentConfiguration.fontStyle = .largeTitle
-      cell.titleContentConfiguration = contentConfiguration
-      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+      var contentConfiguration = cell.defaultContentConfiguration()
+      contentConfiguration.text = wallet.name
+      cell.contentConfiguration = contentConfiguration
     }
   }
   

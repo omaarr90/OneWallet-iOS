@@ -65,10 +65,16 @@ class GRDBSchemaMigrator {
     // The solution is to always split logic that leverages SDSModel serialization into a
     // separate migration, and ensure it runs *after* any schema migrations. That is, new schema
     // migrations must be inserted *before* any of these Data Migrations.
+    
+    
+    
+    // MARK: DEBUG INSERT
+    case createWallets
+
   }
   
   static let grdbSchemaVersionDefault: UInt = 0
-  static let grdbSchemaVersionLatest: UInt = 1
+  static let grdbSchemaVersionLatest: UInt = 2
   
   // An optimization for new users, we have the first migration import the latest schema
   // and mark any other migrations as "already run".
@@ -129,6 +135,12 @@ class GRDBSchemaMigrator {
     }
     
     // MARK: - Schema Migration Insertion Point
+    migrator.registerMigration(MigrationId.createWallets.rawValue) { database in
+      let walletOne = Wallet(id: nil, name: "Wallet One", contributers: [])
+      let walletTwo = Wallet(id: nil, name: "Wallet Two", contributers: [])
+      try walletOne.insert(database)
+      try walletTwo.insert(database)
+    }
   }
   
   func registerDataMigrations(migrator: DatabaseMigratorWrapper) {
