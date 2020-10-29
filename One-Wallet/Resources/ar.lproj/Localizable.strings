@@ -25,13 +25,16 @@
 "FormViewController.submitButtonText.title" = "التالي";
 
 /* Explanation of how to see a conversation. */
-"NO_SELECTED_WALLET_DESCRIPTION" = "قم باختيار محفظة لمشاهدة تفاصيلها"; /* NEW */
+"NO_SELECTED_WALLET_DESCRIPTION" = "قم باختيار محفظة لمشاهدة تفاصيلها";
 
 /* Title welcoming to the app */
-"NO_SELECTED_WALLET_TITLE" = "أهلا بك في محفظة واحدة"; /* NEW */
+"NO_SELECTED_WALLET_TITLE" = "أهلا بك في محفظة واحدة";
 
 /* No comment provided by engineer. */
 "O.K" = "حسناً";
+
+/* No comment provided by engineer. */
+"SettingsViewController.Title" = "الإعدادات"; /* NEW */
 
 /* No comment provided by engineer. */
 "SignUpViewController.EmptyPhoneNumber.error" = "من فضلك قم بإدخال رقم الجوال للتسجيل";
@@ -64,7 +67,7 @@
 "VerifyPhoneNumberViewController.EmptyOTP.error" = "من فضلك قم بإدخال الرمز المؤقت المرسل إلى جوالك";
 
 /* No comment provided by engineer. */
-"VerifyPhoneNumberViewController.InvalidOTP.error" = "من فضلك قم بإدخال الرقم المكون من ٦ خانات المرسل إلى جوالك"; /* NEW */
+"VerifyPhoneNumberViewController.InvalidOTP.error" = "من فضلك قم بإدخال الرقم المكون من ٦ خانات المرسل إلى جوالك";
 
 /* Place holder for otp */
 "VerifyPhoneNumberViewController.OTPField.PlaceHolder" = "الرمز";

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class WalletUIController {
   private let window: UIWindow
@@ -15,63 +16,40 @@ class WalletUIController {
   // MARK:- Sidebar View Controllers
   private var sidebarController: WalletSidebarViewController
   private var walletListController: UIViewController
-  
-  // MARK:- Tabbar ViewControllers
-  private var walletListNavigationController: UIViewController
-  private var notificationsNavigationController: UIViewController
-  private var settingsNavigationController: UIViewController
-  
-  private var tabBarController: UITabBarController
+  private var compactWalletListController: UIViewController
+
+  private var walletListNavigationController: UINavigationController
 
   init(window: UIWindow) {
     self.window = window
     
-    let sidebarController = WalletSidebarViewController()
-    self.sidebarController = sidebarController
+    self.sidebarController = WalletSidebarViewController()
     
-    let walletListController = WalletListViewController()
-    self.walletListController = walletListController
+    self.walletListController = Self.createWalletList()
     
-    
-    let walletListNavigationController = WalletNavigationController(rootViewController: WalletListViewController())
-    walletListNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.wallets.description", comment: ""),
-                                  image: UIImage(systemName: "creditcard"),
-                                  selectedImage: UIImage(systemName: "creditcard"))
-    self.walletListNavigationController = walletListNavigationController
-    
-    let notificationsNavigationController = WalletNavigationController(rootViewController: UIViewController())
-    notificationsNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.notifications.description", comment: ""),
-                                  image: UIImage(systemName: "exclamationmark.triangle"),
-                                  selectedImage: UIImage(systemName: "exclamationmark.triangle"))
-    self.notificationsNavigationController = notificationsNavigationController
-    
-    let settingsNavigationController = WalletNavigationController(rootViewController: UIViewController())
-    settingsNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("WalletSidebarViewController.Row.settings.description", comment: ""),
-                                  image: UIImage(systemName: "gear"),
-                                  selectedImage: UIImage(systemName: "gear"))
-    self.settingsNavigationController = settingsNavigationController
-    
-    let tabBarController = UITabBarController()
-    tabBarController.viewControllers = [walletListNavigationController,
-                                        notificationsNavigationController,
-                                        settingsNavigationController]
-    self.tabBarController = tabBarController
+    self.compactWalletListController = Self.createWalletList()
+    self.walletListNavigationController = WalletNavigationController(rootViewController: self.compactWalletListController)
 
-    let split = UISplitViewController(style: .tripleColumn)
-    split.preferredSplitBehavior = .tile
-    split.preferredDisplayMode = .oneBesideSecondary
-    split.setViewController(sidebarController, for: .primary)
-    split.setViewController(walletListController, for: .supplementary)
-    split.setViewController(NoSelectedWalletViewController(), for: .secondary)
-    split.setViewController(tabBarController, for: .compact)
-    self.splitViewController = split
-
+    self.splitViewController = UISplitViewController(style: .doubleColumn)
+    splitViewController.preferredSplitBehavior = .tile
+    splitViewController.preferredDisplayMode = .oneBesideSecondary
+    
+    splitViewController.setViewController(self.walletListController,
+                                          for: .primary)
+    splitViewController.setViewController(walletListNavigationController,
+                                          for: .compact)
+    
+    splitViewController.setViewController(NoSelectedWalletViewController(), for: .secondary)
   }
   
   func present() {
     sidebarController.delegate = self
     window.rootViewController = self.splitViewController
     self.window.makeKeyAndVisible()
+  }
+  
+  private static func createWalletList() -> WalletListViewController {
+    return WalletListViewController()
   }
 }
 
@@ -93,13 +71,15 @@ extension WalletUIController: WalletSidebarViewControllerDelegate {
 private class NoSelectedWalletViewController: UIViewController {
   let titleLabel = UILabel()
   let bodyLabel = UILabel()
-  let logoImageView = UIImageView()
+  let logoImageView = AnimationView()
   
   override func loadView() {
     view = UIView()
     
     let logoContainer = UIView()
-    logoImageView.image = UIImage(systemName: "creditcard")
+    logoImageView.animation = Animation.named("splash-wallet-animation")
+    logoImageView.loopMode = .loop
+    logoImageView.play()
     logoImageView.translatesAutoresizingMaskIntoConstraints = false
     logoImageView.contentMode = .scaleAspectFit
     logoContainer.addSubview(logoImageView)
@@ -107,7 +87,7 @@ private class NoSelectedWalletViewController: UIViewController {
       logoImageView.topAnchor.constraint(equalTo: logoContainer.layoutMarginsGuide.topAnchor),
       logoImageView.bottomAnchor.constraint(equalTo: logoContainer.layoutMarginsGuide.bottomAnchor, constant: 8),
       logoImageView.centerXAnchor.constraint(equalTo: logoContainer.centerXAnchor),
-      logoImageView.heightAnchor.constraint(equalToConstant: 72)
+      logoImageView.heightAnchor.constraint(equalToConstant: 144)
     ])
     
     titleLabel.font = UIFont.preferredFont(forTextStyle: .body).semiBold()
@@ -125,11 +105,12 @@ private class NoSelectedWalletViewController: UIViewController {
     let centerStackView = UIStackView(arrangedSubviews: [logoContainer, titleLabel, bodyLabel])
     centerStackView.translatesAutoresizingMaskIntoConstraints = false
     centerStackView.axis = .vertical
-    centerStackView.spacing = 4
+    centerStackView.spacing = 24
     view.addSubview(centerStackView)
     // Slightly offset from center to better optically center
     NSLayoutConstraint.activate([
       centerStackView.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor, multiplier: 0.88),
+      centerStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
       centerStackView.widthAnchor.constraint(equalTo: view.widthAnchor)
     ])
   }

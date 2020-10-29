@@ -25,13 +25,16 @@
 "FormViewController.submitButtonText.title" = "Next";
 
 /* Explanation of how to see a conversation. */
-"NO_SELECTED_WALLET_DESCRIPTION" = "Select wallet to view its details"; /* NEW */
+"NO_SELECTED_WALLET_DESCRIPTION" = "Select wallet to view its details";
 
 /* Title welcoming to the app */
-"NO_SELECTED_WALLET_TITLE" = "Welcome to One Wallet"; /* NEW */
+"NO_SELECTED_WALLET_TITLE" = "Welcome to One Wallet";
 
 /* No comment provided by engineer. */
 "O.K" = "O.K";
+
+/* No comment provided by engineer. */
+"SettingsViewController.Title" = "Settings"; /* NEW */
 
 /* No comment provided by engineer. */
 "SignUpViewController.EmptyPhoneNumber.error" = "Please enter your phone number to register";
@@ -64,7 +67,7 @@
 "VerifyPhoneNumberViewController.EmptyOTP.error" = "Please enter one time code sent to your phone";
 
 /* No comment provided by engineer. */
-"VerifyPhoneNumberViewController.InvalidOTP.error" = "Please enter 6 digit code sent to your phone"; /* NEW */
+"VerifyPhoneNumberViewController.InvalidOTP.error" = "Please enter 6 digit code sent to your phone";
 
 /* Place holder for otp */
 "VerifyPhoneNumberViewController.OTPField.PlaceHolder" = "Code";

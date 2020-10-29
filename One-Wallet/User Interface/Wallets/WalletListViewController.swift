@@ -22,8 +22,24 @@ class WalletListViewController: BaseCollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = NSLocalizedString("WalletSidebarViewController.Row.wallets.description", comment: "")
-    self.view.backgroundColor = .systemRed
+    configureNavigationItem()
     configureDataSource()
+  }
+  
+  private func configureNavigationItem() {
+    let settingsItem = UIBarButtonItem(image: UIImage(systemName: "gear"),
+                                       landscapeImagePhone: UIImage(systemName: "gear"),
+                                       style: .plain,
+                                       target: self,
+                                       action: #selector(settingsItemTapped(_:)))
+    self.navigationItem.rightBarButtonItems = [settingsItem]
+  }
+  
+  @objc
+  func settingsItemTapped(_ sender: UIBarButtonItem) {
+    Logger.info("")
+    let nav = WalletNavigationController(rootViewController: SettingsViewController())
+    self.present(nav, animated: true, completion: nil)
   }
 }
 
