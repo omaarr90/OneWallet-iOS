@@ -71,6 +71,7 @@
 		4CD2FE9025365AAC001771CF /* WalletNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */; };
 		4CD2FE9525365B62001771CF /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2FE9425365B62001771CF /* AuthNavigationController.swift */; };
 		4CD491E5254ABC990016B9B6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD491E4254ABC990016B9B6 /* SettingsViewController.swift */; };
+		4CD491ED254ABE960016B9B6 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD491EC254ABE960016B9B6 /* Wallet.swift */; };
 		4CE7FA9925366194006A0E86 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE7FA9825366194006A0E86 /* Lottie */; };
 		4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3642514102D00BA078F /* AppDelegate.swift */; };
 		4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3662514102D00BA078F /* SceneDelegate.swift */; };
@@ -160,6 +161,7 @@
 		4CD2FE8F25365AAC001771CF /* WalletNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationController.swift; sourceTree = "<group>"; };
 		4CD2FE9425365B62001771CF /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
 		4CD491E4254ABC990016B9B6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4CD491EC254ABE960016B9B6 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		4CF7E3612514102D00BA078F /* One-Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One-Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF7E3642514102D00BA078F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF7E3662514102D00BA078F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				4C4FE6F02540F61200960C8C /* WalletPreferences.swift */,
 				4C8C95C1254522870080BCC3 /* WalletAccount.swift */,
 				4C8C95E92545B80C0080BCC3 /* WalletContact.swift */,
+				4CD491EC254ABE960016B9B6 /* Wallet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CD491ED254ABE960016B9B6 /* Wallet.swift in Sources */,
 				4CD2FE832533BA40001771CF /* AuthRepo.swift in Sources */,
 				4C43DF622548501300DD1202 /* WalletListViewController.swift in Sources */,
 				4C43DF8E2549A48600DD1202 /* ViewModelProvider.swift in Sources */,

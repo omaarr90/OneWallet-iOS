@@ -55,28 +55,11 @@ class RegisterationBaseViewController: BaseCollectionViewController {
       self.reloadInputViews()
     }
   }
-  
-  var formCollectionView: UICollectionView! = nil
-  
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     configureCollectionView()
-    self.formCollectionView.keyboardDismissMode = .interactive
-  }
-  
-  override func configureCollectionView() {
-    let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(collectionView)
-    NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    ])
-    collectionView.backgroundColor = .clear
-    self.formCollectionView = collectionView
-    collectionView.delegate = self
+    self.collectionView.keyboardDismissMode = .interactive
   }
   
   override func generateLayout() -> UICollectionViewLayout {

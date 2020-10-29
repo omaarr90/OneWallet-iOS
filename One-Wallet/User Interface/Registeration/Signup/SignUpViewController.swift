@@ -108,7 +108,7 @@ private extension SignUpViewController {
 // MARK:- DataSource
 private extension SignUpViewController {
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<FormSection, FormRow>(collectionView: formCollectionView) {
+    dataSource = UICollectionViewDiffableDataSource<FormSection, FormRow>(collectionView: collectionView) {
       (collectionView: UICollectionView, indexPath: IndexPath, item: FormRow) -> UICollectionViewCell? in
       // Return the cell.
       guard let section = FormSection(rawValue: indexPath.section) else {

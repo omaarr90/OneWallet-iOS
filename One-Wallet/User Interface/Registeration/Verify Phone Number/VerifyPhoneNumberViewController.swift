@@ -108,7 +108,7 @@ private extension VerifyPhoneNumberViewController {
 // MARK:- DataSource
 private extension VerifyPhoneNumberViewController {
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<FormSection, FormRow>(collectionView: formCollectionView) {
+    dataSource = UICollectionViewDiffableDataSource<FormSection, FormRow>(collectionView: collectionView) {
       (collectionView: UICollectionView, indexPath: IndexPath, item: FormRow) -> UICollectionViewCell? in
       // Return the cell.
       guard let section = FormSection(rawValue: indexPath.section) else {

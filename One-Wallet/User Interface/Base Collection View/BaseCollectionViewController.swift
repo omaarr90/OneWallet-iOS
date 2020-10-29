@@ -19,8 +19,14 @@ class BaseCollectionViewController: UIViewController {
   
   func configureCollectionView() {
     let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(collectionView)
-    collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    ])
     collectionView.backgroundColor = .clear
     self.collectionView = collectionView
     collectionView.delegate = self
