@@ -11,17 +11,24 @@ final class WalletApp {
   static let shared = WalletApp()
   private var window: UIWindow?
   private var walletUI: WalletUIController?
-  
+  private var onBoardingUI: OnBoardingUIController?
+
   private init() {}
   
   func configure(with window: UIWindow?) {
     self.window = window
     self.walletUI = WalletUIController(window: window)
-//    if let localAccount = WalletAccount.localAccount, localAccount.isRegistered {
-      showHome()
-//    } else {
-//      showRegistration()
-//    }
+    self.onBoardingUI = OnBoardingUIController(window: window)
+    ensureRootViewController()
+  }
+  
+  func ensureRootViewController() {
+    if let localAccount = WalletAccount.localAccount,
+       localAccount.isRegistered {
+      localAccount.isOnboarded ?  showHome() : showOnBoarding()
+    } else {
+      showRegistration()
+    }
   }
   
   func showRegistration() {
@@ -33,4 +40,9 @@ final class WalletApp {
   func showHome() {
     walletUI?.present()
   }
+  
+  func showOnBoarding() {
+    onBoardingUI?.present()
+  }
+
 }

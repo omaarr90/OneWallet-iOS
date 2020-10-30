@@ -32,8 +32,8 @@ class WalletUIController {
     self.walletListNavigationController = WalletNavigationController(rootViewController: self.compactWalletListController)
 
     self.splitViewController = UISplitViewController(style: .doubleColumn)
-    splitViewController.preferredSplitBehavior = .tile
-    splitViewController.preferredDisplayMode = .oneBesideSecondary
+//    splitViewController.preferredSplitBehavior = .overlay
+//    splitViewController.preferredDisplayMode = .oneBesideSecondary
     
     splitViewController.setViewController(self.walletListController,
                                           for: .primary)

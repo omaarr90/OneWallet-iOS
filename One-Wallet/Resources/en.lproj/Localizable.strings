@@ -1,5 +1,11 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
+/* Continue Button */
+"CreateProfileViewController.ContinueButton" = "Done"; /* NEW */
+
+/* No comment provided by engineer. */
+"CreateProfileViewController.HeaderText" = "Setup Name and Photo"; /* NEW */
+
 /* No comment provided by engineer. */
 "Error" = "Error";
 
@@ -33,8 +39,17 @@
 /* No comment provided by engineer. */
 "O.K" = "O.K";
 
+/* Continue Button */
+"PermissionViewController.ContinueButton" = "Enable Permissions";
+
+/* Asking for Contact Permission */
+"PermissionViewController.ExplanationText" = "One Wallet needs access to your account to let you connect with friends who use One Wallet as well";
+
+/* Asking for Contact Permission Explaination */
+"PermissionViewController.HeaderText" = "Find Your Friends";
+
 /* No comment provided by engineer. */
-"SettingsViewController.Title" = "Settings"; /* NEW */
+"SettingsViewController.Title" = "Settings";
 
 /* No comment provided by engineer. */
 "SignUpViewController.EmptyPhoneNumber.error" = "Please enter your phone number to register";

@@ -18,6 +18,8 @@
 		4C06BF6C251412A00007A4CA /* RegisterationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF66251412A00007A4CA /* RegisterationBaseViewController.swift */; };
 		4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF68251412A00007A4CA /* TextFieldCell.swift */; };
 		4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06BF69251412A00007A4CA /* ButtonCell.swift */; };
+		4C12DC89254BFF6C00563840 /* contacts-permission.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C12DC88254BFF6C00563840 /* contacts-permission.json */; };
+		4C12DC95254C338200563840 /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12DC94254C338200563840 /* CreateProfileViewModel.swift */; };
 		4C43DF572547FAD800DD1202 /* WalletUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF562547FAD800DD1202 /* WalletUIController.swift */; };
 		4C43DF5C2548492300DD1202 /* WalletSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF5B2548492300DD1202 /* WalletSidebarViewController.swift */; };
 		4C43DF622548501300DD1202 /* WalletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43DF612548501300DD1202 /* WalletListViewController.swift */; };
@@ -37,6 +39,10 @@
 		4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */; };
 		4C4FE6F12540F61200960C8C /* WalletPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FE6F02540F61200960C8C /* WalletPreferences.swift */; };
 		4C5A206E253FF5C200D8EB21 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */; };
+		4C5B064F254BED1100F0B1DA /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B064E254BED1100F0B1DA /* PermissionViewController.swift */; };
+		4C5B0657254BED2F00F0B1DA /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B0656254BED2F00F0B1DA /* CreateProfileViewController.swift */; };
+		4C5B065C254BED4600F0B1DA /* OnBoardingUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B065B254BED4600F0B1DA /* OnBoardingUIController.swift */; };
+		4C5B0663254BF2CF00F0B1DA /* push-notifications-permissions.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B0661254BF2CF00F0B1DA /* push-notifications-permissions.json */; };
 		4C8C95A325440C110080BCC3 /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95A225440C110080BCC3 /* Cryptography.swift */; };
 		4C8C95AB25440D6D0080BCC3 /* Data+Convinent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C95AA25440D6D0080BCC3 /* Data+Convinent.swift */; };
 		4C8C95B1254467DA0080BCC3 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4C8C95B0254467DA0080BCC3 /* KeychainAccess */; };
@@ -81,6 +87,8 @@
 		4CF7E37C2514102D00BA078F /* One_WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E37B2514102D00BA078F /* One_WalletTests.swift */; };
 		4CF7E3872514102E00BA078F /* One_WalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3862514102E00BA078F /* One_WalletUITests.swift */; };
 		4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E3A0251410E200BA078F /* WalletApp.swift */; };
+		4CF87ED9254C37CA009D5723 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF87ED8254C37CA009D5723 /* AvatarImageView.swift */; };
+		4CF87EDE254C3B11009D5723 /* ProfilePictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF87EDD254C3B11009D5723 /* ProfilePictureCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +120,8 @@
 		4C06BF66251412A00007A4CA /* RegisterationBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterationBaseViewController.swift; sourceTree = "<group>"; };
 		4C06BF68251412A00007A4CA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4C06BF69251412A00007A4CA /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		4C12DC88254BFF6C00563840 /* contacts-permission.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "contacts-permission.json"; sourceTree = "<group>"; };
+		4C12DC94254C338200563840 /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
 		4C43DF562547FAD800DD1202 /* WalletUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletUIController.swift; sourceTree = "<group>"; };
 		4C43DF5B2548492300DD1202 /* WalletSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSidebarViewController.swift; sourceTree = "<group>"; };
 		4C43DF612548501300DD1202 /* WalletListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +139,10 @@
 		4C4FE6EB2540E9D800960C8C /* SDSTableMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSTableMetadata.swift; sourceTree = "<group>"; };
 		4C4FE6F02540F61200960C8C /* WalletPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPreferences.swift; sourceTree = "<group>"; };
 		4C5A206D253FF5C200D8EB21 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		4C5B064E254BED1100F0B1DA /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		4C5B0656254BED2F00F0B1DA /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		4C5B065B254BED4600F0B1DA /* OnBoardingUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingUIController.swift; sourceTree = "<group>"; };
+		4C5B0661254BF2CF00F0B1DA /* push-notifications-permissions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "push-notifications-permissions.json"; sourceTree = "<group>"; };
 		4C8C95A225440C110080BCC3 /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
 		4C8C95AA25440D6D0080BCC3 /* Data+Convinent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convinent.swift"; sourceTree = "<group>"; };
 		4C8C95B7254468120080BCC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -177,6 +191,8 @@
 		4CF7E3862514102E00BA078F /* One_WalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = One_WalletUITests.swift; sourceTree = "<group>"; };
 		4CF7E3882514102E00BA078F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CF7E3A0251410E200BA078F /* WalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApp.swift; sourceTree = "<group>"; };
+		4CF87ED8254C37CA009D5723 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		4CF87EDD254C3B11009D5723 /* ProfilePictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,8 +272,18 @@
 				4CD2FE7B252BD05F001771CF /* TitleCell.swift */,
 				4C9BE9462536653A00394248 /* AnimatedImageCell.swift */,
 				4C9CAA10253FF180005909E9 /* OTPFieldCell.swift */,
+				4CF87EDD254C3B11009D5723 /* ProfilePictureCell.swift */,
 			);
 			path = "Form Cells";
+			sourceTree = "<group>";
+		};
+		4C12DC93254C336800563840 /* CreateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				4C5B0656254BED2F00F0B1DA /* CreateProfileViewController.swift */,
+				4C12DC94254C338200563840 /* CreateProfileViewModel.swift */,
+			);
+			path = CreateProfile;
 			sourceTree = "<group>";
 		};
 		4C43DF6025484FF400DD1202 /* Wallets */ = {
@@ -335,6 +361,16 @@
 				4CD491EC254ABE960016B9B6 /* Wallet.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4C5B064D254BEC7500F0B1DA /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				4C12DC93254C336800563840 /* CreateProfile */,
+				4C5B064E254BED1100F0B1DA /* PermissionViewController.swift */,
+				4C5B065B254BED4600F0B1DA /* OnBoardingUIController.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		4C6F39C7253FF6D600D163BB /* Base Collection View */ = {
@@ -425,6 +461,8 @@
 		4C9BE952253668C300394248 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				4C12DC88254BFF6C00563840 /* contacts-permission.json */,
+				4C5B0661254BF2CF00F0B1DA /* push-notifications-permissions.json */,
 				4C9BE953253668E800394248 /* splash-wallet-animation.json */,
 			);
 			path = Lottie;
@@ -452,6 +490,7 @@
 			children = (
 				4CD08EF8253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift */,
 				4C8F35A625471C4300EF4580 /* ShimmerView.swift */,
+				4CF87ED8254C37CA009D5723 /* AvatarImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,6 +524,7 @@
 		4CD2FE8D25365A60001771CF /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				4C5B064D254BEC7500F0B1DA /* OnBoarding */,
 				4CD491E3254ABC830016B9B6 /* Settings */,
 				4C43DF6025484FF400DD1202 /* Wallets */,
 				4C8C95C625455A0C0080BCC3 /* Contacts */,
@@ -730,6 +770,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5B0663254BF2CF00F0B1DA /* push-notifications-permissions.json in Resources */,
+				4C12DC89254BFF6C00563840 /* contacts-permission.json in Resources */,
 				4CF7E3712514102D00BA078F /* LaunchScreen.storyboard in Resources */,
 				4CD08EE6253798D8004ABCE7 /* Localizable.strings in Resources */,
 				4C4FE6DE2540E5B600960C8C /* schema.sql in Resources */,
@@ -773,6 +815,7 @@
 				4C8C95AB25440D6D0080BCC3 /* Data+Convinent.swift in Sources */,
 				4CF7E3A1251410E200BA078F /* WalletApp.swift in Sources */,
 				4CD491E5254ABC990016B9B6 /* SettingsViewController.swift in Sources */,
+				4CF87EDE254C3B11009D5723 /* ProfilePictureCell.swift in Sources */,
 				4C06BF6E251412A00007A4CA /* ButtonCell.swift in Sources */,
 				4C9BE94D2536674700394248 /* Lottie+Hashable.swift in Sources */,
 				4C5A206E253FF5C200D8EB21 /* BaseCollectionViewController.swift in Sources */,
@@ -787,11 +830,13 @@
 				4C06BF6C251412A00007A4CA /* RegisterationBaseViewController.swift in Sources */,
 				4C8C95BD254472B20080BCC3 /* URLRequest+Debug.swift in Sources */,
 				4C8C95F02545C1C70080BCC3 /* ImageCache.swift in Sources */,
+				4C5B065C254BED4600F0B1DA /* OnBoardingUIController.swift in Sources */,
 				4C0369AC253FF74A005ED1FE /* HomeViewController.swift in Sources */,
 				4CD491F4254ACB040016B9B6 /* WalletListViewModel.swift in Sources */,
 				4C43DF892549A34400DD1202 /* ContainersProvicder.swift in Sources */,
 				4CD08EF9253C06EA004ABCE7 /* SafeAreaInputAccessoryViewWrapperView.swift in Sources */,
 				4C8C95FA2546C7CC0080BCC3 /* ContactDiscoveryOperation.swift in Sources */,
+				4C5B064F254BED1100F0B1DA /* PermissionViewController.swift in Sources */,
 				4CF7E3652514102D00BA078F /* AppDelegate.swift in Sources */,
 				4C9CAA09253DC7D9005909E9 /* UIFont+Styles.swift in Sources */,
 				4CF7E3672514102D00BA078F /* SceneDelegate.swift in Sources */,
@@ -806,6 +851,7 @@
 				4C43DF572547FAD800DD1202 /* WalletUIController.swift in Sources */,
 				4C4FE6F12540F61200960C8C /* WalletPreferences.swift in Sources */,
 				4C8C95CD25455A660080BCC3 /* ContactsViewModel.swift in Sources */,
+				4CF87ED9254C37CA009D5723 /* AvatarImageView.swift in Sources */,
 				4C4FE6E42540E8B300960C8C /* KeyValueStore.swift in Sources */,
 				4C8C95C825455A230080BCC3 /* ContactsViewController.swift in Sources */,
 				4C4686A4252B8A7A004A5AB6 /* AppLogger.swift in Sources */,
@@ -813,12 +859,14 @@
 				4C06BF6A251412A00007A4CA /* SignUpViewController.swift in Sources */,
 				4C8C95D225455AAE0080BCC3 /* ContactsRepo.swift in Sources */,
 				4CD08F07253DB9D8004ABCE7 /* VerifyPhoneNumberViewModel.swift in Sources */,
+				4C5B0657254BED2F00F0B1DA /* CreateProfileViewController.swift in Sources */,
 				4C06BF6D251412A00007A4CA /* TextFieldCell.swift in Sources */,
 				4C4FE6B92540D92400960C8C /* GRDBStorage.swift in Sources */,
 				4C005851254171D50015DDE6 /* NetworkResponses.swift in Sources */,
 				4C005866254199E90015DDE6 /* RequestAdapters.swift in Sources */,
 				4C8C95C2254522870080BCC3 /* WalletAccount.swift in Sources */,
 				4C4FE6EC2540E9D800960C8C /* SDSTableMetadata.swift in Sources */,
+				4C12DC95254C338200563840 /* CreateProfileViewModel.swift in Sources */,
 				4C005849254170AC0015DDE6 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

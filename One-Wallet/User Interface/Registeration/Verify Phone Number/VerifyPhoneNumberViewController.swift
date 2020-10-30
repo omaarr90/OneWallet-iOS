@@ -79,7 +79,7 @@ private extension VerifyPhoneNumberViewController {
   }
   
   func responseReceived() {
-    WalletApp.shared.showHome()
+    WalletApp.shared.ensureRootViewController()
   }
 }
 

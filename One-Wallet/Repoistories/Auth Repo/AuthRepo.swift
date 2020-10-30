@@ -53,8 +53,9 @@ public protocol AuthRepo {
 
 public class MockAuthRepo: AuthRepo {
   public func verifyPhoneNumber(verificationCode: String, model: VerifyPhoneNumberRequest) -> AnyPublisher<VerifyPhoneNumberResponse, Error> {
+    let response = VerifyPhoneNumberResponse(uuid: UUID().uuidString, storageCapable: false)
     return Future { resolve in
-      return resolve(.failure(APIError.unhandledResponse))
+      return resolve(.success(response))
     }
     .delay(for: 1, scheduler: RunLoop.main)
     .eraseToAnyPublisher()

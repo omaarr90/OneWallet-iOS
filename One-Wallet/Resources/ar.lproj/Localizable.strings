@@ -1,5 +1,11 @@
 /* Created with Localizable Strings Merge, the swiss-army knife for iOS and OS X localization. */
 
+/* Continue Button */
+"CreateProfileViewController.ContinueButton" = "تم"; /* NEW */
+
+/* No comment provided by engineer. */
+"CreateProfileViewController.HeaderText" = "تعيين الاسم والصورة"; /* NEW */
+
 /* No comment provided by engineer. */
 "Error" = "خطأ";
 
@@ -33,8 +39,17 @@
 /* No comment provided by engineer. */
 "O.K" = "حسناً";
 
+/* Continue Button */
+"PermissionViewController.ContinueButton" = "السماح بالوصول";
+
+/* Asking for Contact Permission */
+"PermissionViewController.ExplanationText" = "محفظة واحدة يريد الوصول إلى جهات الاتصال حتى يمكنك من إيجاد أصدقائك الذين يستخدمون التطبيق";
+
+/* Asking for Contact Permission Explaination */
+"PermissionViewController.HeaderText" = "اعثر على أصدقائك";
+
 /* No comment provided by engineer. */
-"SettingsViewController.Title" = "الإعدادات"; /* NEW */
+"SettingsViewController.Title" = "الإعدادات";
 
 /* No comment provided by engineer. */
 "SignUpViewController.EmptyPhoneNumber.error" = "من فضلك قم بإدخال رقم الجوال للتسجيل";

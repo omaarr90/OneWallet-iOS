@@ -86,21 +86,11 @@ public extension WalletContactsManager {
   }
   
   func requestSystemContactOne(with completion: ((Error?) -> Void)?) {
-    self.systemContactsFetcher.contactStoreAdapter.requestAccess { granted, error in
-      if let error = error {
-        completion?(error)
-      } else if granted {
-        self.systemContactsFetcher.requestOnce(completion: completion)
-      }
-    }
+    self.systemContactsFetcher.requestOnce(completion: completion)
   }
   
   func fetchSystemContactsOnceIfAlreadyAuthorized() {
-    self.systemContactsFetcher.contactStoreAdapter.requestAccess { granted, error in
-      if granted {
-        self.systemContactsFetcher.fetchOnceIfAlreadyAuthorized()
-      }
-    }
+    self.systemContactsFetcher.fetchOnceIfAlreadyAuthorized()
   }
 }
 

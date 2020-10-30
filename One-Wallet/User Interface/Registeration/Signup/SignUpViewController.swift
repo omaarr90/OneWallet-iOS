@@ -50,7 +50,7 @@ class SignUpViewController: RegisterationBaseViewController {
     }
     
     let phoneNumberKit = PhoneNumberKit()
-    guard let phoneNumber = try? phoneNumberKit.parse(text) else {
+    guard let phoneNumber = try? phoneNumberKit.parse(text, withRegion: "SA") else {
       self.errorAlert(with: NSLocalizedString("SignUpViewController.InvalidPhoneNumber.error", comment: ""))
       return
     }

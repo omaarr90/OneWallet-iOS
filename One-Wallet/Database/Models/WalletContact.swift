@@ -52,3 +52,14 @@ extension WalletUser: FetchableRecord, PersistableRecord {
   }
 }
 
+extension WalletUser {
+  static func fetchLocalUser() -> WalletUser? {
+    guard let phoneNumber = WalletAccount.localAccount?.phoneNumber else {
+      return nil
+    }
+    
+    return try? GRDBManager.shared.grdbStorage.pool.read { database in
+      try WalletUser.fetchOne(database, sql: "SELECT * FROM \(Self.databaseTableName) WHERE phoneNumber = ?", arguments: [phoneNumber])
+    }
+  }
+}

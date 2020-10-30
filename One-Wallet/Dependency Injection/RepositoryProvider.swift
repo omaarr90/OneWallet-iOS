@@ -25,11 +25,13 @@ final class WalletRepositoryProvider: RepositoryProvider {
   init() {
     container = Container()
     container.register(AuthRepo.self) {  _ in
-      WalletAuthRepo(api: containersProvider.networkingProvider.apiClient)
+      MockAuthRepo()
+//      WalletAuthRepo(api: containersProvider.networkingProvider.apiClient)
     }
 
     container.register(ContactsRepo.self) {  _ in
-      WalletContactsRepo(api: containersProvider.networkingProvider.apiClient)
+      MockContactsRepo()
+//      WalletContactsRepo(api: containersProvider.networkingProvider.apiClient)
     }
   }
 }
