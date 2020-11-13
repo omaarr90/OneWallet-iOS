@@ -12,7 +12,7 @@ public struct WalletAccount: Codable {
   public var id: Int64?
   public var registrationId: UInt32
   public let phoneNumber: String?
-  public let isOnboarded: Bool
+  public var isOnboarded: Bool
   public var isRegistered: Bool
   public var uuid: String?
 }
@@ -66,6 +66,17 @@ public extension WalletAccount {
     try? GRDBManager.shared.grdbStorage.pool.write { database in
       var account = try? WalletAccount.fetchOne(database, sql: "select * from \(Self.databaseTableName) where phoneNumber = ?", arguments: [phoneNumber])
       account?.isRegistered = true
+      try? account?.update(database)
+    }
+  }
+
+  func markAsOnboarded() {
+    guard let phoneNumber = self.phoneNumber else {
+      fatalError("Cannot get user phone number")
+    }
+    try? GRDBManager.shared.grdbStorage.pool.write { database in
+      var account = try? WalletAccount.fetchOne(database, sql: "select * from \(Self.databaseTableName) where phoneNumber = ?", arguments: [phoneNumber])
+      account?.isOnboarded = true
       try? account?.update(database)
     }
   }

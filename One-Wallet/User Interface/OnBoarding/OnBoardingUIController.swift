@@ -9,7 +9,7 @@ import UIKit
 
 class OnBoardingUIController {
   private let window: UIWindow?
-  
+
   private lazy var permissionViewController: PermissionViewController = {
     let permission = PermissionViewController()
     permission.onBoardingUI = self
@@ -36,7 +36,9 @@ class OnBoardingUIController {
   }
 
   func permissionDidComplete() {
-    navigationController.setViewControllers([createProfileViewController], animated: true)
+    WalletContactsManager.shared.fetchSystemContactsOnceIfAlreadyAuthorized()
+    WalletAccount.localAccount?.markAsOnboarded()
+    WalletApp.shared.ensureRootViewController()
   }
 }
 

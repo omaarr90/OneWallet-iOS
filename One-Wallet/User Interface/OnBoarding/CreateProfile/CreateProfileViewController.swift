@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class CreateProfileViewController: RegisterationBaseViewController {
   // MARK:- CollectionView iVars
@@ -22,11 +23,24 @@ class CreateProfileViewController: RegisterationBaseViewController {
   
   var dataSource: UICollectionViewDiffableDataSource<FormSection, FormRow>! = nil
   var onBoardingUI: OnBoardingUIController?
+  private var walletUser: WalletUser? {
+    didSet {
+      self.collectionView.reloadData()
+    }
+  }
   
+  // MARK:- private iVars
+  private lazy var viewModel: CreateProfileViewModel = {
+    containersProvider.viewModelProvider.createProfileViewModel
+  }()
+
+  private var tokens = Set<AnyCancellable>()
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureDataSource()
     submitButtonText = NSLocalizedString("CreateProfileViewController.ContinueButton", comment: "Continue Button")
+    configureDataSource()
+    configureObservers()
   }
   
   // MARK: Actions
@@ -35,6 +49,18 @@ class CreateProfileViewController: RegisterationBaseViewController {
   }
 }
 
+// MARK:- Observers
+private extension CreateProfileViewController {
+
+  func configureObservers() {
+    viewModel.response
+      .receive(on: DispatchQueue.main)
+      .sink { user in
+      self.walletUser = user
+    }
+      .store(in: &tokens)
+  }
+}
 // MARK:- DataSource
 private extension CreateProfileViewController {
   func configureDataSource() {
@@ -85,7 +111,9 @@ private extension CreateProfileViewController {
     return UICollectionView.CellRegistration<ProfilePictureCell, FormRow> { cell, indexPath, formRow in
       // Populate the cell with our item description.
       var contentConfiguration = ProfilePictureContentConfiguration()
-//      contentConfiguration.image =
+      if let imageData = self.walletUser?.contact?.imageData {
+        contentConfiguration.image = UIImage(data: imageData)
+      }
       cell.profilePictureContentConfiguration = contentConfiguration
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
     }

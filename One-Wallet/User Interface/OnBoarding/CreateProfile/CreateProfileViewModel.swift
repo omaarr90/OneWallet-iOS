@@ -7,11 +7,12 @@
 
 import UIKit
 import Combine
+import GRDB
 
 class CreateProfileViewModel {
 
   init() {
-    tryToFetchUserProfile()
+    setupObserving()
   }
   
   //MARK:- Private Published Objects
@@ -25,7 +26,21 @@ class CreateProfileViewModel {
   //MARK:- Private iVars
   private var tokens: Set<AnyCancellable> = Set<AnyCancellable>()
   
-  func tryToFetchUserProfile() {
-    _response = WalletUser.fetchLocalUser()
+  private func setupObserving() {
+    
+    guard let phoneNumber = WalletAccount.localAccount?.phoneNumber else {
+      return
+    }
+    let observation = ValueObservation.tracking { database in
+      try WalletUser.fetchOne(database, sql: "SELECT * FROM model_WalletUser WHERE phoneNumber = ?", arguments: [phoneNumber])
+    }
+    observation
+      .publisher(in: GRDBManager.shared.grdbStorage.pool)
+      .replaceError(with: nil)
+      .receive(on: DispatchQueue.main)
+      .sink(receiveValue: { users in
+        self._response = users
+      })
+      .store(in: &tokens)
   }
 }

@@ -17,6 +17,7 @@ public struct WalletContact: Codable {
   public var cnContactId: String?
   public var isFromContactSync: Bool
   public var imageData: Data?
+  public var thumbnail: Data?
 
   init(systemContact: CNContact) {
     self.firstName = systemContact.givenName
@@ -25,6 +26,7 @@ public struct WalletContact: Codable {
     self.cnContactId = systemContact.identifier
     self.isFromContactSync = true
     self.imageData = systemContact.imageData
+    self.thumbnail = systemContact.thumbnailImageData
   }
 }
 

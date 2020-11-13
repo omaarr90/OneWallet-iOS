@@ -31,17 +31,17 @@ final class WalletApp {
     }
   }
   
-  func showRegistration() {
+  private func showRegistration() {
     let navigationController = AuthNavigationController(rootViewController: SplashViewController())
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
   }
   
-  func showHome() {
+  private func showHome() {
     walletUI?.present()
   }
   
-  func showOnBoarding() {
+  private func showOnBoarding() {
     onBoardingUI?.present()
   }
 

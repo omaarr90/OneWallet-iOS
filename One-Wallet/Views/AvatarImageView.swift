@@ -60,7 +60,6 @@ public class ConversationAvatarImageView: AvatarImageView {
     
     super.init(frame: .zero)
         
-    // TODO group avatar changed
     self.updateImage()
   }
   
@@ -84,7 +83,10 @@ public class ConversationAvatarImageView: AvatarImageView {
   public func updateImage() {
     Logger.debug("updateImage")
     
-    self.image = UIImage(systemName: "person.fill")//OWSAvatarBuilder.buildImage(thread: thread, diameter: diameter)
+    guard let imageData = user.contact?.imageData else {
+      return
+    }
+    self.image = UIImage(data: imageData)//UIImage(systemName: "person.fill")//OWSAvatarBuilder.buildImage(thread: thread, diameter: diameter)
   }
 }
 

@@ -13,6 +13,7 @@ protocol ViewModelProvider: InjectionContainer {
   var verifyPhoneNumberViewModel: VerifyPhoneNumberViewModel { get }
   var contactsViewModel: ContactsViewModel { get }
   var walletListViewModel: WalletListViewModel { get }
+  var createProfileViewModel: CreateProfileViewModel { get }
 }
 
 final class WalletViewModelProvider: ViewModelProvider {
@@ -31,6 +32,10 @@ final class WalletViewModelProvider: ViewModelProvider {
   
   var walletListViewModel: WalletListViewModel {
     container.resolve(WalletListViewModel.self)!
+  }
+
+  var createProfileViewModel: CreateProfileViewModel {
+    container.resolve(CreateProfileViewModel.self)!
   }
 
   
@@ -53,6 +58,10 @@ final class WalletViewModelProvider: ViewModelProvider {
 
     self.container.register(WalletListViewModel.self) { _ in
       WalletListViewModel()
+    }
+
+    self.container.register(CreateProfileViewModel.self) { _ in
+      CreateProfileViewModel()
     }
 
   }

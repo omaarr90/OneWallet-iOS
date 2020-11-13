@@ -26,7 +26,8 @@ class ProfilePictureCell: UICollectionViewListCell {
 struct ProfilePictureContentConfiguration: UIContentConfiguration, Hashable {
   
   var image: UIImage? = UIImage(systemName: "person.fill")
-  
+  var backgroundColor: UIColor = .systemFill
+
   func makeContentView() -> UIView & UIContentView {
     return ProfilePictureContentView(configuration: self)
   }
@@ -82,7 +83,7 @@ class ProfilePictureContentView: UIView, UIContentView {
     guard appliedConfiguration != configuration else { return }
     appliedConfiguration = configuration
     
-    profilePicture.backgroundColor = .systemRed
+    profilePicture.image = configuration.image
 //    profilePicture.setImageForName("Omar Alshammari", circular: true, textAttributes: nil)
   }
 }
